@@ -1,0 +1,94 @@
+name: CI
+
+env:
+  CARGO_TERM_COLOR: always
+  MSRV: '1.60'
+
+on:
+  push:
+    branches:
+    - main
+  pull_request: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        channel:
+          - stable
+          - beta
+          - ${{ env.MSRV }}
+        dir:
+          - .
+          # TODO: - examples
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Install Rust stable toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ matrix.channel }}
+          targets: wasm32-unknown-unknown
+          components: clippy, rustfmt
+
+      - name: Restore cached toolchain
+        uses: Swatinem/rust-cache@v2
+
+      - name: Clippy
+        working-directory: ${{ matrix.dir }}
+        run: |
+          cargo clippy --all --all-targets --all-features
+
+      - name: rustfmt
+        working-directory: ${{ matrix.dir }}
+        run: |
+          cargo fmt --all --check
+
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Install Rust stable toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+          targets: wasm32-unknown-unknown
+          components: clippy, rustfmt
+
+      - name: Restore cached toolchain
+        uses: Swatinem/rust-cache@v2
+
+      - name: cargo doc
+        env:
+          RUSTDOCFLAGS: "-D broken-intra-doc-links"
+        run: cargo doc --all-features --no-deps
+
+  test:
+    strategy:
+      matrix:
+        channel:
+          - stable
+          - beta
+          - ${{ env.MSRV }}
+    runs-on: ubuntu-latest
+    env:
+      RUST_BACKTRACE: 1
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Install Rust stable toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ matrix.channel }}
+          targets: wasm32-unknown-unknown
+
+      - name: Restore cached toolchain
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install nextest
+        uses: taiki-e/install-action@nextest
+
+      - name: Test
+        run: cargo nextest run --all-features
