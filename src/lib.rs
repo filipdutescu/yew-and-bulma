@@ -23,6 +23,7 @@
 //! [bulma]: https://bulma.io
 //! [yew]: https://yew.rs
 
+pub mod elements;
 /// CSS helpers, as described in the [Bulma documentation][bd].
 ///
 /// Contains the [Bulma CSS helpers][bd] implementations for:

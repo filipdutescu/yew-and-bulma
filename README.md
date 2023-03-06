@@ -2,7 +2,7 @@
   <h1>Yew and Bulma</h1>
 
 [![Crate](https://img.shields.io/crates/v/yew-and-bulma.svg)](https://crates.io/crates/yew-and-bulma)
-[![Build status](https://img.shields.io/github/actions/workflow/status/filipdutescu/yew-and-bulma/ci.yml+?branch=main)](https://github.com/filipdutescu/yew-and-bulma/actions)
+[![Build status](https://img.shields.io/github/actions/workflow/status/filipdutescu/yew-and-bulma/ci.yml?branch=main)](https://github.com/filipdutescu/yew-and-bulma/actions)
 [![Docs](https://img.shields.io/badge/docs.rs-yew--and--bulma-green)](https://docs.rs/yew-and-bulma/)
 ![Licenses](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue?style=flat-square)
 
