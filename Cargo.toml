@@ -9,7 +9,7 @@ license = "MIT OR Apache-2.0"
 keywords = ["web", "webasm", "css", "yew", "bulma", "sass", "scss", "frontend"]
 categories = ["gui", "wasm", "web-programming"]
 description = "Bulma CSS components for Yew"
-readme = "../../README.md"
+readme = "README.md"
 rust-version = "1.60"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
