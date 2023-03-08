@@ -73,7 +73,7 @@ use std::fmt::Display;
 ///
 /// [bd]: https://bulma.io/documentation/helpers/flexbox-helpers/#flex-direction
 /// [`flex-direction`]: https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum FlexDirection {
     Row,
     RowReverse,
@@ -169,7 +169,7 @@ impl Display for FlexDirection {
 ///
 /// [bd]: https://bulma.io/documentation/helpers/flexbox-helpers/#flex-wrap
 /// [`flex-wrap`]: https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum FlexWrap {
     NoWrap,
     Wrap,
@@ -263,7 +263,7 @@ impl Display for FlexWrap {
 ///
 /// [bd]: https://bulma.io/documentation/helpers/flexbox-helpers/#justify-content
 /// [`justify-content`]: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum JustifyContent {
     FlexStart,
     FlexEnd,
@@ -371,7 +371,7 @@ impl Display for JustifyContent {
 ///
 /// [bd]: https://bulma.io/documentation/helpers/flexbox-helpers/#align-content
 /// [`align-content`]: https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum AlignContent {
     FlexStart,
     FlexEnd,
@@ -479,7 +479,7 @@ impl Display for AlignContent {
 ///
 /// [bd]: https://bulma.io/documentation/helpers/flexbox-helpers/#align-items
 /// [`align-items`]: https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum AlignItems {
     Stretch,
     FlexStart,
@@ -585,7 +585,7 @@ impl Display for AlignItems {
 ///
 /// [bd]: https://bulma.io/documentation/helpers/flexbox-helpers/#align-self
 /// [`align-self`]: https://developer.mozilla.org/en-US/docs/Web/CSS/align-self
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum AlignSelf {
     Auto,
     FlexStart,
@@ -755,7 +755,7 @@ impl Display for AlignSelf {
 /// [bd]: https://bulma.io/documentation/helpers/flexbox-helpers/#flex-grow-and-flex-shrink
 /// [`flex-grow`]: https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow
 /// [`flex-shrink`]: https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum FlexShrinkGrowFactor {
     Zero,
     One,

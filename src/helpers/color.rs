@@ -54,7 +54,7 @@ use std::fmt::Display;
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/helpers/color-helpers/#text-color
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum TextColor {
     White,
     Black,
@@ -158,7 +158,7 @@ impl Display for TextColor {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/helpers/color-helpers/#background-color
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 pub enum BackgroundColor {
     White,
     Black,

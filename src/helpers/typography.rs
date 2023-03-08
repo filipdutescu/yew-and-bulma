@@ -54,7 +54,7 @@ use std::fmt::Display;
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/helpers/typography-helpers/#size
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum TextSize {
     One,
     Two,
@@ -135,7 +135,7 @@ impl Display for TextSize {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/helpers/typography-helpers/#alignment
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum TextAlignment {
     Centered,
     Justified,
@@ -210,7 +210,7 @@ impl Display for TextAlignment {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/helpers/typography-helpers/#text-transformation
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum TextDecoration {
     Capitalized,
     Lowercase,
@@ -287,7 +287,7 @@ impl Display for TextDecoration {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/helpers/typography-helpers/#text-weight
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum TextWeight {
     Light,
     Normal,
@@ -364,7 +364,7 @@ impl Display for TextWeight {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/helpers/typography-helpers/#font-family
-#[derive(Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum FontFamily {
     SansSerif,
     Monospace,

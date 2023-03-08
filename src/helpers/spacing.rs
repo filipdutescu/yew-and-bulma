@@ -63,7 +63,7 @@ use std::fmt::Display;
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/helpers/spacing-helpers
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum Direction {
     All,
     Top,
@@ -113,7 +113,7 @@ impl Display for Direction {
 ///     utils::class::ClassBuilder,
 /// };
 ///
-/// // Create a `<div>` HTML element that has the marign and padding set to 2.
+/// // Create a `<div>` HTML element that has the margin and padding set to 2.
 /// #[function_component(SpacedDiv)]
 /// fn spaced_div() -> Html {
 ///     let class = ClassBuilder::default()
@@ -139,7 +139,7 @@ impl Display for Direction {
 ///     utils::constants::PADDING_PREFIX,
 /// };
 ///
-/// // Create a `<div>` HTML element that has the marign and padding set to 2.
+/// // Create a `<div>` HTML element that has the margin and padding set to 2.
 /// #[function_component(SpacedDiv)]
 /// fn spaced_div() -> Html {
 ///     let class = classes![
@@ -153,7 +153,7 @@ impl Display for Direction {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/helpers/spacing-helpers
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum Spacing {
     Zero,
     One,

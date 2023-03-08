@@ -55,7 +55,7 @@ use std::fmt;
 ///
 /// [bd]: https://bulma.io/documentation/helpers/visibility-helpers/#show
 /// [`display`]: https://developer.mozilla.org/en-US/docs/Web/CSS/display
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum Display {
     Block,
     Flex,
@@ -105,7 +105,7 @@ impl fmt::Display for Display {
 /// };
 ///
 /// // Create a `<div>` HTML element that has the display set to flex for the
-/// //tablet viewport.
+/// // tablet viewport.
 /// #[function_component(FlexDiv)]
 /// fn flex_div() -> Html {
 ///     let class = ClassBuilder::default()
@@ -129,7 +129,7 @@ impl fmt::Display for Display {
 /// };
 ///
 /// // Create a `<div>` HTML element that has the display set to flex for the
-/// //tablet viewport.
+/// // tablet viewport.
 /// #[function_component(FlexDiv)]
 /// fn flex_div() -> Html {
 ///     let display = Display::Flex;
@@ -142,7 +142,7 @@ impl fmt::Display for Display {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/helpers/visibility-helpers/#show
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum Viewport {
     Mobile,
     Touch,

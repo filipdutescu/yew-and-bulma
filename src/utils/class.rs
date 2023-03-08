@@ -41,7 +41,13 @@ use crate::{
     utils::constants::PADDING_PREFIX,
 };
 
-#[derive(Debug, Default, PartialEq)]
+/// Groups together the possible text modifiers
+///
+/// Logical struct which groups together all the possible text modifiers that
+/// have a Bulma class equivalent. This is meant to be an internal resource of
+/// the [`crate::utils::class::ClassBuilder`] struct, meant to make it easier
+/// to maintain and expand the builder.
+#[derive(Clone, Debug, Default, PartialEq)]
 struct TextModifiers {
     color: Option<TextColor>,
     size: Option<TextSize>,
@@ -95,7 +101,13 @@ impl From<TextModifiers> for Classes {
     }
 }
 
-#[derive(Debug, Default, PartialEq)]
+/// Groups together the possible alignment modifiers
+///
+/// Logical struct which groups together all the possible alignment modifiers
+/// that have a Bulma class equivalent. This is meant to be an internal
+/// resource the [`crate::utils::class::ClassBuilder`] struct, meant to make it
+/// easier to maintain and expand the builder.
+#[derive(Clone, Debug, Default, PartialEq)]
 struct AlignmentModifiers {
     flex_direction: Option<FlexDirection>,
     flex_wrap: Option<FlexWrap>,
@@ -147,7 +159,17 @@ impl From<AlignmentModifiers> for Classes {
     }
 }
 
-#[derive(Debug, Default, PartialEq)]
+/// Groups together the possible other modifiers
+///
+/// Logical struct which groups together all the possible other modifiers that
+/// have a Bulma class equivalent. This is meant to be an internal resource of
+/// the [`crate::utils::class::ClassBuilder`] struct, meant to make it easier
+/// to maintain and expand the builder.
+///
+/// Other refers to the [Bulma Other helpers][bd].
+///
+/// [bd]: bulma.io/documentation/helpers/other-helpers/
+#[derive(Clone, Debug, Default, PartialEq)]
 struct OtherModifiers {
     is_clearfix: Option<bool>,
     is_pulled_left: Option<bool>,
@@ -212,8 +234,38 @@ impl From<OtherModifiers> for Classes {
     }
 }
 
-#[derive(Debug, Default)]
+/// CSS class builder for Bulma and custom classes.
+///
+/// Used to build various combination of CSS classes, implementing most options
+/// found in the [Bulma helpers][bd]. It provides a Rust API for generating
+/// styles for any HTML component. It also allows for custom classes to be
+/// used.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::{
+///     helpers::color::TextColor,
+///     utils::class::ClassBuilder,
+/// };
+///
+/// // Create a `<div>` HTML element that has the text color set to primary.
+/// #[function_component(ColoredTextDiv)]
+/// fn colored_text_div() -> Html {
+///     let class = ClassBuilder::default()
+///         .with_text_color(Some(TextColor::Primary))
+///         .build();
+///     html!{
+///         <div class={class}>{ "Lorem ispum..." }</div>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/helpers/
+#[derive(Clone, Debug, Default)]
 pub struct ClassBuilder {
+    custom_classes: HashSet<String>,
     text_modifiers: TextModifiers,
     background_color: Option<BackgroundColor>,
     display: Option<Display>,
@@ -225,21 +277,209 @@ pub struct ClassBuilder {
 }
 
 impl ClassBuilder {
+    /// Add a custom CSS class to the current list of classes.
+    ///
+    /// Add a new custom CSS class to the current list of classes that the
+    /// builder will create. The input string is no validated to check if it
+    /// is in fact a valid CSS class name. Rather, it is assumed the caller has
+    /// checked it prior to the call.
+    ///
+    /// > _If you add the same class multiple times, it will only appear once
+    /// in the final list._
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::utils::class::ClassBuilder;
+    ///
+    /// // Create a `<div>` HTML element that has a custom class.
+    /// #[function_component(CustomClassDiv)]
+    /// fn custom_class_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_custom_class("my-awesome-div")
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    pub fn with_custom_class(mut self, custom_class: &str) -> Self {
+        self.custom_classes.insert(custom_class.to_owned());
+        self
+    }
+
+    /// Removes a custom CSS class to the current list of classes, if it exists.
+    ///
+    /// Removes an existing custom CSS class to the current list of classes that
+    /// the builder will create. The input string is no validated to check if it
+    /// is in fact a valid CSS class name. Rather, it is assumed the caller has
+    /// checked it prior to the call.
+    ///
+    /// Removing the same class multiple times has the same result as trying to
+    /// remove an inexisting one, concretely, nothing will happen.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::utils::class::ClassBuilder;
+    ///
+    /// // Create a `<div>` HTML element that does not have the
+    /// // `my-awesome-div` custom class.
+    /// #[function_component(MyNormalDiv)]
+    /// fn my_normal_div() -> Html {
+    ///     // Assume that instead of the default builder, one where the class
+    ///     // to be removed is actually used.
+    ///     let class = ClassBuilder::default()
+    ///         .without_custom_class("my-awesome-div")
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    pub fn without_custom_class(mut self, custom_class: &str) -> Self {
+        self.custom_classes.remove(custom_class);
+        self
+    }
+
+    /// Set the text color using a [Bulma text color helper][bd].
+    ///
+    /// Set a [Bulma text color helper class][bd] to be added to the current
+    /// list of classes. To remove a [text color helper][bd], simply pass
+    /// `None` to the call. Every call to this method overrides the previous
+    /// value to the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::color::TextColor,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the text color set to primary.
+    /// #[function_component(ColoredTextDiv)]
+    /// fn colored_text_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_text_color(Some(TextColor::Primary))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/color-helpers/#text-color
     pub fn with_text_color(mut self, color: Option<TextColor>) -> Self {
         self.text_modifiers.color = color;
         self
     }
 
+    /// Set the background color using a [Bulma background color helper][bd].
+    ///
+    /// Set a [Bulma background color helper class][bd] to be added to the
+    /// current list of classes. To remove a [background color helper][bd],
+    /// simply pass `None` to the call. Every call to this method overrides the
+    /// previous value to the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::color::BackgroundColor,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the background color set to
+    /// // primary.
+    /// #[function_component(ColoredBackgroundDiv)]
+    /// fn colored_background_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_background_color(Some(BackgroundColor::Primary))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/color-helpers/#background-color
     pub fn with_background_color(mut self, color: Option<BackgroundColor>) -> Self {
         self.background_color = color;
         self
     }
 
+    /// Set the text size using a [Bulma text size helper][bd].
+    ///
+    /// Set a [Bulma text size helper class][bd] to be added to the current
+    /// list of classes. To remove a [text size helper][bd], simply pass
+    /// `None` to the call. Every call to this method overrides the previous
+    /// value to the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::typography::TextSize,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the font size set to 3.
+    /// #[function_component(TextSize3Div)]
+    /// fn text_size_3_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_text_size(Some(TextSize::Three))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/typography-helpers/#size
     pub fn with_text_size(mut self, text_size: Option<TextSize>) -> Self {
         self.text_modifiers.size = text_size;
         self
     }
 
+    /// Add a text size for a specific viewport width using a
+    /// [Bulma responsive text size helper][bd].
+    ///
+    /// Set a [Bulma responsive text size helper class][bd] to be added to the
+    /// current list of classes.
+    ///
+    /// > _If you add the same viewport size multiple times, it will only
+    /// appear once in the final list._
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::typography::TextSize,
+    ///     helpers::visibility::Viewport,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the text size set to 2 for the
+    /// // tablet viewport.
+    /// #[function_component(TabletTextSize2Div)]
+    /// fn tablet_text_size_2_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_text_viewport_size(TextSize::Two, Viewport::Tablet)
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/typography-helpers/#responsive-size
     pub fn with_text_viewport_size(mut self, text_size: TextSize, viewport: Viewport) -> Self {
         self.text_modifiers
             .viewport_sizes
@@ -247,6 +487,40 @@ impl ClassBuilder {
         self
     }
 
+    /// Remove a text size for a specific viewport width, if it exists.
+    ///
+    /// Remove a [Bulma responsive text size helper class][bd], from the current
+    /// list of classes, if it exists.
+    ///
+    /// Removing the same specifier multiple times has the same result as trying
+    /// to remove an inexisting one, concretely, nothing will happen.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::typography::TextSize,
+    ///     helpers::visibility::Viewport,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that does not have the text size set to
+    /// // 2 for the tablet viewport.
+    /// #[function_component(NormalDiv)]
+    /// fn normal_div() -> Html {
+    ///     // Assume that instead of the default builder, one where the class
+    ///     // to be removed is actually used.
+    ///     let class = ClassBuilder::default()
+    ///         .without_text_viewport_size(TextSize::Two, Viewport::Tablet)
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/typography-helpers/#responsive-size
     pub fn without_text_viewport_size(mut self, text_size: TextSize, viewport: Viewport) -> Self {
         self.text_modifiers
             .viewport_sizes
@@ -254,11 +528,73 @@ impl ClassBuilder {
         self
     }
 
+    /// Set the text alignment using a [Bulma alignment helper][bd].
+    ///
+    /// Set a [Bulma text alignment helper class][bd] to be added to the current
+    /// list of classes. To remove a [text alignment helper][bd], simply pass
+    /// `None` to the call. Every call to this method overrides the previous
+    /// value to the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::typography::TextAlignment,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the text center aligned.
+    /// #[function_component(TextCenteredDiv)]
+    /// fn text_centered_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_text_alignment(Some(TextAlignment::Centered))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/typography-helpers/#alignment
     pub fn with_text_alignment(mut self, text_alignment: Option<TextAlignment>) -> Self {
         self.text_modifiers.alignment = text_alignment;
         self
     }
 
+    /// Add a text alignment for a specific viewport width using a
+    /// [Bulma responsive text alignment helper][bd].
+    ///
+    /// Set a [Bulma responsive text alignment helper class][bd] to be added to
+    /// the current list of classes.
+    ///
+    /// > _If you add the same viewport alignment multiple times, it will only
+    /// appear once in the final list._
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::typography::TextAlignment,
+    ///     helpers::visibility::Viewport,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the text center aligned on
+    /// // tablets.
+    /// #[function_component(TextCenteredTabletDiv)]
+    /// fn text_centered_tablet_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_text_viewport_alignment(TextAlignment::Centered, Viewport::Tablet)
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/typography-helpers/#responsive-alignment
     pub fn with_text_viewport_alignment(
         mut self,
         text_alignment: TextAlignment,
@@ -270,6 +606,40 @@ impl ClassBuilder {
         self
     }
 
+    /// Remove a text alignment for a specific viewport width, if it exists.
+    ///
+    /// Remove a [Bulma responsive text alignment helper class][bd], from the
+    /// current list of classes, if it exists.
+    ///
+    /// Removing the same specifier multiple times has the same result as trying
+    /// to remove an inexisting one, concretely, nothing will happen.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::typography::TextAlignment,
+    ///     helpers::visibility::Viewport,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that does not have the text center
+    /// // aligned on tablets.
+    /// #[function_component(NormalDiv)]
+    /// fn normal_div() -> Html {
+    ///     // Assume that instead of the default builder, one where the class
+    ///     // to be removed is actually used.
+    ///     let class = ClassBuilder::default()
+    ///         .without_text_viewport_alignment(TextAlignment::Centered, Viewport::Tablet)
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/typography-helpers/#responsive-alignment
     pub fn without_text_viewport_alignment(
         mut self,
         text_alignment: TextAlignment,
@@ -281,152 +651,1080 @@ impl ClassBuilder {
         self
     }
 
+    /// Set the text decoration using a [Bulma text transformation helper][bd].
+    ///
+    /// Set a [Bulma text transformation helper class][bd] to be added to the
+    /// current list of classes.
+    ///
+    /// > _If you add the same viewport alignment multiple times, it will only
+    /// appear once in the final list._
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::typography::TextDecoration,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the text italic.
+    /// #[function_component(ItalicTextDiv)]
+    /// fn italic_text_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_text_decoration(TextDecoration::Italic)
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/typography-helpers/#text-transformation
     pub fn with_text_decoration(mut self, text_decoration: TextDecoration) -> Self {
         self.text_modifiers.decorations.insert(text_decoration);
         self
     }
 
+    /// Remove a text decoration, which is using a
+    /// [Bulma text transformation helper][bd], if it exists.
+    ///
+    /// Remove a [Bulma text transformation helper class][bd], from the current
+    /// list of classes, if it exists.
+    ///
+    /// Removing the same specifier multiple times has the same result as trying
+    /// to remove an inexisting one, concretely, nothing will happen.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::typography::TextDecoration,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that does not have italic text.
+    /// #[function_component(NormalTextDiv)]
+    /// fn normal_text_div() -> Html {
+    ///     // Assume that instead of the default builder, one where the class
+    ///     // to be removed is actually used.
+    ///     let class = ClassBuilder::default()
+    ///         .without_text_decoration(TextDecoration::Italic)
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/typography-helpers/#text-transformation
     pub fn without_text_decoration(mut self, text_decoration: TextDecoration) -> Self {
         self.text_modifiers.decorations.remove(&text_decoration);
         self
     }
 
+    /// Set the text weight using a [Bulma weight helper][bd].
+    ///
+    /// Set a [Bulma text weight helper class][bd] to be added to the current
+    /// list of classes. To remove a [text weight helper][bd], simply pass
+    /// `None` to the call. Every call to this method overrides the previous
+    /// value to the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::typography::TextWeight,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the text weight semi bold.
+    /// #[function_component(SemiBoldTextDiv)]
+    /// fn semi_bold_text_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_text_weight(Some(TextWeight::SemiBold))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/typography-helpers/#text-weight
     pub fn with_text_weight(mut self, text_weight: Option<TextWeight>) -> Self {
         self.text_modifiers.weight = text_weight;
         self
     }
 
+    /// Set the font family using a [Bulma font family helper][bd].
+    ///
+    /// Set a [Bulma font family helper class][bd] to be added to the current
+    /// list of classes. To remove a [font family helper][bd], simply pass
+    /// `None` to the call. Every call to this method overrides the previous
+    /// value to the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::typography::FontFamily,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the code font family.
+    /// #[function_component(CodeFontDiv)]
+    /// fn code_font_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_font_family(Some(FontFamily::Code))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/typography-helpers/#font-family
     pub fn with_font_family(mut self, font_family: Option<FontFamily>) -> Self {
         self.text_modifiers.font_family = font_family;
         self
     }
 
+    /// Set the display CSS property using a [Bulma display helper][bd].
+    ///
+    /// Set a [Bulma display helper class][bd] to be added to the current list
+    /// of classes. To remove a [display helper][bd], simply pass `None` to the
+    /// call. Every call to this method overrides the previous value to the one
+    /// received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::visibility::Display,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the display set to flex.
+    /// #[function_component(FlexDiv)]
+    /// fn flex_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_display(Some(Display::Flex))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/visibility-helpers/#show
     pub fn with_display(mut self, display: Option<Display>) -> Self {
         self.display = display;
         self
     }
 
+    /// Add a display for a specific viewport width using a
+    /// [Bulma responsive display helper][bd].
+    ///
+    /// Set a [Bulma responsive display helper class][bd] to be added to
+    /// the current list of classes.
+    ///
+    /// > _If you add the same viewport display multiple times, it will only
+    /// appear once in the final list._
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::visibility::{Display, Viewport},
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the display set to flex for the
+    /// // tablet viewport.
+    /// #[function_component(FlexDiv)]
+    /// fn flex_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_viewport_display(Display::Flex, Viewport::Tablet)
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/visibility-helpers/#show
     pub fn with_viewport_display(mut self, display: Display, viewport: Viewport) -> Self {
         self.viewport_displays.insert((display, viewport));
         self
     }
 
+    /// Remove a display for a specific viewport width, if it exists.
+    ///
+    /// Remove a [Bulma responsive display helper class][bd], from the
+    /// current list of classes, if it exists.
+    ///
+    /// Removing the same specifier multiple times has the same result as trying
+    /// to remove an inexisting one, concretely, nothing will happen.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::visibility::{Display, Viewport},
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that does not have the display set to
+    /// //flex for the tablet viewport.
+    /// #[function_component(NormalDiv)]
+    /// fn normal_div() -> Html {
+    ///     // Assume that instead of the default builder, one where the class
+    ///     // to be removed is actually used.
+    ///     let class = ClassBuilder::default()
+    ///         .without_viewport_display(Display::Flex, Viewport::Tablet)
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/visibility-helpers/#show
     pub fn without_viewport_display(mut self, display: Display, viewport: Viewport) -> Self {
         self.viewport_displays.remove(&(display, viewport));
         self
     }
 
+    /// Set the flex direction using a [Bulma flex direction helper][bd].
+    ///
+    /// Set a [Bulma flex direction helper class][bd] to be added to the current
+    /// list of classes. To remove a [flex direction helper][bd], simply pass
+    /// `None` to the call. Every call to this method overrides the previous
+    /// value to the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::flexbox::FlexDirection,
+    ///     helpers::visibility::Display,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the column flex direction.
+    /// // The `<p>` children are there to highlight the direction.
+    /// #[function_component(FlexDirColDiv)]
+    /// fn flex_dir_col_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_display(Some(Display::Flex))
+    ///         .with_flex_direction(Some(FlexDirection::Column))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///         </div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/flexbox-helpers/#flex-direction
     pub fn with_flex_direction(mut self, flex_direction: Option<FlexDirection>) -> Self {
         self.alignment_modifiers.flex_direction = flex_direction;
         self
     }
 
+    /// Set the flex wrap using a [Bulma flex wrap helper][bd].
+    ///
+    /// Set a [Bulma flex wrap helper class][bd] to be added to the current
+    /// list of classes. To remove a [flex wrap helper][bd], simply pass
+    /// `None` to the call. Every call to this method overrides the previous
+    /// value to the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::flexbox::FlexWrap,
+    ///     helpers::visibility::Display,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has flex wrap.
+    /// // The `<p>` children are there to highlight the wrap.
+    /// #[function_component(FlexDirColDiv)]
+    /// fn flex_dir_col_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_display(Some(Display::Flex))
+    ///         .with_flex_wrap(Some(FlexWrap::Wrap))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///         </div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/flexbox-helpers/#flex-wrap
     pub fn with_flex_wrap(mut self, flex_wrap: Option<FlexWrap>) -> Self {
         self.alignment_modifiers.flex_wrap = flex_wrap;
         self
     }
 
+    /// Set the justify content using a [Bulma justify content helper][bd].
+    ///
+    /// Set a [Bulma justify content helper class][bd] to be added to the
+    /// current list of classes. To remove a [justify content helper][bd],
+    /// simply pass `None` to the call. Every call to this method overrides the
+    /// previous value to the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::flexbox::JustifyContent,
+    ///     helpers::visibility::Display,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the center justify content value.
+    /// // The `<p>` children are there to highlight the justify (might need resize
+    /// // of the screen size to become evident).
+    /// #[function_component(JustifyContentCenterDiv)]
+    /// fn justify_content_center_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_display(Some(Display::Flex))
+    ///         .with_justify_content(Some(JustifyContent::Center))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///         </div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/flexbox-helpers/#justify-content
     pub fn with_justify_content(mut self, justify_content: Option<JustifyContent>) -> Self {
         self.alignment_modifiers.justify_content = justify_content;
         self
     }
 
+    /// Set the align content using a [Bulma align content helper][bd].
+    ///
+    /// Set a [Bulma align content helper class][bd] to be added to the current
+    /// list of classes. To remove a [align content helper][bd], simply pass
+    /// `None` to the call. Every call to this method overrides the previous
+    /// value to the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::flexbox::AlignContent,
+    ///     helpers::visibility::Display,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the center align content value.
+    /// // The `<p>` children are there to highlight the align (might need resize
+    /// // of the screen size to become evident).
+    /// #[function_component(AlignContentCenterDiv)]
+    /// fn align_content_center_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_display(Some(Display::Flex))
+    ///         .with_align_content(Some(AlignContent::Center))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///         </div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/flexbox-helpers/#align-content
     pub fn with_align_content(mut self, align_content: Option<AlignContent>) -> Self {
         self.alignment_modifiers.align_content = align_content;
         self
     }
 
+    /// Set the align items using a [Bulma align items helper][bd].
+    ///
+    /// Set a [Bulma align items helper class][bd] to be added to the current
+    /// list of classes. To remove a [align items helper][bd], simply pass
+    /// `None` to the call. Every call to this method overrides the previous
+    /// value to the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::flexbox::AlignItems,
+    ///     helpers::visibility::Display,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the center align items value.
+    /// // The `<p>` children are there to highlight the align (might need resize
+    /// // of the screen size to become evident).
+    /// #[function_component(AlignItemsCenterDiv)]
+    /// fn align_items_center_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_display(Some(Display::Flex))
+    ///         .with_align_items(Some(AlignItems::Center))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///         </div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/flexbox-helpers/#align-items
     pub fn with_align_items(mut self, align_items: Option<AlignItems>) -> Self {
         self.alignment_modifiers.align_items = align_items;
         self
     }
 
+    /// Set the align self using a [Bulma align self helper][bd].
+    ///
+    /// Set a [Bulma align self helper class][bd] to be added to the current
+    /// list of classes. To remove a [align self helper][bd], simply pass
+    /// `None` to the call. Every call to this method overrides the previous
+    /// value to the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::flexbox::AlignSelf,
+    ///     helpers::visibility::Display,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the center align self value.
+    /// // The `<p>` children are there to highlight the align (might need resize
+    /// // of the screen size to become evident).
+    /// #[function_component(AlignSelfCenterDiv)]
+    /// fn align_self_center_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_display(Some(Display::Flex))
+    ///         .with_align_self(Some(AlignSelf::Center))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///         </div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/flexbox-helpers/#align-self
     pub fn with_align_self(mut self, align_self: Option<AlignSelf>) -> Self {
         self.alignment_modifiers.align_self = align_self;
         self
     }
 
+    /// Set the flex grow using a [Bulma flex grow helper][bd].
+    ///
+    /// Set a [Bulma flex grow helper class][bd] to be added to the current
+    /// list of classes. To remove a [flex grow helper][bd], simply pass `None`
+    /// to the call. Every call to this method overrides the previous value to
+    /// the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::flexbox::FlexShrinkGrowFactor,
+    ///     helpers::visibility::Display,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the flex display.
+    /// // The `<p>` children are there to highlight the flex grow (might need
+    /// // resize of the screen size to become evident). The first element is the
+    /// // one having the flex grow set.
+    /// #[function_component(FlexGrow2Div)]
+    /// fn flex_grow_2_div() -> Html {
+    ///     let flex_display_class = ClassBuilder::default()
+    ///         .with_display(Some(Display::Flex))
+    ///         .build();
+    ///     let flex_grow_class = ClassBuilder::default()
+    ///         .with_flex_grow(Some(FlexShrinkGrowFactor::Two))
+    ///         .build();
+    ///     html!{
+    ///         <div class={flex_display_class}>
+    ///             <p class={flex_grow_class}>{ "Lorem ispum..." }</p>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///         </div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/flexbox-helpers/#flex-grow-and-flex-shrink
     pub fn with_flex_grow(mut self, flex_grow: Option<FlexShrinkGrowFactor>) -> Self {
         self.alignment_modifiers.flex_grow = flex_grow;
         self
     }
 
+    /// Set the flex shrink using a [Bulma flex shrink helper][bd].
+    ///
+    /// Set a [Bulma flex shrink helper class][bd] to be added to the current
+    /// list of classes. To remove a [flex shrink helper][bd], simply pass
+    /// `None` to the call. Every call to this method overrides the previous
+    /// value to the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::flexbox::FlexShrinkGrowFactor,
+    ///     helpers::visibility::Display,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the flex display.
+    /// // The `<p>` children are there to highlight the flex shrink (might need
+    /// // resize of the screen size to become evident). The first element is the
+    /// // one having the flex shrink set.
+    /// #[function_component(FlexShrink2Div)]
+    /// fn flex_shrink_2_div() -> Html {
+    ///     let flex_display_class = ClassBuilder::default()
+    ///         .with_display(Some(Display::Flex))
+    ///         .build();
+    ///     let flex_shrink_class = ClassBuilder::default()
+    ///         .with_flex_shrink(Some(FlexShrinkGrowFactor::Two))
+    ///         .build();
+    ///     html!{
+    ///         <div class={flex_display_class}>
+    ///             <p class={flex_shrink_class}>{ "Lorem ispum..." }</p>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///             <p>{ "Lorem ispum..." }</p>
+    ///         </div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/flexbox-helpers/#flex-grow-and-flex-shrink
     pub fn with_flex_shrink(mut self, flex_shrink: Option<FlexShrinkGrowFactor>) -> Self {
         self.alignment_modifiers.flex_shrink = flex_shrink;
         self
     }
 
+    /// Set a the margin using a [Bulma margin helper][bd].
+    ///
+    /// Set a [Bulma margin helper class][bd] to be added to the current
+    /// list of classes.
+    ///
+    /// > _If you add the same viewport alignment multiple times, it will only
+    /// appear once in the final list._
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::spacing::{Direction, Spacing},
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the margin set to 2.
+    /// #[function_component(SpacedDiv)]
+    /// fn spaced_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_margin(Direction::All, Spacing::Two)
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/spacing-helpers/
     pub fn with_margin(mut self, direction: Direction, spacing: Spacing) -> Self {
         self.margins.insert((direction, spacing));
         self
     }
 
+    /// Remove a margin specifier, if it exists.
+    ///
+    /// Remove a [Bulma margin helper class][bd], from the current list of
+    /// classes, if it exists.
+    ///
+    /// Removing the same specifier multiple times has the same result as trying
+    /// to remove an inexisting one, concretely, nothing will happen.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::spacing::{Direction, Spacing},
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that does not have the margin set to 2.
+    /// #[function_component(NormalDiv)]
+    /// fn normal_div() -> Html {
+    ///     // Assume that instead of the default builder, one where the class
+    ///     // to be removed is actually used.
+    ///     let class = ClassBuilder::default()
+    ///         .without_margin(Direction::All, Spacing::Two)
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/spacing-helpers/
     pub fn without_margin(mut self, direction: Direction, spacing: Spacing) -> Self {
         self.margins.remove(&(direction, spacing));
         self
     }
 
+    /// Set a the padding using a [Bulma padding helper][bd].
+    ///
+    /// Set a [Bulma padding helper class][bd] to be added to the current
+    /// list of classes.
+    ///
+    /// > _If you add the same viewport alignment multiple times, it will only
+    /// appear once in the final list._
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::spacing::{Direction, Spacing},
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the padding set to 2.
+    /// #[function_component(SpacedDiv)]
+    /// fn spaced_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_padding(Direction::All, Spacing::Two)
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/spacing-helpers/
     pub fn with_padding(mut self, direction: Direction, spacing: Spacing) -> Self {
         self.paddings.insert((direction, spacing));
         self
     }
 
+    /// Remove a padding specifier, if it exists.
+    ///
+    /// Remove a [Bulma padding helper class][bd], from the current list of
+    /// classes, if it exists.
+    ///
+    /// Removing the same specifier multiple times has the same result as trying
+    /// to remove an inexisting one, concretely, nothing will happen.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::spacing::{Direction, Spacing},
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that does not have the padding set to 2.
+    /// #[function_component(NormalDiv)]
+    /// fn normal_div() -> Html {
+    ///     // Assume that instead of the default builder, one where the class
+    ///     // to be removed is actually used.
+    ///     let class = ClassBuilder::default()
+    ///         .without_padding(Direction::All, Spacing::Two)
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/spacing-helpers/
     pub fn without_padding(mut self, direction: Direction, spacing: Spacing) -> Self {
         self.paddings.remove(&(direction, spacing));
         self
     }
 
+    /// Set the [Bulma clearfix helper][bd].
+    ///
+    /// Set the [Bulma clearfix helper class][bd] to be added to the current
+    /// list of classes. To remove a [clearfix helper][bd], simply pass `None`
+    /// to the call. Every call to this method overrides the previous value to
+    /// the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::utils::class::ClassBuilder;
+    ///
+    /// // Create a `<div>` HTML element that has the clearfix Bulma class.
+    /// #[function_component(ClearfixDiv)]
+    /// fn clearfix_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .is_clearfix(Some(true))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
     pub fn is_clearfix(mut self, is_clearfix: Option<bool>) -> Self {
         self.other_modifiers.is_clearfix = is_clearfix;
         self
     }
 
+    /// Set the [Bulma pulled left helper][bd].
+    ///
+    /// Set the [Bulma pulled left helper class][bd] to be added to the current
+    /// list of classes. To remove a [pulled left helper][bd], simply pass `None`
+    /// to the call. Every call to this method overrides the previous value to
+    /// the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::utils::class::ClassBuilder;
+    ///
+    /// // Create a `<div>` HTML element that has the pulled left Bulma class.
+    /// #[function_component(PulledLeftDiv)]
+    /// fn pulled_left_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .is_pulled_left(Some(true))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
     pub fn is_pulled_left(mut self, is_pulled_left: Option<bool>) -> Self {
         self.other_modifiers.is_pulled_left = is_pulled_left;
         self
     }
 
+    /// Set the [Bulma pulled right helper][bd].
+    ///
+    /// Set the [Bulma pulled right helper class][bd] to be added to the current
+    /// list of classes. To remove a [pulled right helper][bd], simply pass `None`
+    /// to the call. Every call to this method overrides the previous value to
+    /// the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::utils::class::ClassBuilder;
+    ///
+    /// // Create a `<div>` HTML element that has the pulled right Bulma class.
+    /// #[function_component(PulledRightDiv)]
+    /// fn pulled_right_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .is_pulled_right(Some(true))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
     pub fn is_pulled_right(mut self, is_pulled_right: Option<bool>) -> Self {
         self.other_modifiers.is_pulled_right = is_pulled_right;
         self
     }
 
+    /// Set the [Bulma overlay helper][bd].
+    ///
+    /// Set the [Bulma overlay helper class][bd] to be added to the current
+    /// list of classes. To remove a [overlay helper][bd], simply pass `None`
+    /// to the call. Every call to this method overrides the previous value to
+    /// the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::utils::class::ClassBuilder;
+    ///
+    /// // Create a `<div>` HTML element that has the overlay Bulma class.
+    /// #[function_component(OverlayDiv)]
+    /// fn overlay_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .is_overlay(Some(true))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
     pub fn is_overlay(mut self, is_overlay: Option<bool>) -> Self {
         self.other_modifiers.is_overlay = is_overlay;
         self
     }
 
+    /// Set the [Bulma clipped helper][bd].
+    ///
+    /// Set the [Bulma clipped helper class][bd] to be added to the current
+    /// list of classes. To remove a [clipped helper][bd], simply pass `None`
+    /// to the call. Every call to this method overrides the previous value to
+    /// the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::utils::class::ClassBuilder;
+    ///
+    /// // Create a `<div>` HTML element that has the clipped Bulma class.
+    /// #[function_component(ClippedDiv)]
+    /// fn clipped_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .is_clipped(Some(true))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
     pub fn is_clipped(mut self, is_clipped: Option<bool>) -> Self {
         self.other_modifiers.is_clipped = is_clipped;
         self
     }
 
+    /// Set the [Bulma radiusless helper][bd].
+    ///
+    /// Set the [Bulma radiusless helper class][bd] to be added to the current
+    /// list of classes. To remove a [radiusless helper][bd], simply pass `None`
+    /// to the call. Every call to this method overrides the previous value to
+    /// the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::utils::class::ClassBuilder;
+    ///
+    /// // Create a `<div>` HTML element that has the radiusless Bulma class.
+    /// #[function_component(RadiuslessDiv)]
+    /// fn radiusless_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .is_radiusless(Some(true))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
     pub fn is_radiusless(mut self, is_radiusless: Option<bool>) -> Self {
         self.other_modifiers.is_radiusless = is_radiusless;
         self
     }
 
+    /// Set the [Bulma shadowless helper][bd].
+    ///
+    /// Set the [Bulma shadowless helper class][bd] to be added to the current
+    /// list of classes. To remove a [shadowless helper][bd], simply pass `None`
+    /// to the call. Every call to this method overrides the previous value to
+    /// the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::utils::class::ClassBuilder;
+    ///
+    /// // Create a `<div>` HTML element that has the shadowless Bulma class.
+    /// #[function_component(ShadowlessDiv)]
+    /// fn shadowless_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .is_shadowless(Some(true))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
     pub fn is_shadowless(mut self, is_shadowless: Option<bool>) -> Self {
         self.other_modifiers.is_shadowless = is_shadowless;
         self
     }
 
+    /// Set the [Bulma unselectable helper][bd].
+    ///
+    /// Set the [Bulma unselectable helper class][bd] to be added to the
+    /// current list of classes. To remove a [unselectable helper][bd], simply
+    /// pass `None` to the call. Every call to this method overrides the previous
+    /// value to the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::utils::class::ClassBuilder;
+    ///
+    /// // Create a `<div>` HTML element that has the unselectable Bulma class.
+    /// #[function_component(UnselectableDiv)]
+    /// fn unselectable_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .is_unselectable(Some(true))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
     pub fn is_unselectable(mut self, is_unselectable: Option<bool>) -> Self {
         self.other_modifiers.is_unselectable = is_unselectable;
         self
     }
 
+    /// Set the [Bulma clickable helper][bd].
+    ///
+    /// Set the [Bulma clickable helper class][bd] to be added to the current
+    /// list of classes. To remove a [clickable helper][bd], simply pass `None`
+    /// to the call. Every call to this method overrides the previous value to
+    /// the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::utils::class::ClassBuilder;
+    ///
+    /// // Create a `<div>` HTML element that has the clickable Bulma class.
+    /// #[function_component(ClickableDiv)]
+    /// fn clickable_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .is_clickable(Some(true))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
     pub fn is_clickable(mut self, is_clickable: Option<bool>) -> Self {
         self.other_modifiers.is_clickable = is_clickable;
         self
     }
 
+    /// Set the [Bulma relative helper][bd].
+    ///
+    /// Set the [Bulma relative helper class][bd] to be added to the current
+    /// list of classes. To remove a [relative helper][bd], simply pass `None`
+    /// to the call. Every call to this method overrides the previous value to
+    /// the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::utils::class::ClassBuilder;
+    ///
+    /// // Create a `<div>` HTML element that has the relative Bulma class.
+    /// #[function_component(RelativeDiv)]
+    /// fn relative_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .is_relative(Some(true))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
     pub fn is_relative(mut self, is_relative: Option<bool>) -> Self {
         self.other_modifiers.is_relative = is_relative;
         self
     }
 
+    /// Create the [`yew::html::Classes`] object from the current
+    /// configuration.
+    ///
+    /// Using the set values of the builder, create an instance of the
+    /// [`yew::html::Classes`] from them. This consumes the builder. If no
+    /// values were set in the builder, the resulting value is equivalent to
+    /// calling `yew::classes!()`.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::color::TextColor,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the text color set to primary.
+    /// #[function_component(ColoredTextDiv)]
+    /// fn colored_text_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_text_color(Some(TextColor::Primary))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
     pub fn build(self) -> Classes {
+        let custom_classes: Vec<_> = self.custom_classes.iter().collect();
         let text_classes: Classes = self.text_modifiers.into();
         let background_color = self
             .background_color
@@ -451,6 +1749,7 @@ impl ClassBuilder {
         let other_classes: Classes = self.other_modifiers.into();
 
         classes!(
+            custom_classes,
             text_classes,
             background_color,
             display,
@@ -527,6 +1826,32 @@ mod tests {
         assert!(class_builder.margins.is_empty());
         assert!(class_builder.paddings.is_empty());
         assert_eq!(class_builder.other_modifiers, OtherModifiers::default());
+    }
+
+    #[test]
+    fn class_builder_with_custom_class() {
+        let expected_classes = vec!["abc", "def"];
+        let classes = ClassBuilder::default()
+            .with_custom_class("abc")
+            .with_custom_class("def")
+            .build();
+
+        let classes = classes.to_string();
+        for class in expected_classes {
+            assert!(classes.contains(class));
+        }
+    }
+
+    #[test]
+    fn class_builder_without_custom_class() {
+        let expected_classes = "def";
+        let classes = ClassBuilder::default()
+            .with_custom_class("abc")
+            .with_custom_class("def")
+            .without_custom_class("abc")
+            .build();
+
+        assert_eq!(classes.to_string(), expected_classes);
     }
 
     #[test_case(None, "" ; "none converts to empty string")]
@@ -909,5 +2234,34 @@ mod tests {
         let classes = ClassBuilder::default().is_relative(is_relative).build();
 
         assert_eq!(classes.to_string(), expected_is_relative);
+    }
+
+    #[test]
+    fn class_builder_build_multiple_classes_success() {
+        let expected_classes = vec![
+            "is-flex",
+            "is-flex-direction-column",
+            "mx-3",
+            "py-2",
+            "has-text-success",
+            "has-background-dark",
+            "is-block-touch",
+            "is-clickable",
+        ];
+        let classes = ClassBuilder::default()
+            .with_display(Some(Display::Flex))
+            .with_flex_direction(Some(FlexDirection::Column))
+            .with_margin(Direction::Horizontal, Spacing::Three)
+            .with_padding(Direction::Vertical, Spacing::Two)
+            .with_text_color(Some(TextColor::Success))
+            .with_background_color(Some(BackgroundColor::Dark))
+            .with_viewport_display(Display::Block, Viewport::Touch)
+            .is_clickable(Some(true))
+            .build();
+
+        let classes = classes.to_string();
+        for expected_class in expected_classes {
+            assert!(classes.contains(expected_class));
+        }
     }
 }
