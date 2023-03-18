@@ -20,7 +20,10 @@ jobs:
           - "1.60"
         dir:
           - .
-          # TODO: - examples
+          - examples/elements_box
+          - examples/elements_block
+          - examples/elements_table
+          - examples/elements_title
     steps:
       - uses: actions/checkout@master
 
