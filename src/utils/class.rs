@@ -444,7 +444,7 @@ impl ClassBuilder {
     ///
     /// ```rust
     /// use yew::prelude::*;
-    /// use yew_and_bulma::utils::class::ClassBuilde;
+    /// use yew_and_bulma::utils::class::ClassBuilder;
     ///
     /// // Create a `<div>` HTML element that has the light modifier set
     /// #[function_component(LightDiv)]

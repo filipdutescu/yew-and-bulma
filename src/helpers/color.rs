@@ -237,7 +237,7 @@ impl Display for BackgroundColor {
 ///
 /// Defines all color values that various elements and components can take, as
 /// described throughout the documentation (ie
-/// [`crate::elements::button::button`], [`crate::elements::tag::tag`]). Since
+/// [`crate::elements::button::Button`], [`crate::elements::tag::Tag`]). Since
 /// all of the Bulma classes use the `is-*` prefix, this is needed to be
 /// included when formatting the color value. This can be simplified by using
 /// the [`crate::utils::class::ClassBuilder`] instead of manually handling

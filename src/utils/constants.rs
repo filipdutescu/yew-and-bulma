@@ -746,8 +746,8 @@ pub const IS_RELATIVE: &str = "is-relative";
 /// Defines the `is-light` [Bulma class][bd].
 ///
 /// Defines the `is-light` class, used for shading the color of various
-/// elements and components, such as the [`crate::elements::button::button`] or
-/// [`crate::elements::tag::tag`].
+/// elements and components, such as the [`crate::elements::button::Button`] or
+/// [`crate::elements::tag::Tag`].
 ///
 /// # Examples
 ///
@@ -769,7 +769,7 @@ pub const IS_LIGHT: &str = "is-light";
 /// Used to create classes using the `are-*` prefix.
 ///
 /// Used to create classes using the `are-*` prefix, such as size modifiers for
-/// the [`crate::elements::button::buttons`].
+/// the [`crate::elements::button::Buttons`].
 ///
 /// # Examples
 ///

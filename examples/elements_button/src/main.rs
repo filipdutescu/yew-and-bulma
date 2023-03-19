@@ -28,6 +28,12 @@ fn app() -> Html {
                 <Button light=true color={Color::Danger}>{"Light danger"}</Button>
                 <Button light=true color={Color::Link}>{"Light link"}</Button>
             </Buttons>
+
+            <Buttons>
+                <Button disabled=true color={Color::Primary}>{"Disabled primary"}</Button>
+                <Button disabled=true color={Color::Danger}>{"Disabled danger"}</Button>
+                <Button disabled=true color={Color::Link}>{"Disabled link"}</Button>
+            </Buttons>
         </Block>
 
         <Block>
