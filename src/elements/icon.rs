@@ -1,4 +1,4 @@
-use yew::{function_component, html, AttrValue, ChildrenWithProps, Classes, Html, Properties};
+use yew::{function_component, html, AttrValue, ChildrenWithProps, Html, Properties};
 
 use crate::{
     helpers::color::TextColor,
@@ -36,7 +36,7 @@ pub struct IconProperties {
     pub color: Option<TextColor>,
     #[prop_or_default]
     pub size: Option<Size>,
-    pub class: Classes,
+    pub icon: Html,
 }
 
 #[function_component(Icon)]
@@ -54,7 +54,7 @@ pub fn icon(props: &IconProperties) -> Html {
     html! {
         <>
         <span {class}>
-            <i class={props.class.clone()}></i>
+            { props.icon.clone() }
         </span>
         if !props.text.is_empty() {
             <span>{ &props.text }</span>
