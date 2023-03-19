@@ -527,10 +527,9 @@ pub const IS_FLEX_GROW_PREFIX: &str = "is-flex-grow";
 ///
 /// [bd]: https://bulma.io/documentation/helpers/flexbox-helpers/#flex-grow-and-flex-shrink
 pub const IS_FLEX_SHRINK_PREFIX: &str = "is-flex-shrink";
-/// Used to create classes using the `is-clearfix` prefix.
+/// Defines the `is-clearfix` [Bulma helper class][bd].
 ///
-/// Used to create classes using the `is-clearfix` prefix, as described in the
-/// [other Bulma helpers][bd].
+/// Defines the `is-clearfix` class described in the [other Bulma helpers][bd].
 ///
 /// # Examples
 ///
@@ -549,10 +548,10 @@ pub const IS_FLEX_SHRINK_PREFIX: &str = "is-flex-shrink";
 ///
 /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
 pub const IS_CLEARFIX: &str = "is-clearfix";
-/// Used to create classes using the `is-pulled-left` prefix.
+/// Defines the `is-pulled-left` [Bulma helper class][bd].
 ///
-/// Used to create classes using the `is-pulled-left` prefix, as described in
-/// the [other Bulma helpers][bd].
+/// Defines the `is-pulled-left` class described in the
+/// [other Bulma helpers][bd].
 ///
 /// # Examples
 ///
@@ -571,10 +570,10 @@ pub const IS_CLEARFIX: &str = "is-clearfix";
 ///
 /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
 pub const IS_PULLED_LEFT: &str = "is-pulled-left";
-/// Used to create classes using the `is-pulled-right` prefix.
+/// Defines the `is-pulled-right` [Bulma helper class][bd].
 ///
-/// Used to create classes using the `is-pulled-right` prefix, as described in
-/// the [other Bulma helpers][bd].
+/// Defines the `is-pulled-right` class described in the
+/// [other Bulma helpers][bd].
 ///
 /// # Examples
 ///
@@ -593,10 +592,9 @@ pub const IS_PULLED_LEFT: &str = "is-pulled-left";
 ///
 /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
 pub const IS_PULLED_RIGHT: &str = "is-pulled-right";
-/// Used to create classes using the `is-overlay` prefix.
+/// Defines the `is-overlay` [Bulma helper class][bd].
 ///
-/// Used to create classes using the `is-overlay` prefix, as described in the
-/// [other Bulma helpers][bd].
+/// Defines the `is-overlay` class described in the [other Bulma helpers][bd].
 ///
 /// # Examples
 ///
@@ -615,10 +613,9 @@ pub const IS_PULLED_RIGHT: &str = "is-pulled-right";
 ///
 /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
 pub const IS_OVERLAY: &str = "is-overlay";
-/// Used to create classes using the `is-clipped` prefix.
+/// Defines the `is-clipped` [Bulma helper class][bd].
 ///
-/// Used to create classes using the `is-clipped` prefix, as described in the
-/// [other Bulma helpers][bd].
+/// Defines the `is-clipped` class described in the [other Bulma helpers][bd].
 ///
 /// # Examples
 ///
@@ -637,10 +634,10 @@ pub const IS_OVERLAY: &str = "is-overlay";
 ///
 /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
 pub const IS_CLIPPED: &str = "is-clipped";
-/// Used to create classes using the `is-radiusless` prefix.
+/// Defines the `is-shadowless` [Bulma helper class][bd].
 ///
-/// Used to create classes using the `is-radiusless` prefix, as described in
-/// the [other Bulma helpers][bd].
+/// Defines the `is-shadowless` class described in the
+/// [other Bulma helpers][bd].
 ///
 /// # Examples
 ///
@@ -659,10 +656,10 @@ pub const IS_CLIPPED: &str = "is-clipped";
 ///
 /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
 pub const IS_RADIUSLESS: &str = "is-radiusless";
-/// Used to create classes using the `is-shadowless` prefix.
+/// Defines the `is-radiusless` [Bulma helper class][bd].
 ///
-/// Used to create classes using the `is-shadowless` prefix, as described in
-/// the [other Bulma helpers][bd].
+/// Defines the `is-radiusless` class described in the
+/// [other Bulma helpers][bd].
 ///
 /// # Examples
 ///
@@ -681,10 +678,10 @@ pub const IS_RADIUSLESS: &str = "is-radiusless";
 ///
 /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
 pub const IS_SHADOWLESS: &str = "is-shadowless";
-/// Used to create classes using the `is-unselectable` prefix.
+/// Defines the `is-unselectable` [Bulma helper class][bd].
 ///
-/// Used to create classes using the `is-unselectable` prefix, as described in
-/// the [other Bulma helpers][bd].
+/// Defines the `is-unselectable` class described in the
+/// [other Bulma helpers][bd].
 ///
 /// # Examples
 ///
@@ -703,9 +700,9 @@ pub const IS_SHADOWLESS: &str = "is-shadowless";
 ///
 /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
 pub const IS_UNSELECTABLE: &str = "is-unselectable";
-/// Used to create classes using the `is-clickable` prefix.
+/// Defines the `is-clickable` [Bulma helper class][bd].
 ///
-/// Used to create classes using the `is-clickable` prefix, as described in the
+/// Defines the `is-clickable` class described in the
 /// [other Bulma helpers][bd].
 ///
 /// # Examples
@@ -725,10 +722,9 @@ pub const IS_UNSELECTABLE: &str = "is-unselectable";
 ///
 /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
 pub const IS_CLICKABLE: &str = "is-clickable";
-/// Used to create classes using the `is-relative` prefix.
+/// Defines the `is-relative` [Bulma class][bd].
 ///
-/// Used to create classes using the `is-relative` prefix, as described in the
-/// [other Bulma helpers][bd].
+/// Defines the `is-relative` class described in the [other Bulma helpers][bd].
 ///
 /// # Examples
 ///
@@ -747,3 +743,50 @@ pub const IS_CLICKABLE: &str = "is-clickable";
 ///
 /// [bd]: https://bulma.io/documentation/helpers/other-helpers/
 pub const IS_RELATIVE: &str = "is-relative";
+/// Defines the `is-light` [Bulma class][bd].
+///
+/// Defines the `is-light` class, used for shading the color of various
+/// elements and components, such as the [`crate::elements::button::button`] or
+/// [`crate::elements::tag::tag`].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::utils::constants::IS_LIGHT;
+///
+/// // Create a `<div>` HTML element that has the color set to light.
+/// #[function_component(LightDiv)]
+/// fn light_div() -> Html {
+///     html!{
+///         <div class={IS_LIGHT}>{ "Lorem ispum..." }</div>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/customize/variables/
+pub const IS_LIGHT: &str = "is-light";
+/// Used to create classes using the `are-*` prefix.
+///
+/// Used to create classes using the `are-*` prefix, such as size modifiers for
+/// the [`crate::elements::button::buttons`].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::utils::constants::ARE_PREFIX;
+///
+/// // Create a `<div>` HTML element that has the buttons small.
+/// #[function_component(SmallButtonsDiv)]
+/// fn small_buttons_div() -> Html {
+///     let class = format!("buttons {ARE_PREFIX}-small");
+///
+///     html!{
+///         <div {class}>{ "Lorem ispum..." }</div>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/customize/variables/
+pub const ARE_PREFIX: &str = "are";

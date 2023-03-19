@@ -4,7 +4,7 @@ use yew::{classes, Classes};
 
 use crate::{
     helpers::{
-        color::{BackgroundColor, TextColor},
+        color::{BackgroundColor, Color, TextColor},
         flexbox::{
             AlignContent, AlignItems, AlignSelf, FlexDirection, FlexShrinkGrowFactor, FlexWrap,
             JustifyContent,
@@ -13,32 +13,14 @@ use crate::{
         typography::{FontFamily, TextAlignment, TextDecoration, TextSize, TextWeight},
         visibility::{Display, Viewport},
     },
-    utils::constants::HAS_BACKGROUND_PREFIX,
-    utils::constants::HAS_TEXT_PREFIX,
-    utils::constants::HAS_TEXT_WEIGHT_PREFIX,
-    utils::constants::IS_ALIGN_CONTENT_PREFIX,
-    utils::constants::IS_ALIGN_ITEMS_PREFIX,
-    utils::constants::IS_ALIGN_SELF_PREFIX,
-    utils::constants::IS_CLEARFIX,
-    utils::constants::IS_CLICKABLE,
-    utils::constants::IS_CLIPPED,
-    utils::constants::IS_FLEX_DIRECTION_PREFIX,
-    utils::constants::IS_FLEX_GROW_PREFIX,
-    utils::constants::IS_FLEX_SHRINK_PREFIX,
-    utils::constants::IS_FLEX_WRAP_PREFIX,
-    utils::constants::IS_FONT_FAMILY_PREFIX,
-    utils::constants::IS_JUSTIFY_CONTENT_PREFIX,
-    utils::constants::IS_OVERLAY,
-    utils::constants::IS_PREFIX,
-    utils::constants::IS_PULLED_LEFT,
-    utils::constants::IS_PULLED_RIGHT,
-    utils::constants::IS_RADIUSLESS,
-    utils::constants::IS_RELATIVE,
-    utils::constants::IS_SHADOWLESS,
-    utils::constants::IS_SIZE_PREFIX,
-    utils::constants::IS_UNSELECTABLE,
-    utils::constants::MARGIN_PREFIX,
-    utils::constants::PADDING_PREFIX,
+    utils::constants::{
+        HAS_BACKGROUND_PREFIX, HAS_TEXT_PREFIX, HAS_TEXT_WEIGHT_PREFIX, IS_ALIGN_CONTENT_PREFIX,
+        IS_ALIGN_ITEMS_PREFIX, IS_ALIGN_SELF_PREFIX, IS_CLEARFIX, IS_CLICKABLE, IS_CLIPPED,
+        IS_FLEX_DIRECTION_PREFIX, IS_FLEX_GROW_PREFIX, IS_FLEX_SHRINK_PREFIX, IS_FLEX_WRAP_PREFIX,
+        IS_FONT_FAMILY_PREFIX, IS_JUSTIFY_CONTENT_PREFIX, IS_LIGHT, IS_OVERLAY, IS_PREFIX,
+        IS_PULLED_LEFT, IS_PULLED_RIGHT, IS_RADIUSLESS, IS_RELATIVE, IS_SHADOWLESS, IS_SIZE_PREFIX,
+        IS_UNSELECTABLE, MARGIN_PREFIX, PADDING_PREFIX,
+    },
 };
 
 /// Groups together the possible text modifiers
@@ -268,6 +250,8 @@ pub struct ClassBuilder {
     custom_classes: HashSet<String>,
     text_modifiers: TextModifiers,
     background_color: Option<BackgroundColor>,
+    color: Option<Color>,
+    is_light: Option<bool>,
     display: Option<Display>,
     viewport_displays: HashSet<(Display, Viewport)>,
     alignment_modifiers: AlignmentModifiers,
@@ -305,7 +289,9 @@ impl ClassBuilder {
     /// }
     /// ```
     pub fn with_custom_class(mut self, custom_class: &str) -> Self {
-        self.custom_classes.insert(custom_class.to_owned());
+        if !custom_class.trim().is_empty() {
+            self.custom_classes.insert(custom_class.to_owned());
+        }
         self
     }
 
@@ -410,6 +396,71 @@ impl ClassBuilder {
     /// [bd]: https://bulma.io/documentation/helpers/color-helpers/#background-color
     pub fn with_background_color(mut self, color: Option<BackgroundColor>) -> Self {
         self.background_color = color;
+        self
+    }
+
+    /// Set the color using a [Bulma color variable class][bd].
+    ///
+    /// Set the color with a [Bulma color variable class][bd] to be added to
+    /// the current list of classes. To remove a [color variable class][bd],
+    /// simply pass `None` to the call. Every call to this method overrides the
+    /// previous value to the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     helpers::color::Color,
+    ///     utils::class::ClassBuilder,
+    /// };
+    ///
+    /// // Create a `<div>` HTML element that has the color set to primary
+    /// #[function_component(ColoredDiv)]
+    /// fn colored_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .with_color(Some(Color::Primary))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/customize/variables/
+    pub fn with_color(mut self, color: Option<Color>) -> Self {
+        self.color = color;
+        self
+    }
+
+    /// Set the light modifiers for the existing color.
+    ///
+    /// Set the light modifier for the existing used color, by appending the
+    /// `is-light` class to the current list of classes. To remove the
+    /// modifier, simply pass `None` to the call. Every call to this method
+    /// overrides the previous value to the one received.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::utils::class::ClassBuilde;
+    ///
+    /// // Create a `<div>` HTML element that has the light modifier set
+    /// #[function_component(LightDiv)]
+    /// fn light_div() -> Html {
+    ///     let class = ClassBuilder::default()
+    ///         .is_light(Some(true))
+    ///         .build();
+    ///     html!{
+    ///         <div class={class}>{ "Lorem ispum..." }</div>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/customize/variables/
+    pub fn is_light(mut self, is_light: Option<bool>) -> Self {
+        self.is_light = is_light;
         self
     }
 
@@ -1729,6 +1780,10 @@ impl ClassBuilder {
         let background_color = self
             .background_color
             .map(|bc| format!("{HAS_BACKGROUND_PREFIX}-{bc}"));
+        let color_class = self.color.map(|color| format!("{IS_PREFIX}-{color}"));
+        let is_light_class = self
+            .is_light
+            .map(|is_light| (if is_light { IS_LIGHT } else { "" }).to_string());
         let display = self.display.map(|display| format!("{IS_PREFIX}-{display}"));
         let viewport_displays: Vec<_> = self
             .viewport_displays
@@ -1752,6 +1807,8 @@ impl ClassBuilder {
             custom_classes,
             text_classes,
             background_color,
+            color_class,
+            is_light_class,
             display,
             viewport_displays,
             alignment_classes,
@@ -1868,6 +1925,22 @@ mod tests {
         let classes = ClassBuilder::default().with_background_color(color).build();
 
         assert_eq!(classes.to_string(), expected_color);
+    }
+
+    #[test_case(None, "" ; "none converts to empty string")]
+    #[test_case(Some(Color::Primary), "is-primary" ; "primary converts to is-primary")]
+    fn class_builer_with_color(color: Option<Color>, expected_color: &str) {
+        let classes = ClassBuilder::default().with_color(color).build();
+
+        assert_eq!(classes.to_string(), expected_color);
+    }
+
+    #[test_case(None, "" ; "none converts to empty string")]
+    #[test_case(Some(true), "is-light" ; "true converts to is-light")]
+    fn class_builer_is_light(is_light: Option<bool>, expected_light: &str) {
+        let classes = ClassBuilder::default().is_light(is_light).build();
+
+        assert_eq!(classes.to_string(), expected_light);
     }
 
     #[test_case(None, "" ; "none converts to empty string")]

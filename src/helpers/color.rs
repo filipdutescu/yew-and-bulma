@@ -54,7 +54,7 @@ use std::fmt::Display;
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/helpers/color-helpers/#text-color
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TextColor {
     White,
     Black,
@@ -232,6 +232,98 @@ impl Display for BackgroundColor {
     }
 }
 
+/// Enum defining the possible colors, as described in the
+/// [Bulma documentation][bd].
+///
+/// Defines all color values that various elements and components can take, as
+/// described throughout the documentation (ie
+/// [`crate::elements::button::button`], [`crate::elements::tag::tag`]). Since
+/// all of the Bulma classes use the `is-*` prefix, this is needed to be
+/// included when formatting the color value. This can be simplified by using
+/// the [`crate::utils::class::ClassBuilder`] instead of manually handling
+/// creation of the class strings.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::{
+///     helpers::color::Color,
+///     utils::class::ClassBuilder,
+/// };
+///
+/// // Create a `<div>` HTML element that has the color set to primary.
+/// #[function_component(ColoredDiv)]
+/// fn colored_div() -> Html {
+///     let class = ClassBuilder::default()
+///         .with_color(Some(Color::Primary))
+///         .build();
+///     html!{
+///         <div class={class}>{ "Lorem ispum..." }</div>
+///     }
+/// }
+/// ```
+///
+/// It is also possible to use them wihtout the
+/// [`crate::utils::class::ClassBuilder`], instead formatting the class names
+/// manually, using the constants defined in [`crate::utils::constants`]:
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::{
+///     helpers::color::Color,
+///     utils::constants::IS_PREFIX,
+/// };
+///
+/// // Create a `<div>` HTML element that has the color set to primary.
+/// #[function_component(ColoredDiv)]
+/// fn colored_div() -> Html {
+///     let color = Color::Primary;
+///     let class = classes![format!("{IS_PREFIX}-{color}")];
+///     html!{
+///         <div class={class}>{ "Lorem ispum..." }</div>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/customize/variables/
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum Color {
+    White,
+    Black,
+    Light,
+    Dark,
+    Text,
+    Ghost,
+    Primary,
+    Link,
+    Info,
+    Success,
+    Warning,
+    Danger,
+}
+
+impl Display for Color {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let color = match self {
+            Color::White => "white",
+            Color::Black => "black",
+            Color::Light => "light",
+            Color::Dark => "dark",
+            Color::Text => "text",
+            Color::Ghost => "ghost",
+            Color::Primary => "primary",
+            Color::Link => "link",
+            Color::Info => "info",
+            Color::Success => "success",
+            Color::Warning => "warning",
+            Color::Danger => "danger",
+        };
+
+        write!(f, "{color}")
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -294,6 +386,24 @@ mod tests {
     #[test_case(BackgroundColor::WarningDark, "warning-dark" ; "warning dark converts to warning-dark")]
     #[test_case(BackgroundColor::DangerDark, "danger-dark" ; "danger dark converts to danger-dark")]
     fn background_color_values_to_string(color: BackgroundColor, expected_color: &str) {
+        let converted_color = format!("{color}");
+
+        assert_eq!(converted_color, expected_color);
+    }
+
+    #[test_case(Color::White, "white" ; "white converts to white")]
+    #[test_case(Color::Black, "black" ; "black converts to black")]
+    #[test_case(Color::Light, "light" ; "light converts to light")]
+    #[test_case(Color::Dark, "dark" ; "dark converts to dark")]
+    #[test_case(Color::Text, "text" ; "text converts to text")]
+    #[test_case(Color::Ghost, "ghost" ; "ghost converts to ghost")]
+    #[test_case(Color::Primary, "primary" ; "primary converts to primary")]
+    #[test_case(Color::Link, "link" ; "link converts to link")]
+    #[test_case(Color::Info, "info" ; "info converts to info")]
+    #[test_case(Color::Success, "success" ; "success converts to success")]
+    #[test_case(Color::Warning, "warning" ; "warning converts to warning")]
+    #[test_case(Color::Danger, "danger" ; "danger converts to danger")]
+    fn color_values_to_string(color: Color, expected_color: &str) {
         let converted_color = format!("{color}");
 
         assert_eq!(converted_color, expected_color);
