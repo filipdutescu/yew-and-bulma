@@ -41,14 +41,21 @@ pub struct IconProperties {
 
 #[function_component(Icon)]
 pub fn icon(props: &IconProperties) -> Html {
+    let size = props
+        .size
+        .as_ref()
+        .map(|size| {
+            if Size::Normal == *size {
+                "".to_owned()
+            } else {
+                format!("{IS_PREFIX}-{size}")
+            }
+        })
+        .unwrap_or("".to_owned());
     let class = ClassBuilder::default()
         .with_custom_class("icon")
         .with_text_color(props.color)
-        .with_custom_class(&if let Some(size) = &props.size {
-            format!("{IS_PREFIX}-{size}")
-        } else {
-            "".to_owned()
-        })
+        .with_custom_class(&size)
         .build();
 
     html! {

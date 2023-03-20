@@ -1,5 +1,5 @@
 [package]
-name = "elements_block"
+name = "elements_tag"
 version = "0.1.0"
 edition = "2021"
 authors = ["Filip Dutescu <filip.dutescu@gmail.com>"]

@@ -2,18 +2,12 @@ use yew::{function_component, html, Children, Classes, Html, Properties};
 
 use crate::{
     helpers::color::Color,
-    utils::size::Size as ButtonsSize,
+    utils::size::Size,
     utils::{
         class::ClassBuilder,
         constants::{ARE_PREFIX, IS_PREFIX},
     },
 };
-
-impl From<&ButtonsSize> for String {
-    fn from(value: &ButtonsSize) -> Self {
-        format!("{ARE_PREFIX}-{value}")
-    }
-}
 
 #[derive(Default, PartialEq)]
 pub enum Align {
@@ -26,7 +20,7 @@ pub enum Align {
 #[derive(Properties, PartialEq)]
 pub struct ButtonsProperties {
     #[prop_or_default]
-    pub size: Option<ButtonsSize>,
+    pub size: Option<Size>,
     #[prop_or_default]
     pub addons: bool,
     #[prop_or_default]
@@ -46,15 +40,21 @@ impl From<&Align> for String {
 
 #[function_component(Buttons)]
 pub fn buttons(props: &ButtonsProperties) -> Html {
-    let size = &props
+    let size = props
         .size
         .as_ref()
-        .map(String::from)
+        .map(|size| {
+            if Size::Normal == *size {
+                "".to_owned()
+            } else {
+                format!("{ARE_PREFIX}-{size}")
+            }
+        })
         .unwrap_or("".to_owned());
     let addons = if props.addons { "has-addons" } else { "" }.to_owned();
     let class = ClassBuilder::default()
         .with_custom_class("buttons")
-        .with_custom_class(size)
+        .with_custom_class(&size)
         .with_custom_class(&addons)
         .with_custom_class(&String::from(&props.align))
         .build();
@@ -92,25 +92,6 @@ impl From<&State> for String {
 }
 
 #[derive(PartialEq)]
-pub enum Size {
-    Small,
-    Normal,
-    Medium,
-    Large,
-}
-
-impl From<&Size> for String {
-    fn from(value: &Size) -> Self {
-        match value {
-            Size::Small => format!("{IS_PREFIX}-small"),
-            Size::Normal => format!("{IS_PREFIX}-normal"),
-            Size::Medium => format!("{IS_PREFIX}-medium"),
-            Size::Large => format!("{IS_PREFIX}-large"),
-        }
-    }
-}
-
-#[derive(PartialEq)]
 pub enum Style {
     Outlined,
     Inverted,
@@ -135,8 +116,8 @@ pub struct ButtonProperties {
     pub color: Option<Color>,
     #[prop_or_default]
     pub light: Option<bool>,
-    #[prop_or(Size::Normal)]
-    pub size: Size,
+    #[prop_or_default]
+    pub size: Option<Size>,
     #[prop_or_default]
     pub responsive: bool,
     #[prop_or_default]
@@ -152,6 +133,17 @@ pub struct ButtonProperties {
 
 impl From<&ButtonProperties> for Classes {
     fn from(value: &ButtonProperties) -> Self {
+        let size = value
+            .size
+            .as_ref()
+            .map(|size| {
+                if Size::Normal == *size {
+                    "".to_owned()
+                } else {
+                    format!("{IS_PREFIX}-{size}")
+                }
+            })
+            .unwrap_or("".to_owned());
         let style = value
             .style
             .as_ref()
@@ -177,7 +169,7 @@ impl From<&ButtonProperties> for Classes {
             .with_custom_class("button")
             .with_color(value.color)
             .is_light(value.light)
-            .with_custom_class(&String::from(&value.size))
+            .with_custom_class(&size)
             .with_custom_class(&responsive)
             .with_custom_class(&fullwidth)
             .with_custom_class(&style)
