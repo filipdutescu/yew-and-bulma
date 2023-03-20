@@ -9,22 +9,152 @@ use crate::{
     },
 };
 
-#[derive(Default, PartialEq)]
+/// Defines the possible alignment of buttons from a [buttons element][bd].
+///
+/// Defines the possible alignment of buttons found inside a
+/// [Bulma buttons element][bd].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::elements::button::{Button, Buttons, Align};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Buttons align={Align::Center}>
+///             <Button>{"Button"}</Button>
+///             <Button>{"Button"}</Button>
+///             <Button>{"Button"}</Button>
+///         </Buttons>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/elements/button/#list-of-buttons
+#[derive(PartialEq)]
 pub enum Align {
-    #[default]
+    // TODO: use #[default] when updating the MSRV
     Left,
     Center,
     Right,
 }
 
+/// Defines the properties of the [Bulma buttons element][bd].
+///
+/// Defines the properties of the buttons element, based on the specification
+/// found in the [Bulma buttons element documentation][bd].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::elements::button::{Button, Buttons};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Buttons>
+///             <Button>{"Button"}</Button>
+///         </Buttons>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/elements/button/#list-of-buttons
 #[derive(Properties, PartialEq)]
 pub struct ButtonsProperties {
+    /// Sets the size of the buttons found inside the [buttons element][bd].
+    ///
+    /// Sets the size of the buttons that will be found inside the
+    /// [Bulma buttons element][bd] which will receive these properties.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     elements::button::{Button, Buttons},
+    ///     utils::size::Size,
+    /// };
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Buttons size={Size::Large}>
+    ///             <Button>{"Button"}</Button>
+    ///             <Button>{"Button"}</Button>
+    ///             <Button>{"Button"}</Button>
+    ///         </Buttons>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/elements/button/#list-of-buttons
     #[prop_or_default]
     pub size: Option<Size>,
+    /// Whether to attach the buttons found inside the [buttons element][bd].
+    ///
+    /// Whether or not to attach the buttons that will be found inside the
+    /// [Bulma buttons element][bd] which will receive these properties.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     elements::button::{Button, Buttons},
+    ///     utils::size::Size,
+    /// };
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Buttons addons=true>
+    ///             <Button>{"Button"}</Button>
+    ///             <Button>{"Button"}</Button>
+    ///             <Button>{"Button"}</Button>
+    ///         </Buttons>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/elements/button/#list-of-buttons
     #[prop_or_default]
     pub addons: bool,
-    #[prop_or_default]
+    /// Sets the alignment of buttons from a [buttons element][bd].
+    ///
+    /// Sets the alignment of buttons found inside a
+    /// [Bulma buttons element][bd] which will receive these properties.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::elements::button::{Button, Buttons, Align};
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Buttons align={Align::Center}>
+    ///             <Button>{"Button"}</Button>
+    ///             <Button>{"Button"}</Button>
+    ///             <Button>{"Button"}</Button>
+    ///         </Buttons>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/elements/button/#list-of-buttons
+    #[prop_or(Align::Left)]
     pub align: Align,
+    /// The list of elements found inside the [buttons element][bd].
+    ///
+    /// Defines the elements that will be found inside the
+    /// [Bulma buttons element][bd] which will receive these properties.
+    ///
+    /// [bd]: https://bulma.io/documentation/elements/button/#list-of-buttons
     pub children: Children,
 }
 
@@ -38,6 +168,29 @@ impl From<&Align> for String {
     }
 }
 
+/// Yew implementation of the [Bulma buttons element][bd].
+///
+/// Yew implementation of the buttons element, based on the specification found
+/// in the [Bulma buttons element documentation][bd].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::elements::button::{Button, Buttons};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Buttons>
+///             <Button>{"A button"}</Button>
+///             <Button>{"Another button"}</Button>
+///         </Buttons>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/elements/buttons/
 #[function_component(Buttons)]
 pub fn buttons(props: &ButtonsProperties) -> Html {
     let size = props
@@ -66,6 +219,25 @@ pub fn buttons(props: &ButtonsProperties) -> Html {
     }
 }
 
+/// Defines the possible states of a [button element][bd].
+///
+/// Defines the possible states of a [Bulma button element][bd].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::elements::button::{Button, State};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Button state={State::Loading}>{"Button"}</Button>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/elements/button/#states
 #[derive(PartialEq)]
 pub enum State {
     Normal,
@@ -91,6 +263,25 @@ impl From<&State> for String {
     }
 }
 
+/// Defines the possible style of a [button element][bd].
+///
+/// Defines the possible style of a [Bulma button element][bd].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::elements::button::{Button, Style};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Button style={Style::Outlined}>{"Button"}</Button>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/elements/button/#style
 #[derive(PartialEq)]
 pub enum Style {
     Outlined,
@@ -110,6 +301,26 @@ impl From<&Style> for String {
     }
 }
 
+/// Defines the properties of the [Bulma button element][bd].
+///
+/// Defines the properties of the button element, based on the specification
+/// found in the [Bulma button element documentation][bd].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::elements::button::Button;
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Button>{"Button"}</Button>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/elements/button/
 #[derive(Properties, PartialEq)]
 pub struct ButtonProperties {
     #[prop_or_default]

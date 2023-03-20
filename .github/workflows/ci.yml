@@ -22,7 +22,14 @@ jobs:
           - .
           - examples/elements_box
           - examples/elements_block
+          - examples/elements_button
+          - examples/elements_delete
+          - examples/elements_icon
+          - examples/elements_image
+          - examples/elements_notification
+          - examples/elements_progress
           - examples/elements_table
+          - examples/elements_tag
           - examples/elements_title
     steps:
       - uses: actions/checkout@master
