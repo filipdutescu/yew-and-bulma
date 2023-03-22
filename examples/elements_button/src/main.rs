@@ -2,10 +2,11 @@ use yew::prelude::*;
 use yew_and_bulma::{
     elements::{
         block::Block,
-        button::{Button, Buttons, Size},
+        button::{Button, Buttons},
         icon::{Icon, IconText},
     },
     helpers::color::Color,
+    utils::size::Size,
 };
 
 #[function_component(App)]

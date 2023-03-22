@@ -190,7 +190,7 @@ impl From<&Align> for String {
 /// }
 /// ```
 ///
-/// [bd]: https://bulma.io/documentation/elements/buttons/
+/// [bd]: https://bulma.io/documentation/elements/button/
 #[function_component(Buttons)]
 pub fn buttons(props: &ButtonsProperties) -> Html {
     let size = props
@@ -323,22 +323,203 @@ impl From<&Style> for String {
 /// [bd]: https://bulma.io/documentation/elements/button/
 #[derive(Properties, PartialEq)]
 pub struct ButtonProperties {
+    /// Sets the color of the [Bulma button element][bd].
+    ///
+    /// Sets the color of the [Bulma button element][bd] which will receive
+    /// these properties.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     elements::button::Button,
+    ///     helpers::color::Color,
+    /// };
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Button color={Color::Primary}>{"Button"}</Button>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/elements/button/#colors
     #[prop_or_default]
     pub color: Option<Color>,
+    /// Whether or not the color of the [button element][bd] should be light.
+    ///
+    /// Whether or not the color of the [Bulma button element][bd], which will
+    /// receive these properties, should be of the light variant.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     elements::button::Button,
+    ///     helpers::color::Color,
+    /// };
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Button light=true color={Color::Primary}>{"Button"}</Button>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/elements/button/#colors
     #[prop_or_default]
     pub light: Option<bool>,
+    /// Sets the size of the [Bulma button element][bd].
+    ///
+    /// Sets the size of the [Bulma button element][bd] which will receive
+    /// these properties.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     elements::button::Button,
+    ///     utils::size::Size,
+    /// };
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Button size={Size::Large}>{"Button"}</Button>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/elements/button/#sizes
     #[prop_or_default]
     pub size: Option<Size>,
+    /// Whether the size of the [button element][bd] should be responsive.
+    ///
+    /// Whether or not the size of the [Bulma button element][bd], which will
+    /// receive these properties, will be responsive.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     elements::button::Button,
+    ///     utils::size::Size,
+    /// };
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Button responsive=true size={Size::Large}>{"Button"}</Button>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/elements/button/#responsive-sizes
     #[prop_or_default]
     pub responsive: bool,
+    /// Whether the [button element][bd] should have the width of its parent.
+    ///
+    /// Whether or not the [Bulma button element][bd], which will receive these
+    /// properties, will have the same width as its parent.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::elements::button::Button;
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Button fullwidth=true>{"Button"}</Button>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/elements/button/#displays
     #[prop_or_default]
     pub fullwidth: bool,
+    /// Sets the style of the [Bulma button element][bd].
+    ///
+    /// Sets the style of the [Bulma button element][bd] which will receive
+    /// these properties.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::elements::button::{Button, Style};
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Button style={Style::Outlined}>{"Button"}</Button>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/elements/button/#styles
     #[prop_or_default]
     pub style: Option<Style>,
+    /// Sets the state of the [Bulma button element][bd].
+    ///
+    /// Sets the state of the [Bulma button element][bd] which will receive
+    /// these properties.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::elements::button::{Button, State};
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Button state={State::Loading}>
+    ///             {"This label will be a spinner"}
+    ///         </Button>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/elements/button/#states
     #[prop_or_default]
     pub state: Option<State>,
+    /// Whether or not the [Bulma button element][bd] should be disabled.
+    ///
+    /// Whether or not the [Bulma button element][bd], which will receive these
+    /// properties, will be disabled. This means it will have the *HTML
+    /// attribute* `disabled` set.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::elements::button::Button;
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Button disabled=true>{"Button"}</Button>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/elements/button/#displays
     #[prop_or_default]
     pub disabled: bool,
+    /// The list of elements found inside the [button element][bd].
+    ///
+    /// Defines the elements that will be found inside the
+    /// [Bulma button element][bd] which will receive these properties.
+    ///
+    /// [bd]: https://bulma.io/documentation/elements/button/
     pub children: Children,
 }
 
@@ -389,6 +570,26 @@ impl From<&ButtonProperties> for Classes {
     }
 }
 
+/// Yew implementation of the [Bulma button element][bd].
+///
+/// Yew implementation of the button element, based on the specification found
+/// in the [Bulma button element documentation][bd].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::elements::button::Button;
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Button>{"A button"}</Button>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/elements/button/
 #[function_component(Button)]
 pub fn button(props: &ButtonProperties) -> Html {
     let class: Classes = props.into();

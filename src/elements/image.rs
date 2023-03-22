@@ -2,15 +2,126 @@ use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::utils::{class::ClassBuilder, constants::IS_PREFIX};
 
+/// Defines the properties of the [Bulma image element][bd].
+///
+/// Defines the properties of the image element, based on the specification
+/// found in the [Bulma image element documentation][bd].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::elements::image::{Figure, Image};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Figure>
+///             <Image src={"media/images/img.png"} />
+///         </Figure>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/elements/image/
 #[derive(Properties, PartialEq)]
 pub struct ImageProperties {
+    /// Whether or not the [image element][bd] should have the width of its parent.
+    ///
+    /// Whether or not the [Bulma image element][bd], which will receive these
+    /// properties, will have the same width as its parent.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::elements::image::{Figure, Image};
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Figure>
+    ///             <Image fullwidth=true src={"media/images/img.png"} />
+    ///         </Figure>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/elements/image/#responsive-images-with-ratios
     #[prop_or_default]
     pub fullwidth: bool,
+    /// Whether or not the [Bulma image element][bd] should be rounded.
+    ///
+    /// Whether or not the [Bulma image element][bd], which will receive these
+    /// properties, will be rounded. This means it will have the *HTML
+    /// attribute* `rounded` set.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::elements::image::{Figure, Image};
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Figure>
+    ///             <Image rounded=true src={"media/images/img.png"} />
+    ///         </Figure>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/elements/image/#rounded-images
     #[prop_or_default]
     pub rounded: bool,
+    /// Sets the source of the [Bulma image element][bd].
+    ///
+    /// Sets the source of the [Bulma image element][bd] which will receive
+    /// these properties.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::elements::image::{Figure, Image};
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Figure>
+    ///             <Image src={"media/images/img.png"} />
+    ///         </Figure>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/elements/image/
     pub src: AttrValue,
 }
 
+/// Yew helper for the [Bulma image element][bd].
+///
+/// Yew helepr for the image element, based on the specification found in
+/// the [Bulma image text element documentation][bd].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::elements::image::{Figure, Image};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Figure>
+///             <Image src={"media/images/img.png"} />
+///         </Figure>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/elements/image/
 #[function_component(Image)]
 pub fn image(props: &ImageProperties) -> Html {
     let fullwidth = if props.fullwidth { "is-fullwidth" } else { "" };
@@ -25,6 +136,31 @@ pub fn image(props: &ImageProperties) -> Html {
     }
 }
 
+/// Defines the possible sizes of a [Bulma iamge element][bd].
+///
+/// Defines the possible sizes of a [Bulma image element][bd]. Those include
+/// the [fixed image sized][f-sizes] as well as the
+/// [responsive image sizes][r-sizes]
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::elements::image::{Figure, Image, Size};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Figure size={Size::Pixels128x128}>
+///             <Image src={"media/images/img.png"} />
+///         </Figure>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/elements/image/
+/// [f-sizes]: https://bulma.io/documentation/elements/image/#fixed-square-images
+/// [r-sizes]: https://bulma.io/documentation/elements/image/#responsive-images-with-ratios
 #[derive(PartialEq)]
 pub enum Size {
     Pixels16x16,
@@ -82,13 +218,85 @@ impl From<&Size> for String {
     }
 }
 
+/// Defines the properties of the [Bulma figure element][bd].
+///
+/// Defines the properties of the figure element, based on the specification
+/// found in the [Bulma figure element documentation][bd].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::elements::image::{Figure, Image};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Figure>
+///             <Image src={"media/images/img.png"} />
+///         </Figure>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/elements/image/
 #[derive(Properties, PartialEq)]
 pub struct FigureProperties {
+    /// Sets the size of the [Bulma figure element][bd].
+    ///
+    /// Sets the size of the [Bulma figure element][bd] which will receive these
+    /// properties.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::elements::image::{Figure, Image, Size};
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Figure size={Size::Pixels128x128}>
+    ///             <Image src={"media/images/img.png"} />
+    ///         </Figure>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/elements/image/
     #[prop_or_default]
     pub size: Option<Size>,
+    /// The list of elements found inside the [image element][bd].
+    ///
+    /// Defines the elements that will be found inside the
+    /// [Bulma image element][bd] which will receive these properties.
+    ///
+    /// [bd]: https://bulma.io/documentation/elements/image/
     pub children: Children,
 }
 
+/// Yew helper for the [Bulma figure element][bd].
+///
+/// Yew helepr for the figure element, based on the specification found in the
+/// [Bulma figure element documentation][bd].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::elements::image::{Figure, Image};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Figure>
+///             <Image src={"media/images/img.png"} />
+///         </Figure>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/elements/image/
 #[function_component(Figure)]
 pub fn figure(props: &FigureProperties) -> Html {
     let size = props
