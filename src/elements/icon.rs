@@ -1,4 +1,4 @@
-use yew::{function_component, html, AttrValue, ChildrenWithProps, Html, Properties};
+use yew::{function_component, html, AttrValue, ChildrenWithProps, Classes, Html, Properties};
 
 use crate::{
     helpers::color::TextColor,
@@ -33,6 +33,22 @@ use crate::{
 /// [bd]: https://bulma.io/documentation/elements/icon/#icon-text
 #[derive(Properties, PartialEq)]
 pub struct IconTextProperties {
+    /// Sets the [HTML id attribute][id] of the element.
+    ///
+    /// Sets the [HTML id attrbiute][id] of the element which will receive
+    /// these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
+    #[prop_or_default]
+    pub id: Option<AttrValue>,
+    /// Sets the classes to be appended to the [HTML classattribute][class].
+    ///
+    /// Sets the classes to be appended to [HTML class attrbiute][class] of the
+    /// element which will receive these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    #[prop_or_default]
+    pub class: Option<Classes>,
     /// Whether or not the [icon element][bd] should be displayed as a block.
     ///
     /// Whether or not the [Bulma icon element][bd], which will receive these
@@ -58,7 +74,7 @@ pub struct IconTextProperties {
     /// }
     /// ```
     ///
-    /// [bd]: https://bulma.io/documentation/elements/image/#rounded-images
+    /// [bd]: https://bulma.io/documentation/elements/icon/#icon-text
     #[prop_or_default]
     pub flex: bool,
     /// Sets the color of the text found inside the [icon text element][bd].
@@ -97,7 +113,7 @@ pub struct IconTextProperties {
     /// Defines the elements that will be found inside the
     /// [Bulma content element][bd] which will receive these properties.
     ///
-    /// [bd]: https://bulma.io/documentation/elements/content/
+    /// [bd]: https://bulma.io/documentation/elements/icon/
     pub children: ChildrenWithProps<Icon>,
 }
 
@@ -132,10 +148,17 @@ pub fn icon_text(props: &IconTextProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("icon-text")
         .with_text_color(props.color)
+        .with_custom_class(
+            &props
+                .class
+                .as_ref()
+                .map(|c| c.to_string())
+                .unwrap_or("".to_owned()),
+        )
         .build();
 
     html! {
-        <@{(if props.flex { "div" } else { "span" }).to_string()} {class}>
+        <@{(if props.flex { "div" } else { "span" }).to_string()} id={props.id.clone()} {class}>
             { for props.children.iter() }
         </@>
     }
@@ -166,6 +189,22 @@ pub fn icon_text(props: &IconTextProperties) -> Html {
 /// [bd]: https://bulma.io/documentation/elements/icon/
 #[derive(Properties, PartialEq)]
 pub struct IconProperties {
+    /// Sets the [HTML id attribute][id] of the element.
+    ///
+    /// Sets the [HTML id attrbiute][id] of the element which will receive
+    /// these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
+    #[prop_or_default]
+    pub id: Option<AttrValue>,
+    /// Sets the classes to be appended to the [HTML classattribute][class].
+    ///
+    /// Sets the classes to be appended to [HTML class attrbiute][class] of the
+    /// element which will receive these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    #[prop_or_default]
+    pub class: Option<Classes>,
     /// Sets the text that should be displayed with the [icon element][bd].
     ///
     /// Sets the text that should be displayed alongside the
@@ -318,11 +357,18 @@ pub fn icon(props: &IconProperties) -> Html {
         .with_custom_class("icon")
         .with_text_color(props.color)
         .with_custom_class(&size)
+        .with_custom_class(
+            &props
+                .class
+                .as_ref()
+                .map(|c| c.to_string())
+                .unwrap_or("".to_owned()),
+        )
         .build();
 
     html! {
         <>
-        <span {class}>
+        <span id={props.id.clone()} {class}>
             { props.icon.clone() }
         </span>
         if !props.text.is_empty() {

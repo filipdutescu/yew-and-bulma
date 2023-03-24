@@ -7,8 +7,8 @@ fn app() -> Html {
         <>
         <Title>{"Selected row table"}</Title>
         <Table striped={true}>
-            <TableHeader data={"One"} />
-            <TableHeader data={"Two"} />
+            <TableHeader>{"One"}</TableHeader>
+            <TableHeader>{"Two"}</TableHeader>
 
             <TableRow>
                 <TableData>{ "Three" }</TableData>
@@ -28,8 +28,8 @@ fn app() -> Html {
 
         <Title>{"Bordered table"}</Title>
         <Table bordered={true}>
-            <TableHeader data={"One"} />
-            <TableHeader data={"Two"} />
+            <TableHeader>{"One"}</TableHeader>
+            <TableHeader>{"Two"}</TableHeader>
 
             <TableData>{ "Three" }</TableData>
             <TableData>{ "Four" }</TableData>
@@ -39,8 +39,8 @@ fn app() -> Html {
 
         <Title>{"Striped table"}</Title>
         <Table striped={true}>
-            <TableHeader data={"One"} />
-            <TableHeader data={"Two"} />
+            <TableHeader>{"One"}</TableHeader>
+            <TableHeader>{"Two"}</TableHeader>
 
             <TableRow>
                 <TableData>{ "Three" }</TableData>
@@ -68,8 +68,8 @@ fn app() -> Html {
 
         <Title>{"Narrow table"}</Title>
         <Table narrow={true}>
-            <TableHeader data={"One"} />
-            <TableHeader data={"Two"} />
+            <TableHeader>{"One"}</TableHeader>
+            <TableHeader>{"Two"}</TableHeader>
 
             <TableRow>
                 <TableData>{ "Three" }</TableData>
@@ -97,8 +97,8 @@ fn app() -> Html {
 
         <Title>{"Hoverable table"}</Title>
         <Table hoverable={true}>
-            <TableHeader data={"One"} />
-            <TableHeader data={"Two"} />
+            <TableHeader>{"One"}</TableHeader>
+            <TableHeader>{"Two"}</TableHeader>
 
             <TableRow>
                 <TableData>{ "Three" }</TableData>
@@ -126,8 +126,8 @@ fn app() -> Html {
 
         <Title>{"Full width table"}</Title>
         <Table full_width={true}>
-            <TableHeader data={"One"} />
-            <TableHeader data={"Two"} />
+            <TableHeader>{"One"}</TableHeader>
+            <TableHeader>{"Two"}</TableHeader>
 
             <TableRow>
                 <TableData>{ "Three" }</TableData>
@@ -160,8 +160,8 @@ fn app() -> Html {
             narrow={true}
             hoverable={true}
             full_width={true}>
-            <TableHeader data={"One"} />
-            <TableHeader data={"Two"} />
+            <TableHeader>{"One"}</TableHeader>
+            <TableHeader>{"Two"}</TableHeader>
 
             <TableRow>
                 <TableData>{ "Three" }</TableData>

@@ -1,4 +1,4 @@
-use yew::{function_component, html, Children, Classes, Html, Properties};
+use yew::{function_component, html, AttrValue, Children, Classes, Html, Properties};
 
 use crate::{
     helpers::color::Color,
@@ -65,6 +65,22 @@ pub enum Align {
 /// [bd]: https://bulma.io/documentation/elements/button/#list-of-buttons
 #[derive(Properties, PartialEq)]
 pub struct ButtonsProperties {
+    /// Sets the [HTML id attribute][id] of the element.
+    ///
+    /// Sets the [HTML id attrbiute][id] of the element which will receive
+    /// these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
+    #[prop_or_default]
+    pub id: Option<AttrValue>,
+    /// Sets the classes to be appended to the [HTML classattribute][class].
+    ///
+    /// Sets the classes to be appended to [HTML class attrbiute][class] of the
+    /// element which will receive these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    #[prop_or_default]
+    pub class: Option<Classes>,
     /// Sets the size of the buttons found inside the [buttons element][bd].
     ///
     /// Sets the size of the buttons that will be found inside the
@@ -210,10 +226,17 @@ pub fn buttons(props: &ButtonsProperties) -> Html {
         .with_custom_class(&size)
         .with_custom_class(&addons)
         .with_custom_class(&String::from(&props.align))
+        .with_custom_class(
+            &props
+                .class
+                .as_ref()
+                .map(|c| c.to_string())
+                .unwrap_or("".to_owned()),
+        )
         .build();
 
     html! {
-        <div {class}>
+        <div id={props.id.clone()} {class}>
             { for props.children.iter() }
         </div>
     }
@@ -323,6 +346,22 @@ impl From<&Style> for String {
 /// [bd]: https://bulma.io/documentation/elements/button/
 #[derive(Properties, PartialEq)]
 pub struct ButtonProperties {
+    /// Sets the [HTML id attribute][id] of the element.
+    ///
+    /// Sets the [HTML id attrbiute][id] of the element which will receive
+    /// these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
+    #[prop_or_default]
+    pub id: Option<AttrValue>,
+    /// Sets the classes to be appended to the [HTML classattribute][class].
+    ///
+    /// Sets the classes to be appended to [HTML class attrbiute][class] of the
+    /// element which will receive these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    #[prop_or_default]
+    pub class: Option<Classes>,
     /// Sets the color of the [Bulma button element][bd].
     ///
     /// Sets the color of the [Bulma button element][bd] which will receive
@@ -566,6 +605,13 @@ impl From<&ButtonProperties> for Classes {
             .with_custom_class(&fullwidth)
             .with_custom_class(&style)
             .with_custom_class(&state)
+            .with_custom_class(
+                &value
+                    .class
+                    .as_ref()
+                    .map(|c| c.to_string())
+                    .unwrap_or("".to_owned()),
+            )
             .build()
     }
 }
@@ -595,6 +641,6 @@ pub fn button(props: &ButtonProperties) -> Html {
     let class: Classes = props.into();
 
     html! {
-        <button {class} disabled={props.disabled}>{ for props.children.iter() }</button>
+        <button id={props.id.clone()} {class} disabled={props.disabled}>{ for props.children.iter() }</button>
     }
 }

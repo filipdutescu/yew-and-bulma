@@ -29,8 +29,8 @@
 pub mod class;
 /// Provides various constants in a centralized place.
 ///
-/// Defines constants such as Bulma class name prefixes (ie for `has-text-*`, `is-size-*`,
-/// `has-background-*` etc.).
+/// Defines constants such as Bulma class name prefixes (ie for `has-text-*`,
+/// `is-size-*`, `has-background-*` etc.).
 ///
 /// # Examples
 ///
@@ -52,4 +52,27 @@ pub mod class;
 /// }
 /// ```
 pub mod constants;
+/// Provides utilities for Bulma size-related styling.
+///
+/// Defines various utilities, such as Bulma common size modifiers (ie for
+/// `are-small`, `is-large` etc.).
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::{
+///     utils::{constants::IS_PREFIX, size::Size},
+/// };
+///
+/// // Create a `<div>` HTML element that has the size set to large.
+/// #[function_component(LargeDiv)]
+/// fn large_div() -> Html {
+///     let size = Size::Large;
+///     let class = classes![format!("{IS_PREFIX}-{size}")];
+///     html!{
+///         <div class={class}>{ "Lorem ispum..." }</div>
+///     }
+/// }
+/// ```
 pub mod size;

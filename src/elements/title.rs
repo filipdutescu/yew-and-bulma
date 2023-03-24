@@ -1,7 +1,27 @@
-use yew::{function_component, html, Children, Html, Properties};
+use yew::{function_component, html, AttrValue, Children, Classes, Html, Properties};
 
 use crate::utils::{class::ClassBuilder, constants::IS_PREFIX};
 
+/// Defines the possible sizes of a [Bulma title element][bd].
+///
+/// Defines the possible sizes of a [Bulma title element][bd] and of a
+/// [Bulma subtitle element][bd].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::elements::title::{Title, Size};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Title size={Size::One}>{"Hello, world!"}</Title>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/elements/title/#sizes
 #[derive(PartialEq)]
 pub enum Size {
     One,
@@ -48,6 +68,22 @@ impl From<&Size> for String {
 /// [bd]: https://bulma.io/documentation/elements/title/
 #[derive(Properties, PartialEq)]
 pub struct TitleProperties {
+    /// Sets the [HTML id attribute][id] of the element.
+    ///
+    /// Sets the [HTML id attrbiute][id] of the element which will receive
+    /// these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
+    #[prop_or_default]
+    pub id: Option<AttrValue>,
+    /// Sets the classes to be appended to the [HTML classattribute][class].
+    ///
+    /// Sets the classes to be appended to [HTML class attrbiute][class] of the
+    /// element which will receive these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    #[prop_or_default]
+    pub class: Option<Classes>,
     /// Sets the size of the [Bulma title element][bd].
     ///
     /// Sets the size of the [Bulma title element][bd] which will receive
@@ -141,10 +177,17 @@ impl From<&TitleProperties> for String {
 pub fn title(props: &TitleProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class(&String::from(props))
+        .with_custom_class(
+            &props
+                .class
+                .as_ref()
+                .map(|c| c.to_string())
+                .unwrap_or("".to_owned()),
+        )
         .build();
 
     html! {
-        <@{format!("h{}", String::from(&props.size))} {class}>{ for props.children.iter() }</@>
+        <@{format!("h{}", String::from(&props.size))} id={props.id.clone()} {class}>{ for props.children.iter() }</@>
     }
 }
 
@@ -170,6 +213,22 @@ pub fn title(props: &TitleProperties) -> Html {
 /// [bd]: https://bulma.io/documentation/elements/title/
 #[derive(Properties, PartialEq)]
 pub struct SubtitleProperties {
+    /// Sets the [HTML id attribute][id] of the element.
+    ///
+    /// Sets the [HTML id attrbiute][id] of the element which will receive
+    /// these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
+    #[prop_or_default]
+    pub id: Option<AttrValue>,
+    /// Sets the classes to be appended to the [HTML classattribute][class].
+    ///
+    /// Sets the classes to be appended to [HTML class attrbiute][class] of the
+    /// element which will receive these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    #[prop_or_default]
+    pub class: Option<Classes>,
     /// Sets the size of the [Bulma subtitle element][bd].
     ///
     /// Sets the size of the [Bulma subtitle element][bd] which will receive
@@ -263,9 +322,16 @@ impl From<&SubtitleProperties> for String {
 pub fn subtitle(props: &SubtitleProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class(&String::from(props))
+        .with_custom_class(
+            &props
+                .class
+                .as_ref()
+                .map(|c| c.to_string())
+                .unwrap_or("".to_owned()),
+        )
         .build();
 
     html! {
-        <@{format!("h{}", String::from(&props.size))} {class}>{ for props.children.iter() }</@>
+        <@{format!("h{}", String::from(&props.size))} id={props.id.clone()} {class}>{ for props.children.iter() }</@>
     }
 }

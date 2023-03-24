@@ -1,4 +1,4 @@
-use yew::{function_component, html, Children, Html, Properties};
+use yew::{function_component, html, AttrValue, Children, Classes, Html, Properties};
 
 use crate::utils::{class::ClassBuilder, constants::IS_PREFIX, size::Size};
 
@@ -28,6 +28,22 @@ use crate::utils::{class::ClassBuilder, constants::IS_PREFIX, size::Size};
 /// [bd]: https://bulma.io/documentation/elements/content/
 #[derive(Properties, PartialEq)]
 pub struct ContentProperties {
+    /// Sets the [HTML id attribute][id] of the element.
+    ///
+    /// Sets the [HTML id attrbiute][id] of the element which will receive
+    /// these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
+    #[prop_or_default]
+    pub id: Option<AttrValue>,
+    /// Sets the classes to be appended to the [HTML classattribute][class].
+    ///
+    /// Sets the classes to be appended to [HTML class attrbiute][class] of the
+    /// element which will receive these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    #[prop_or_default]
+    pub class: Option<Classes>,
     /// Sets the size of the elements found inside the [content element][bd].
     ///
     /// Sets the size of the elements that will be found inside the
@@ -100,10 +116,17 @@ pub fn content(props: &ContentProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("content")
         .with_custom_class(&size)
+        .with_custom_class(
+            &props
+                .class
+                .as_ref()
+                .map(|c| c.to_string())
+                .unwrap_or("".to_owned()),
+        )
         .build();
 
     html! {
-        <div {class}>
+        <div id={props.id.clone()} {class}>
             { for props.children.iter() }
         </div>
     }

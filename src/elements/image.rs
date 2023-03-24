@@ -1,4 +1,4 @@
-use yew::{function_component, html, AttrValue, Children, Html, Properties};
+use yew::{function_component, html, AttrValue, Children, Classes, Html, Properties};
 
 use crate::utils::{class::ClassBuilder, constants::IS_PREFIX};
 
@@ -26,6 +26,22 @@ use crate::utils::{class::ClassBuilder, constants::IS_PREFIX};
 /// [bd]: https://bulma.io/documentation/elements/image/
 #[derive(Properties, PartialEq)]
 pub struct ImageProperties {
+    /// Sets the [HTML id attribute][id] of the element.
+    ///
+    /// Sets the [HTML id attrbiute][id] of the element which will receive
+    /// these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
+    #[prop_or_default]
+    pub id: Option<AttrValue>,
+    /// Sets the classes to be appended to the [HTML classattribute][class].
+    ///
+    /// Sets the classes to be appended to [HTML class attrbiute][class] of the
+    /// element which will receive these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    #[prop_or_default]
+    pub class: Option<Classes>,
     /// Whether or not the [image element][bd] should have the width of its parent.
     ///
     /// Whether or not the [Bulma image element][bd], which will receive these
@@ -53,8 +69,7 @@ pub struct ImageProperties {
     /// Whether or not the [Bulma image element][bd] should be rounded.
     ///
     /// Whether or not the [Bulma image element][bd], which will receive these
-    /// properties, will be rounded. This means it will have the *HTML
-    /// attribute* `rounded` set.
+    /// properties, will be rounded.
     ///
     /// # Examples
     ///
@@ -129,14 +144,21 @@ pub fn image(props: &ImageProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class(fullwidth)
         .with_custom_class(rounded)
+        .with_custom_class(
+            &props
+                .class
+                .as_ref()
+                .map(|c| c.to_string())
+                .unwrap_or("".to_owned()),
+        )
         .build();
 
     html! {
-        <img {class} src={props.src.clone()} />
+        <img id={props.id.clone()} {class} src={props.src.clone()} />
     }
 }
 
-/// Defines the possible sizes of a [Bulma iamge element][bd].
+/// Defines the possible sizes of a [Bulma image element][bd].
 ///
 /// Defines the possible sizes of a [Bulma image element][bd]. Those include
 /// the [fixed image sized][f-sizes] as well as the
@@ -242,6 +264,22 @@ impl From<&Size> for String {
 /// [bd]: https://bulma.io/documentation/elements/image/
 #[derive(Properties, PartialEq)]
 pub struct FigureProperties {
+    /// Sets the [HTML id attribute][id] of the element.
+    ///
+    /// Sets the [HTML id attrbiute][id] of the element which will receive
+    /// these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
+    #[prop_or_default]
+    pub id: Option<AttrValue>,
+    /// Sets the classes to be appended to the [HTML classattribute][class].
+    ///
+    /// Sets the classes to be appended to [HTML class attrbiute][class] of the
+    /// element which will receive these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    #[prop_or_default]
+    pub class: Option<Classes>,
     /// Sets the size of the [Bulma figure element][bd].
     ///
     /// Sets the size of the [Bulma figure element][bd] which will receive these
@@ -307,10 +345,17 @@ pub fn figure(props: &FigureProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("image")
         .with_custom_class(&size)
+        .with_custom_class(
+            &props
+                .class
+                .as_ref()
+                .map(|c| c.to_string())
+                .unwrap_or("".to_owned()),
+        )
         .build();
 
     html! {
-        <figure {class}>
+        <figure id={props.id.clone()} {class}>
             { for props.children.iter() }
         </figure>
     }

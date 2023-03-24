@@ -1,4 +1,4 @@
-use yew::{function_component, html, Html, Properties};
+use yew::{function_component, html, AttrValue, Classes, Html, Properties};
 
 use crate::{
     helpers::color::Color,
@@ -27,6 +27,22 @@ use crate::{
 /// [bd]: https://bulma.io/documentation/elements/progress/
 #[derive(Properties, PartialEq)]
 pub struct ProgressBarProperties {
+    /// Sets the [HTML id attribute][id] of the element.
+    ///
+    /// Sets the [HTML id attrbiute][id] of the element which will receive
+    /// these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
+    #[prop_or_default]
+    pub id: Option<AttrValue>,
+    /// Sets the classes to be appended to the [HTML classattribute][class].
+    ///
+    /// Sets the classes to be appended to [HTML class attrbiute][class] of the
+    /// element which will receive these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    #[prop_or_default]
+    pub class: Option<Classes>,
     /// Sets the color of the [Bulma progress bar element][bd].
     ///
     /// Sets the color of the [Bulma progress bar element][bd] which will
@@ -157,9 +173,16 @@ pub fn progress_bar(props: &ProgressBarProperties) -> Html {
         .with_custom_class("progress")
         .with_color(props.color)
         .with_custom_class(&size)
+        .with_custom_class(
+            &props
+                .class
+                .as_ref()
+                .map(|c| c.to_string())
+                .unwrap_or("".to_owned()),
+        )
         .build();
 
     html! {
-        <progress {class} value={props.value.map(|n| n.to_string())} max={props.max.to_string()}>{ props.value.unwrap_or(15.0) }{"%"}</progress>
+        <progress id={props.id.clone()} {class} value={props.value.map(|n| n.to_string())} max={props.max.to_string()}>{ props.value.unwrap_or(15.0) }{"%"}</progress>
     }
 }

@@ -1,4 +1,4 @@
-use yew::{function_component, html, Children, Html, Properties};
+use yew::{function_component, html, AttrValue, Children, Classes, Html, Properties};
 
 use crate::{elements::delete::Delete, helpers::color::Color, utils::class::ClassBuilder};
 
@@ -24,6 +24,22 @@ use crate::{elements::delete::Delete, helpers::color::Color, utils::class::Class
 /// [bd]: https://bulma.io/documentation/elements/notification/
 #[derive(Properties, PartialEq)]
 pub struct NotificationProperties {
+    /// Sets the [HTML id attribute][id] of the element.
+    ///
+    /// Sets the [HTML id attrbiute][id] of the element which will receive
+    /// these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
+    #[prop_or_default]
+    pub id: Option<AttrValue>,
+    /// Sets the classes to be appended to the [HTML classattribute][class].
+    ///
+    /// Sets the classes to be appended to [HTML class attrbiute][class] of the
+    /// element which will receive these properties.
+    ///
+    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    #[prop_or_default]
+    pub class: Option<Classes>,
     /// Sets the color of the [Bulma notification element][bd].
     ///
     /// Sets the color of the [Bulma notification element][bd] which will
@@ -125,10 +141,17 @@ pub fn notification(props: &NotificationProperties) -> Html {
         .with_custom_class("notification")
         .with_color(props.color)
         .is_light(props.light)
+        .with_custom_class(
+            &props
+                .class
+                .as_ref()
+                .map(|c| c.to_string())
+                .unwrap_or("".to_owned()),
+        )
         .build();
 
     html! {
-        <div {class}>
+        <div id={props.id.clone()} {class}>
             if props.delete_button {
                 <Delete />
             }
