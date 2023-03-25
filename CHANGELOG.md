@@ -1,3 +1,12 @@
+# 0.2.1 (2023-03-25)
+
+The previous version broke examples due to an increment of the crate version. This release
+addresses the issue by updating the examples.
+
+## Fixes
+
+* Examples use the proper crate version
+
 # 0.2.0 (2023-03-25)
 
 The major point of this release is to add all of the [Bulma elements](https://bulma.io/documentation/elements/).

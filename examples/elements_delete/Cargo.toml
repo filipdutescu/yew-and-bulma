@@ -9,4 +9,4 @@ license = "MIT OR Apache-2.0"
 
 [dependencies]
 yew = { version = "0.20.0", features = ["csr"] }
-yew-and-bulma = { version = "0.1.0", path = "../.." }
+yew-and-bulma = { path = "../.." }
