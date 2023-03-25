@@ -49,12 +49,12 @@ pub struct TableProperties {
     /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
     #[prop_or_default]
     pub id: Option<AttrValue>,
-    /// Sets the classes to be appended to the [HTML classattribute][class].
+    /// Sets the classes to be appended to the [HTML class attribute][class].
     ///
     /// Sets the classes to be appended to [HTML class attrbiute][class] of the
     /// element which will receive these properties.
     ///
-    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    /// [class]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
     #[prop_or_default]
     pub class: Option<Classes>,
     /// Whether or not the [Bulma table element][bd] should be scrollable.
@@ -554,12 +554,12 @@ pub struct TableHeaderProperties {
     /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
     #[prop_or_default]
     pub id: Option<AttrValue>,
-    /// Sets the classes to be appended to the [HTML classattribute][class].
+    /// Sets the classes to be appended to the [HTML class attribute][class].
     ///
     /// Sets the classes to be appended to [HTML class attrbiute][class] of the
     /// element which will receive these properties.
     ///
-    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    /// [class]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
     #[prop_or_default]
     pub class: Option<Classes>,
     /// Sets the abbreviation of [Bulma table header element][bd].
@@ -776,12 +776,12 @@ pub struct TableRowProperties {
     /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
     #[prop_or_default]
     pub id: Option<AttrValue>,
-    /// Sets the classes to be appended to the [HTML classattribute][class].
+    /// Sets the classes to be appended to the [HTML class attribute][class].
     ///
     /// Sets the classes to be appended to [HTML class attrbiute][class] of the
     /// element which will receive these properties.
     ///
-    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    /// [class]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
     #[prop_or_default]
     pub class: Option<Classes>,
     /// Whether or not the [Bulma table row element][bd] should be selected.
@@ -943,12 +943,12 @@ pub struct TableDataProperties {
     /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
     #[prop_or_default]
     pub id: Option<AttrValue>,
-    /// Sets the classes to be appended to the [HTML classattribute][class].
+    /// Sets the classes to be appended to the [HTML class attribute][class].
     ///
     /// Sets the classes to be appended to [HTML class attrbiute][class] of the
     /// element which will receive these properties.
     ///
-    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    /// [class]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
     #[prop_or_default]
     pub class: Option<Classes>,
     /// The list of elements found inside the [table data element][bd].

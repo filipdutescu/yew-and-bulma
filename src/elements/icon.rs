@@ -41,12 +41,12 @@ pub struct IconTextProperties {
     /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
     #[prop_or_default]
     pub id: Option<AttrValue>,
-    /// Sets the classes to be appended to the [HTML classattribute][class].
+    /// Sets the classes to be appended to the [HTML class attribute][class].
     ///
     /// Sets the classes to be appended to [HTML class attrbiute][class] of the
     /// element which will receive these properties.
     ///
-    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    /// [class]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
     #[prop_or_default]
     pub class: Option<Classes>,
     /// Whether or not the [icon element][bd] should be displayed as a block.
@@ -197,12 +197,12 @@ pub struct IconProperties {
     /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
     #[prop_or_default]
     pub id: Option<AttrValue>,
-    /// Sets the classes to be appended to the [HTML classattribute][class].
+    /// Sets the classes to be appended to the [HTML class attribute][class].
     ///
     /// Sets the classes to be appended to [HTML class attrbiute][class] of the
     /// element which will receive these properties.
     ///
-    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    /// [class]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
     #[prop_or_default]
     pub class: Option<Classes>,
     /// Sets the text that should be displayed with the [icon element][bd].

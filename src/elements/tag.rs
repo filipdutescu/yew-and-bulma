@@ -17,19 +17,19 @@ use crate::{
 /// # Examples
 ///
 /// ```rust
-// use yew::prelude::*;
-// use yew_and_bulma::elements::tag::{Tag, Tags};
-//
-// #[function_component(App)]
-// fn app() -> Html {
-//     html! {
-//         <Tags>
-//             <Tag>{"Tag label"}</Tag>
-//             <Tag>{"Tag label"}</Tag>
-//             <Tag>{"Tag label"}</Tag>
-//         </Tags>
-//     }
-// }
+/// use yew::prelude::*;
+/// use yew_and_bulma::elements::tag::{Tag, Tags};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Tags>
+///             <Tag>{"Tag label"}</Tag>
+///             <Tag>{"Tag label"}</Tag>
+///             <Tag>{"Tag label"}</Tag>
+///         </Tags>
+///     }
+/// }
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/elements/tag/#list-of-tags
@@ -43,12 +43,12 @@ pub struct TagsProperties {
     /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
     #[prop_or_default]
     pub id: Option<AttrValue>,
-    /// Sets the classes to be appended to the [HTML classattribute][class].
+    /// Sets the classes to be appended to the [HTML class attribute][class].
     ///
     /// Sets the classes to be appended to [HTML class attrbiute][class] of the
     /// element which will receive these properties.
     ///
-    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    /// [class]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
     #[prop_or_default]
     pub class: Option<Classes>,
     /// Sets the size of the elements found inside the [tag element][bd].
@@ -181,15 +181,15 @@ pub fn tags(props: &TagsProperties) -> Html {
 /// # Examples
 ///
 /// ```rust
-// use yew::prelude::*;
-// use yew_and_bulma::elements::tag::Tag;
-//
-// #[function_component(App)]
-// fn app() -> Html {
-//     html! {
-//         <Tag>{"Tag label"}</Tag>
-//     }
-// }
+/// use yew::prelude::*;
+/// use yew_and_bulma::elements::tag::Tag;
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Tag>{"Tag label"}</Tag>
+///     }
+/// }
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/elements/tag/
@@ -203,12 +203,12 @@ pub struct TagProperties {
     /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
     #[prop_or_default]
     pub id: Option<AttrValue>,
-    /// Sets the classes to be appended to the [HTML classattribute][class].
+    /// Sets the classes to be appended to the [HTML class attribute][class].
     ///
     /// Sets the classes to be appended to [HTML class attrbiute][class] of the
     /// element which will receive these properties.
     ///
-    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    /// [class]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
     #[prop_or_default]
     pub class: Option<Classes>,
     /// Sets the size of the [Bulma tag element][bd].
@@ -219,18 +219,18 @@ pub struct TagProperties {
     /// # Examples
     ///
     /// ```rust
-    // use yew::prelude::*;
-    // use yew_and_bulma::{
-    //     elements::tag::Tag
-    //     utils::size::Size,
-    // };
-    //
-    // #[function_component(App)]
-    // fn app() -> Html {
-    //     html! {
-    //         <Tag size={Size::Large}>{"Tag label"}</Tag>
-    //     }
-    // }
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     elements::tag::Tag
+    ///     utils::size::Size,
+    /// };
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Tag size={Size::Large}>{"Tag label"}</Tag>
+    ///     }
+    /// }
     /// ```
     ///
     /// [bd]: https://bulma.io/documentation/elements/tag/#sizes
@@ -244,18 +244,18 @@ pub struct TagProperties {
     /// # Examples
     ///
     /// ```rust
-    // use yew::prelude::*;
-    // use yew_and_bulma::{
-    //     elements::tag::Tag
-    //     helpers::color::Color,
-    // };
-    //
-    // #[function_component(App)]
-    // fn app() -> Html {
-    //     html! {
-    //         <Tag color={Color::Primary}>{"Tag label"}</Tag>
-    //     }
-    // }
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     elements::tag::Tag
+    ///     helpers::color::Color,
+    /// };
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Tag color={Color::Primary}>{"Tag label"}</Tag>
+    ///     }
+    /// }
     /// ```
     ///
     /// [bd]: https://bulma.io/documentation/elements/tag/#colors

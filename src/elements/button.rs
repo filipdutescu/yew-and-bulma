@@ -73,12 +73,12 @@ pub struct ButtonsProperties {
     /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
     #[prop_or_default]
     pub id: Option<AttrValue>,
-    /// Sets the classes to be appended to the [HTML classattribute][class].
+    /// Sets the classes to be appended to the [HTML class attribute][class].
     ///
     /// Sets the classes to be appended to [HTML class attrbiute][class] of the
     /// element which will receive these properties.
     ///
-    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    /// [class]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
     #[prop_or_default]
     pub class: Option<Classes>,
     /// Sets the size of the buttons found inside the [buttons element][bd].
@@ -354,12 +354,12 @@ pub struct ButtonProperties {
     /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
     #[prop_or_default]
     pub id: Option<AttrValue>,
-    /// Sets the classes to be appended to the [HTML classattribute][class].
+    /// Sets the classes to be appended to the [HTML class attribute][class].
     ///
     /// Sets the classes to be appended to [HTML class attrbiute][class] of the
     /// element which will receive these properties.
     ///
-    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
+    /// [class]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
     #[prop_or_default]
     pub class: Option<Classes>,
     /// Sets the color of the [Bulma button element][bd].

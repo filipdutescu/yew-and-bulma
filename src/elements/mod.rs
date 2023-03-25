@@ -239,15 +239,15 @@ pub mod table;
 /// # Examples
 ///
 /// ```rust
-// use yew::prelude::*;
-// use yew_and_bulma::elements::tag::Tag;
-//
-// #[function_component(App)]
-// fn app() -> Html {
-//     html! {
-//         <Tag>{"Tag label"}</Tag>
-//     }
-// }
+/// use yew::prelude::*;
+/// use yew_and_bulma::elements::tag::Tag;
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Tag>{"Tag label"}</Tag>
+///     }
+/// }
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/elements/tag/

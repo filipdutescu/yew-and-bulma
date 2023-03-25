@@ -1,13 +1,13 @@
-name: CI
-
-env:
-  CARGO_TERM_COLOR: always
+name: Release
 
 on:
   push:
-    branches:
-    - main
-  pull_request: {}
+    tags:
+    - '[0-9]+.[0-9]+'
+    - '[0-9]+.[0-9]+.[0-9]+'
+  pull_request:
+    paths:
+    - '.github/workflows/release.yml'
 
 jobs:
   check:
@@ -72,7 +72,7 @@ jobs:
       - name: cargo doc
         env:
           RUSTDOCFLAGS: "-D broken-intra-doc-links"
-        run: cargo doc --all-features --no-deps
+        run: cargo doc --release --all-features --no-deps
 
   test:
     strategy:
@@ -100,4 +100,4 @@ jobs:
         uses: taiki-e/install-action@nextest
 
       - name: Test
-        run: cargo nextest run --all-features
+        run: cargo nextest run --release --all-features
