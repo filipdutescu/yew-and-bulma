@@ -23,6 +23,27 @@
 //! [bulma]: https://bulma.io
 //! [yew]: https://yew.rs
 
+/// Holds the [Bulma elements][bd] implemented as [Yew components][yew].
+///
+/// Contains all of the [Bulma elements][bd] implemented as
+/// [Yew components][yew].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::elements::block::Block;
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Block>{"This is some text in a block."}</Block>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/elements/
+/// [yew]: https://yew.rs
 pub mod elements;
 /// CSS helpers, as described in the [Bulma documentation][bd].
 ///
