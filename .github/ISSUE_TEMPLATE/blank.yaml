@@ -1,0 +1,21 @@
+name: Other
+description: Ask a question, leave some feedback or anything that is not a bug report or feature request.
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to fill out this issue!
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Provide a description of your issue.
+    validations:
+      required: true
+  - type: textarea
+    id: other
+    attributes:
+      label: Other relevant information
+      description: |
+        Please add any other relevant information that might help with addressing or understanding of the feature. 

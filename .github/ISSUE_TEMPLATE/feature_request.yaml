@@ -1,0 +1,30 @@
+name: Feature Request
+description: Request a new feature or enhancement
+labels: ["feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to fill out this feature request!
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Provide a description of your desired feature and the problem it solves.
+      placeholder: I was trying to achieve X and adding Y in the project would make it easier because...
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: Provide proposal for how a technical implementation would look like.
+      placeholder: The feature would be split between features A and B, using the existing C component...
+  - type: textarea
+    id: other
+    attributes:
+      label: Other relevant information
+      description: |
+        Please add any other relevant information that might help with design, development or understanding of the feature. 
+        This will be automatically formatted into code, so no need for backticks.
+      render: Shell
