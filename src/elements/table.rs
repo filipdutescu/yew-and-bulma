@@ -2,6 +2,7 @@ use yew::{function_component, html, Classes};
 use yew::{html::ChildrenRenderer, virtual_dom::VChild, AttrValue, Children, Html, Properties};
 
 use crate::utils::class::ClassBuilder;
+use crate::utils::constants::IS_NARROW;
 
 /// Defines the properties of the [Bulma table element][bd].
 ///
@@ -306,7 +307,7 @@ impl From<&TableProperties> for String {
             modifier_classes.push_str(" is-striped");
         }
         if value.narrow {
-            modifier_classes.push_str(" is-narrow");
+            modifier_classes.push_str(IS_NARROW);
         }
         if value.hoverable {
             modifier_classes.push_str(" is-hoverable");

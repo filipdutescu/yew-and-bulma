@@ -790,3 +790,51 @@ pub const IS_LIGHT: &str = "is-light";
 ///
 /// [bd]: https://bulma.io/documentation/customize/variables/
 pub const ARE_PREFIX: &str = "are";
+/// Used to create classes using the `is-offset-*` offset.
+///
+/// Used to create classes using the `is-offset-*` offset, such as those from
+/// the [Bulma column sizes][bd].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::{
+///     helpers::visibility::Display,
+///     utils::constants::IS_OFFSET_PREFIX,
+/// };
+///
+/// // Create a `<div>` HTML element that has the offset set to half.
+/// #[function_component(OffsetDiv)]
+/// fn offset_div() -> Html {
+///     let class = classes![format!("{IS_OFFSET_PREFIX}-half")];
+///     html!{
+///         <div class={class}>{ "Lorem ispum..." }</div>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/columns/sizes/#offset
+pub const IS_OFFSET_PREFIX: &str = "is-offset";
+/// Defines the `is-narrow` [Bulma class][bd].
+///
+/// Defines the `is-narrow` class, used for elements such as the
+/// [`crate::elements::table::Table`] or [`crate::columns::Column`].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::utils::constants::IS_NARROW;
+///
+/// // Create a `<div>` HTML element that has the narrow class set.
+/// #[function_component(NarrowDiv)]
+/// fn narrow_div() -> Html {
+///     html!{
+///         <div class={IS_NARROW}>{ "Lorem ispum..." }</div>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/customize/variables/
+pub const IS_NARROW: &str = "is-narrow";

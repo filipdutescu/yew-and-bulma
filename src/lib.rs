@@ -23,6 +23,32 @@
 //! [bulma]: https://bulma.io
 //! [yew]: https://yew.rs
 
+/// Holds the [Bulma column elements][bd] implemented as [Yew components][yew].
+///
+/// Contains all of the [Bulma column elements][bd] implemented as
+/// [Yew components][yew].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::column::{Column, Columns};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Columns>
+///             <Column>
+///                 {"This is some text in a column."}
+///             </Column>
+///         </Columns>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/columns/
+/// [yew]: https://yew.rs
+pub mod columns;
 /// Holds the [Bulma elements][bd] implemented as [Yew components][yew].
 ///
 /// Contains all of the [Bulma elements][bd] implemented as

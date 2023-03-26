@@ -1,5 +1,5 @@
 [package]
-name = "elements_delete"
+name = "columns"
 version = "0.2.0"
 edition = "2021"
 authors = ["Filip Dutescu <filip.dutescu@hucksy.dev>"]
