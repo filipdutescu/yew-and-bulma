@@ -71,8 +71,11 @@ jobs:
 
       - name: cargo doc
         env:
-          RUSTDOCFLAGS: "-D broken-intra-doc-links"
+          RUSTDOCFLAGS: "-D rustdoc::broken-intra-doc-links"
         run: cargo doc --all-features --no-deps
+
+      - name: Test documentation examples
+        run: cargo test --doc
 
   test:
     strategy:

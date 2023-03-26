@@ -221,7 +221,7 @@ pub struct TagProperties {
     /// ```rust
     /// use yew::prelude::*;
     /// use yew_and_bulma::{
-    ///     elements::tag::Tag
+    ///     elements::tag::Tag,
     ///     utils::size::Size,
     /// };
     ///
@@ -246,7 +246,7 @@ pub struct TagProperties {
     /// ```rust
     /// use yew::prelude::*;
     /// use yew_and_bulma::{
-    ///     elements::tag::Tag
+    ///     elements::tag::Tag,
     ///     helpers::color::Color,
     /// };
     ///

@@ -56,7 +56,7 @@ impl From<TextModifiers> for Classes {
         let viewport_alignments: Vec<_> = value
             .viewport_alignments
             .iter()
-            .map(|(alignment, viewport)| format!("{HAS_TEXT_PREFIX}-{alignment}-{viewport}"))
+            .map(|(viewport, alignment)| format!("{HAS_TEXT_PREFIX}-{alignment}-{viewport}"))
             .collect();
         let decorations: Vec<_> = value
             .decorations
@@ -1788,7 +1788,7 @@ impl ClassBuilder {
         let viewport_displays: Vec<_> = self
             .viewport_displays
             .iter()
-            .map(|(display, viewport)| format!("{IS_PREFIX}-{display}-{viewport}"))
+            .map(|(viewport, display)| format!("{IS_PREFIX}-{display}-{viewport}"))
             .collect();
         let alignment_classes: Classes = self.alignment_modifiers.into();
         let margin_classes: Vec<_> = self

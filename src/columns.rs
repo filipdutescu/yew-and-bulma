@@ -23,7 +23,7 @@ use crate::utils::{
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::column::{Column, Columns};
+/// use yew_and_bulma::columns::{Column, Columns};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -68,7 +68,7 @@ pub struct ColumnsProperties {
     /// ```rust
     /// use yew::prelude::*;
     /// use yew_and_bulma::{
-    ///     column::{Column, Columns},
+    ///     columns::{Column, Columns},
     ///     helpers::visibility::Viewport,
     /// };
     ///
@@ -101,7 +101,7 @@ pub struct ColumnsProperties {
     ///
     /// ```rust
     /// use yew::prelude::*;
-    /// use yew_and_bulma::column::{Column, Columns, GapSize};
+    /// use yew_and_bulma::columns::{Column, Columns, GapSize};
     ///
     /// #[function_component(App)]
     /// fn app() -> Html {
@@ -134,13 +134,13 @@ pub struct ColumnsProperties {
     ///
     /// use yew::prelude::*;
     /// use yew_and_bulma::{
-    ///     column::{Column, Columns, GapSize},
-    ///     helpers::visbility::Viewport,
+    ///     columns::{Column, Columns, GapSize},
+    ///     helpers::visibility::Viewport,
     /// };
     ///
     /// #[function_component(App)]
     /// fn app() -> Html {
-    ///     let mut viewport_gap_sizes = HashMap::new::<Viewport, GapSize>();
+    ///     let mut viewport_gap_sizes = HashMap::new();
     ///     viewport_gap_sizes.insert(Viewport::Mobile, GapSize::Five);
     ///
     ///     html! {
@@ -304,7 +304,7 @@ pub struct ColumnsProperties {
 /// #[function_component(App)]
 /// fn app() -> Html {
 ///     html! {
-///         <Columns gap_size={GapSize::5}>
+///         <Columns gap_size={GapSize::Five}>
 ///             <Column>
 ///                 {"First column"}
 ///             </Column>
@@ -358,7 +358,7 @@ impl Display for GapSize {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::column::{Column, Columns};
+/// use yew_and_bulma::columns::{Column, Columns};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -410,7 +410,7 @@ impl Into<Html> for ColumnsItem {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::column::{Column, Columns};
+/// use yew_and_bulma::columns::{Column, Columns};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -578,7 +578,7 @@ impl Display for Size {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::column::{Column, Columns};
+/// use yew_and_bulma::columns::{Column, Columns};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -620,7 +620,7 @@ pub struct ColumnProperties {
     ///
     /// ```rust
     /// use yew::prelude::*;
-    /// use yew_and_bulma::column::{Column, Columns, Size};
+    /// use yew_and_bulma::columns::{Column, Columns, Size};
     ///
     /// #[function_component(App)]
     /// fn app() -> Html {
@@ -653,13 +653,13 @@ pub struct ColumnProperties {
     ///
     /// use yew::prelude::*;
     /// use yew_and_bulma::{
-    ///     column::{Column, Columns, Size},
-    ///     helpers::visbility::Viewport,
+    ///     columns::{Column, Columns, Size},
+    ///     helpers::visibility::Viewport,
     /// };
     ///
     /// #[function_component(App)]
     /// fn app() -> Html {
-    ///     let mut viewport_sizes = HashMap::new::<Viewport, Size>();
+    ///     let mut viewport_sizes = HashMap::new();
     ///     viewport_sizes.insert(Viewport::Mobile, Size::Half);
     ///
     ///     html! {
@@ -688,7 +688,7 @@ pub struct ColumnProperties {
     ///
     /// ```rust
     /// use yew::prelude::*;
-    /// use yew_and_bulma::column::{Column, Columns, Size};
+    /// use yew_and_bulma::columns::{Column, Columns, Size};
     ///
     /// #[function_component(App)]
     /// fn app() -> Html {
@@ -714,7 +714,7 @@ pub struct ColumnProperties {
     ///
     /// ```rust
     /// use yew::prelude::*;
-    /// use yew_and_bulma::column::{Column, Columns};
+    /// use yew_and_bulma::columns::{Column, Columns};
     ///
     /// #[function_component(App)]
     /// fn app() -> Html {
@@ -748,13 +748,13 @@ pub struct ColumnProperties {
     ///
     /// use yew::prelude::*;
     /// use yew_and_bulma::{
-    ///     column::{Column, Columns},
+    ///     columns::{Column, Columns},
     ///     helpers::visibility::Viewport,
     /// };
     ///
     /// #[function_component(App)]
     /// fn app() -> Html {
-    ///     let mut narrow_viewports = HashSet::new::<Viewport>();
+    ///     let mut narrow_viewports = HashSet::new();
     ///     narrow_viewports.insert(Viewport::Mobile);
     ///     html! {
     ///         <Columns>
@@ -791,7 +791,7 @@ pub struct ColumnProperties {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::column::{Column, Columns};
+/// use yew_and_bulma::columns::{Column, Columns};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {

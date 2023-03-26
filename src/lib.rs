@@ -32,7 +32,7 @@
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::column::{Column, Columns};
+/// use yew_and_bulma::columns::{Column, Columns};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
