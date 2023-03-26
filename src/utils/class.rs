@@ -33,9 +33,9 @@ use crate::{
 struct TextModifiers {
     color: Option<TextColor>,
     size: Option<TextSize>,
-    viewport_sizes: HashSet<(TextSize, Viewport)>,
+    viewport_sizes: HashSet<(Viewport, TextSize)>,
     alignment: Option<TextAlignment>,
-    viewport_alignments: HashSet<(TextAlignment, Viewport)>,
+    viewport_alignments: HashSet<(Viewport, TextAlignment)>,
     decorations: HashSet<TextDecoration>,
     weight: Option<TextWeight>,
     font_family: Option<FontFamily>,
@@ -48,7 +48,7 @@ impl From<TextModifiers> for Classes {
         let viewport_sizes: Vec<_> = value
             .viewport_sizes
             .iter()
-            .map(|(size, viewport)| format!("{IS_SIZE_PREFIX}-{size}-{viewport}"))
+            .map(|(viewport, size)| format!("{IS_SIZE_PREFIX}-{size}-{viewport}"))
             .collect();
         let alignment = value
             .alignment
@@ -253,7 +253,7 @@ pub struct ClassBuilder {
     color: Option<Color>,
     is_light: Option<bool>,
     display: Option<Display>,
-    viewport_displays: HashSet<(Display, Viewport)>,
+    viewport_displays: HashSet<(Viewport, Display)>,
     alignment_modifiers: AlignmentModifiers,
     margins: HashSet<(Direction, Spacing)>,
     paddings: HashSet<(Direction, Spacing)>,
@@ -534,7 +534,7 @@ impl ClassBuilder {
     pub fn with_text_viewport_size(mut self, text_size: TextSize, viewport: Viewport) -> Self {
         self.text_modifiers
             .viewport_sizes
-            .insert((text_size, viewport));
+            .insert((viewport, text_size));
         self
     }
 
@@ -575,7 +575,7 @@ impl ClassBuilder {
     pub fn without_text_viewport_size(mut self, text_size: TextSize, viewport: Viewport) -> Self {
         self.text_modifiers
             .viewport_sizes
-            .remove(&(text_size, viewport));
+            .remove(&(viewport, text_size));
         self
     }
 
@@ -653,7 +653,7 @@ impl ClassBuilder {
     ) -> Self {
         self.text_modifiers
             .viewport_alignments
-            .insert((text_alignment, viewport));
+            .insert((viewport, text_alignment));
         self
     }
 
@@ -698,7 +698,7 @@ impl ClassBuilder {
     ) -> Self {
         self.text_modifiers
             .viewport_alignments
-            .remove(&(text_alignment, viewport));
+            .remove(&(viewport, text_alignment));
         self
     }
 
@@ -910,7 +910,7 @@ impl ClassBuilder {
     ///
     /// [bd]: https://bulma.io/documentation/helpers/visibility-helpers/#show
     pub fn with_viewport_display(mut self, display: Display, viewport: Viewport) -> Self {
-        self.viewport_displays.insert((display, viewport));
+        self.viewport_displays.insert((viewport, display));
         self
     }
 
@@ -948,7 +948,7 @@ impl ClassBuilder {
     ///
     /// [bd]: https://bulma.io/documentation/helpers/visibility-helpers/#show
     pub fn without_viewport_display(mut self, display: Display, viewport: Viewport) -> Self {
-        self.viewport_displays.remove(&(display, viewport));
+        self.viewport_displays.remove(&(viewport, display));
         self
     }
 

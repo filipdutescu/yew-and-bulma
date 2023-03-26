@@ -82,6 +82,26 @@ fn app() -> Html {
                 </Column>
             </Columns>
         </Block>
+
+        <Block>
+            <Columns centered=true multiline=true center_vertically=true>
+                <Column size={Size::Half}>
+                    <Box class={class.clone()}>{"Short column"}</Box>
+                </Column>
+
+                <Column size={Size::Half}>
+                    <Box class={class.clone()}>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}</Box>
+                </Column>
+
+                <Column size={Size::TwoFifths}>
+                    <Box class={class.clone()}>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}</Box>
+                </Column>
+
+                <Column size={Size::TwoFifths}>
+                    <Box class={class.clone()}>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}</Box>
+                </Column>
+            </Columns>
+        </Block>
         </>
     }
 }

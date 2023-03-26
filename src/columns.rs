@@ -37,7 +37,7 @@ use crate::utils::{
 /// }
 /// ```
 ///
-/// [bd]: https://bulma.io/documentation/elements/columns/basics
+/// [bd]: https://bulma.io/documentation/columns/basics
 #[derive(Properties, PartialEq)]
 pub struct ColumnsProperties {
     /// Sets the [HTML id attribute][id] of the element.
@@ -60,7 +60,7 @@ pub struct ColumnsProperties {
     /// should be active.
     ///
     /// Sets the viewport from which the columns inside the
-    /// [Bulma column element][bd] should be active, which will receive these
+    /// [Bulma columns element][bd] should be active, which will receive these
     /// properties.
     ///
     /// # Examples
@@ -91,6 +91,75 @@ pub struct ColumnsProperties {
     /// [bd]: https://bulma.io/documentation/columns/responsiveness/
     #[prop_or_default]
     pub viewport: Option<Viewport>,
+    /// Sets the gap size between the columns inside the [Bulma columns element][bd].
+    ///
+    /// Sets the gap size between the columns inside the
+    /// [Bulma columns element][bd] should be active, which will receive these
+    /// properties.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::column::{Column, Columns, GapSize};
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Columns gap_size={GapSize::Five}>
+    ///             <Column>
+    ///                 {"First column"}
+    ///             </Column>
+    ///
+    ///             <Column>
+    ///                 {"Second column"}
+    ///             </Column>
+    ///         </Columns>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/columns/gap/#variable-gap
+    #[prop_or_default]
+    pub gap_size: Option<GapSize>,
+    /// Sets the size of the [Bulma column element][bd] for a viewport.
+    ///
+    /// Sets the size for a viewport of the [Bulma column element][bd] which
+    /// will receive these properties.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use std::collections::HashMap;
+    ///
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::{
+    ///     column::{Column, Columns, GapSize},
+    ///     helpers::visbility::Viewport,
+    /// };
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     let mut viewport_gap_sizes = HashMap::new::<Viewport, GapSize>();
+    ///     viewport_gap_sizes.insert(Viewport::Mobile, GapSize::Five);
+    ///
+    ///     html! {
+    ///         <Columns {viewport_gap_sizes}>
+    ///             <Column>
+    ///                 {"First column"}
+    ///             </Column>
+    ///
+    ///             <Column>
+    ///                 {"Second column"}
+    ///             </Column>
+    ///         </Columns>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/columns/gap/#variable-gap
+    #[prop_or_default]
+    pub viewport_gap_sizes: HashMap<Viewport, GapSize>,
     /// Whether to remove the gap between columns inside the [columns element][bd].
     ///
     /// Whether or not to remove the gap between columns found inside the
@@ -121,6 +190,66 @@ pub struct ColumnsProperties {
     /// [bd]: https://bulma.io/documentation/columns/gap/#gapless
     #[prop_or_default]
     pub gapless: bool,
+    /// Whether to center vertically the columns inside the [columns element][bd].
+    ///
+    /// Whether or not to center vertically the columns found inside the
+    /// [Bulma columns element][bd] which will receive these properties.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::columns::{Column, Columns};
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Columns center_vertically=true>
+    ///             <Column>
+    ///                 {"First column"}
+    ///             </Column>
+    ///
+    ///             <Column>
+    ///                 {"Second column"}
+    ///             </Column>
+    ///         </Columns>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/columns/other/#vertical-alignment
+    #[prop_or_default]
+    pub center_vertically: bool,
+    /// Whether to center the columns inside the [columns element][bd].
+    ///
+    /// Whether or not to center the columns found inside the
+    /// [Bulma columns element][bd] which will receive these properties.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use yew::prelude::*;
+    /// use yew_and_bulma::columns::{Column, Columns};
+    ///
+    /// #[function_component(App)]
+    /// fn app() -> Html {
+    ///     html! {
+    ///         <Columns centered=true>
+    ///             <Column>
+    ///                 {"First column"}
+    ///             </Column>
+    ///
+    ///             <Column>
+    ///                 {"Second column"}
+    ///             </Column>
+    ///         </Columns>
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// [bd]: https://bulma.io/documentation/columns/other/#centering-columns
+    #[prop_or_default]
+    pub centered: bool,
     /// Whether the columns inside the [columns element][bd] should be multilined.
     ///
     /// Whether or not the columns found inside the [Bulma columns element][bd],
@@ -156,8 +285,68 @@ pub struct ColumnsProperties {
     /// Defines the elements that will be found inside the
     /// [Bulma columns element][bd] which will receive these properties.
     ///
-    /// [bd]: https://bulma.io/documentation/elements/columns/basics
+    /// [bd]: https://bulma.io/documentation/columns/basics
     pub children: ChildrenRenderer<ColumnsItem>,
+}
+
+/// Enum defining the possible column gap sizes, as described in the
+/// [Bulma documentation][bd].
+///
+/// Defines all gap size values that columns can have, as described in the
+/// [Bulma columns documentation][bd].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::columns::{Column, Columns, GapSize};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Columns gap_size={GapSize::5}>
+///             <Column>
+///                 {"First column"}
+///             </Column>
+///
+///             <Column>
+///                 {"Second column"}
+///             </Column>
+///         </Columns>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/columns/gap/#variable-gap
+#[derive(Eq, Hash, PartialEq)]
+pub enum GapSize {
+    Zero,
+    One,
+    Two,
+    Three,
+    Four,
+    Five,
+    Six,
+    Seven,
+    Eight,
+}
+
+impl Display for GapSize {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let gap_size = match self {
+            GapSize::Zero => "0",
+            GapSize::One => "1",
+            GapSize::Two => "2",
+            GapSize::Three => "3",
+            GapSize::Four => "4",
+            GapSize::Five => "5",
+            GapSize::Six => "6",
+            GapSize::Seven => "7",
+            GapSize::Eight => "8",
+        };
+
+        write!(f, "{gap_size}")
+    }
 }
 
 /// Defines the possible types of children from a [Bulma columns element][bd].
@@ -183,7 +372,7 @@ pub struct ColumnsProperties {
 /// }
 /// ```
 ///
-/// [bd]: https://bulma.io/documentation/elements/columns/basics
+/// [bd]: https://bulma.io/documentation/columns/basics
 #[derive(Clone, PartialEq)]
 pub enum ColumnsItem {
     Columns(VChild<Columns>),
@@ -235,7 +424,7 @@ impl Into<Html> for ColumnsItem {
 /// }
 /// ```
 ///
-/// [bd]: https://bulma.io/documentation/elements/columns/basics
+/// [bd]: https://bulma.io/documentation/columns/basics
 #[function_component(Columns)]
 pub fn columns(props: &ColumnsProperties) -> Html {
     let viewport = props
@@ -245,6 +434,29 @@ pub fn columns(props: &ColumnsProperties) -> Html {
         .unwrap_or("".to_owned());
     let multiline = if props.multiline { "is-multiline" } else { "" };
     let gapless = if props.gapless { "is-gapless" } else { "" };
+    let gap_size = props
+        .gap_size
+        .as_ref()
+        .map(|gap_size| format!("{IS_PREFIX}-{gap_size}"))
+        .unwrap_or("".to_owned());
+    let mut viewport_gap_sizes = String::new();
+    props
+        .viewport_gap_sizes
+        .iter()
+        .for_each(|(viewport, gap_size)| {
+            viewport_gap_sizes.push_str(&format!("{IS_PREFIX}-{gap_size}-{viewport}"))
+        });
+    let is_variable = if gap_size.is_empty() && viewport_gap_sizes.is_empty() {
+        ""
+    } else {
+        "is-variable"
+    };
+    let center_vertically = if props.center_vertically {
+        "is-vcentered"
+    } else {
+        ""
+    };
+    let centered = if props.centered { "is-centered" } else { "" };
     let class = ClassBuilder::default()
         .with_custom_class("columns")
         .with_custom_class(
@@ -257,6 +469,11 @@ pub fn columns(props: &ColumnsProperties) -> Html {
         .with_custom_class(&viewport)
         .with_custom_class(multiline)
         .with_custom_class(gapless)
+        .with_custom_class(is_variable)
+        .with_custom_class(&gap_size)
+        .with_custom_class(&viewport_gap_sizes)
+        .with_custom_class(center_vertically)
+        .with_custom_class(centered)
         .build();
 
     html! {
@@ -266,6 +483,35 @@ pub fn columns(props: &ColumnsProperties) -> Html {
     }
 }
 
+/// Enum defining the possible column sizes, as described in the
+/// [Bulma documentation][bd].
+///
+/// Defines all size values that columns can have, as described in the
+/// [Bulma columns documentation][bd].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::columns::{Column, Columns, Size};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Columns>
+///             <Column size={Size::ThreeQuarters}>
+///                 {"First column"}
+///             </Column>
+///
+///             <Column>
+///                 {"Second column"}
+///             </Column>
+///         </Columns>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/columns/sizes/
 #[derive(Eq, Hash, PartialEq)]
 pub enum Size {
     FourFifths,
@@ -346,7 +592,7 @@ impl Display for Size {
 /// }
 /// ```
 ///
-/// [bd]: https://bulma.io/documentation/elements/columns/basics
+/// [bd]: https://bulma.io/documentation/columns/basics
 #[derive(Properties, PartialEq)]
 pub struct ColumnProperties {
     /// Sets the [HTML id attribute][id] of the element.
@@ -392,7 +638,7 @@ pub struct ColumnProperties {
     /// }
     /// ```
     ///
-    /// [bd]: https://bulma.io/documentation/elements/columns/sizes/
+    /// [bd]: https://bulma.io/documentation/columns/sizes/
     #[prop_or_default]
     pub size: Option<Size>,
     /// Sets the size of the [Bulma column element][bd] for a viewport.
@@ -413,8 +659,8 @@ pub struct ColumnProperties {
     ///
     /// #[function_component(App)]
     /// fn app() -> Html {
-    ///     let mut viewport_sizes = HashMap::new::<Size, Viewport>();
-    ///     viewport_sizes.insert(Size::Half, Viewport::Mobile);
+    ///     let mut viewport_sizes = HashMap::new::<Viewport, Size>();
+    ///     viewport_sizes.insert(Viewport::Mobile, Size::Half);
     ///
     ///     html! {
     ///         <Columns>
@@ -430,9 +676,9 @@ pub struct ColumnProperties {
     /// }
     /// ```
     ///
-    /// [bd]: https://bulma.io/documentation/elements/columns/responsiveness/#different-column-sizes-per-breakpoint
+    /// [bd]: https://bulma.io/documentation/columns/responsiveness/#different-column-sizes-per-breakpoint
     #[prop_or_default]
-    pub viewport_sizes: HashMap<Size, Viewport>,
+    pub viewport_sizes: HashMap<Viewport, Size>,
     /// Sets the offset of the [Bulma column element][bd].
     ///
     /// Sets the offset of the [Bulma column element][bd] which will receive
@@ -456,7 +702,7 @@ pub struct ColumnProperties {
     /// }
     /// ```
     ///
-    /// [bd]: https://bulma.io/documentation/elements/column/sizes/#offset
+    /// [bd]: https://bulma.io/documentation/column/sizes/#offset
     #[prop_or_default]
     pub offset: Option<Size>,
     /// Whether or not the [Bulma column element][bd] should be narrow.
@@ -532,7 +778,7 @@ pub struct ColumnProperties {
     /// Defines the elements that will be found inside the
     /// [Bulma column element][bd] which will receive these properties.
     ///
-    /// [bd]: https://bulma.io/documentation/elements/columns/basics
+    /// [bd]: https://bulma.io/documentation/columns/basics
     pub children: Children,
 }
 
@@ -559,7 +805,7 @@ pub struct ColumnProperties {
 /// }
 /// ```
 ///
-/// [bd]: https://bulma.io/documentation/elements/columns/basics
+/// [bd]: https://bulma.io/documentation/columns/basics
 #[function_component(Column)]
 pub fn column(props: &ColumnProperties) -> Html {
     let size = props
