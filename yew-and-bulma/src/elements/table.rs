@@ -1,5 +1,6 @@
-use yew::{function_component, html, Classes};
+use yew::{function_component, html};
 use yew::{html::ChildrenRenderer, virtual_dom::VChild, AttrValue, Children, Html, Properties};
+use yew_and_bulma_macros::base_component_properties;
 
 use crate::utils::class::ClassBuilder;
 use crate::utils::constants::IS_NARROW;
@@ -40,24 +41,9 @@ use crate::utils::constants::IS_NARROW;
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/elements/table/
+#[base_component_properties]
 #[derive(Properties, PartialEq)]
 pub struct TableProperties {
-    /// Sets the [HTML id attribute][id] of the element.
-    ///
-    /// Sets the [HTML id attrbiute][id] of the element which will receive
-    /// these properties.
-    ///
-    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
-    #[prop_or_default]
-    pub id: Option<AttrValue>,
-    /// Sets the classes to be appended to the [HTML class attribute][class].
-    ///
-    /// Sets the classes to be appended to [HTML class attrbiute][class] of the
-    /// element which will receive these properties.
-    ///
-    /// [class]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
-    #[prop_or_default]
-    pub class: Option<Classes>,
     /// Whether or not the [Bulma table element][bd] should be scrollable.
     ///
     /// Whether or not the [Bulma table element][bd], which will receive these
@@ -479,7 +465,19 @@ pub fn table(props: &TableProperties) -> Html {
         .collect();
 
     let table_html = html! {
-        <table id={props.id.clone()} {class}>
+        <table id={props.id.clone()} {class}
+            onclick={props.onclick.clone()} onwheel={props.onwheel.clone()} onscroll={props.onscroll.clone()}
+            onmousedown={props.onmousedown.clone()} onmousemove={props.onmousemove.clone()} onmouseout={props.onmouseout.clone()} onmouseover={props.onmouseover.clone()} onmouseup={props.onmouseup.clone()}
+            ondrag={props.ondrag.clone()} ondragend={props.ondragend.clone()} ondragenter={props.ondragenter.clone()} ondragleave={props.ondragleave.clone()} ondragover={props.ondragover.clone()} ondragstart={props.ondragstart.clone()} ondrop={props.ondrop.clone()}
+            oncopy={props.oncopy.clone()} oncut={props.oncut.clone()} onpaste={props.onpaste.clone()}
+            onkeydown={props.onkeydown.clone()} onkeypress={props.onkeypress.clone()} onkeyup={props.onkeyup.clone()}
+            onblur={props.onblur.clone()} onchange={props.onchange.clone()} oncontextmenu={props.oncontextmenu.clone()} onfocus={props.onfocus.clone()} oninput={props.oninput.clone()} oninvalid={props.oninvalid.clone()} onreset={props.onreset.clone()} onselect={props.onselect.clone()} onsubmit={props.onsubmit.clone()}
+            onabort={props.onabort.clone()} oncanplay={props.oncanplay.clone()} oncanplaythrough={props.oncanplaythrough.clone()} oncuechange={props.oncuechange.clone()}
+            ondurationchange={props.ondurationchange.clone()} onemptied={props.onemptied.clone()} onended={props.onended.clone()} onerror={props.onerror.clone()}
+            onloadeddata={props.onloadeddata.clone()} onloadedmetadata={props.onloadedmetadata.clone()} onloadstart={props.onloadstart.clone()} onpause={props.onpause.clone()}
+            onplay={props.onplay.clone()} onplaying={props.onplaying.clone()} onprogress={props.onprogress.clone()} onratechange={props.onratechange.clone()}
+            onseeked={props.onseeked.clone()} onseeking={props.onseeking.clone()} onstalled={props.onstalled.clone()} onsuspend={props.onsuspend.clone()}
+            ontimeupdate={props.ontimeupdate.clone()} onvolumechange={props.onvolumechange.clone()} onwaiting={props.onwaiting.clone()}>
             if !headers.is_empty() {
                 <thead>
                     { for headers }
@@ -545,24 +543,9 @@ pub fn table(props: &TableProperties) -> Html {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/elements/table/
+#[base_component_properties]
 #[derive(Properties, PartialEq)]
 pub struct TableHeaderProperties {
-    /// Sets the [HTML id attribute][id] of the element.
-    ///
-    /// Sets the [HTML id attrbiute][id] of the element which will receive
-    /// these properties.
-    ///
-    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
-    #[prop_or_default]
-    pub id: Option<AttrValue>,
-    /// Sets the classes to be appended to the [HTML class attribute][class].
-    ///
-    /// Sets the classes to be appended to [HTML class attrbiute][class] of the
-    /// element which will receive these properties.
-    ///
-    /// [class]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
-    #[prop_or_default]
-    pub class: Option<Classes>,
     /// Sets the abbreviation of [Bulma table header element][bd].
     ///
     /// Sets the abbreviation of the [Bulma table header element][bd] which will
@@ -660,7 +643,19 @@ pub fn table_header(props: &TableHeaderProperties) -> Html {
     let abbr = &props.abbreviation;
 
     html! {
-        <th id={props.id.clone()} {class}>
+        <th id={props.id.clone()} {class}
+            onclick={props.onclick.clone()} onwheel={props.onwheel.clone()} onscroll={props.onscroll.clone()}
+            onmousedown={props.onmousedown.clone()} onmousemove={props.onmousemove.clone()} onmouseout={props.onmouseout.clone()} onmouseover={props.onmouseover.clone()} onmouseup={props.onmouseup.clone()}
+            ondrag={props.ondrag.clone()} ondragend={props.ondragend.clone()} ondragenter={props.ondragenter.clone()} ondragleave={props.ondragleave.clone()} ondragover={props.ondragover.clone()} ondragstart={props.ondragstart.clone()} ondrop={props.ondrop.clone()}
+            oncopy={props.oncopy.clone()} oncut={props.oncut.clone()} onpaste={props.onpaste.clone()}
+            onkeydown={props.onkeydown.clone()} onkeypress={props.onkeypress.clone()} onkeyup={props.onkeyup.clone()}
+            onblur={props.onblur.clone()} onchange={props.onchange.clone()} oncontextmenu={props.oncontextmenu.clone()} onfocus={props.onfocus.clone()} oninput={props.oninput.clone()} oninvalid={props.oninvalid.clone()} onreset={props.onreset.clone()} onselect={props.onselect.clone()} onsubmit={props.onsubmit.clone()}
+            onabort={props.onabort.clone()} oncanplay={props.oncanplay.clone()} oncanplaythrough={props.oncanplaythrough.clone()} oncuechange={props.oncuechange.clone()}
+            ondurationchange={props.ondurationchange.clone()} onemptied={props.onemptied.clone()} onended={props.onended.clone()} onerror={props.onerror.clone()}
+            onloadeddata={props.onloadeddata.clone()} onloadedmetadata={props.onloadedmetadata.clone()} onloadstart={props.onloadstart.clone()} onpause={props.onpause.clone()}
+            onplay={props.onplay.clone()} onplaying={props.onplaying.clone()} onprogress={props.onprogress.clone()} onratechange={props.onratechange.clone()}
+            onseeked={props.onseeked.clone()} onseeking={props.onseeking.clone()} onstalled={props.onstalled.clone()} onsuspend={props.onsuspend.clone()}
+            ontimeupdate={props.ontimeupdate.clone()} onvolumechange={props.onvolumechange.clone()} onwaiting={props.onwaiting.clone()}>
             if let Some(abbr) = &abbr {
                 <abbr {abbr}>{ for props.children.iter() }</abbr>
             } else {
@@ -721,7 +716,19 @@ pub fn table_footer(props: &TableHeaderProperties) -> Html {
     let abbr = &props.abbreviation;
 
     html! {
-        <th id={props.id.clone()} {class}>
+        <th id={props.id.clone()} {class}
+            onclick={props.onclick.clone()} onwheel={props.onwheel.clone()} onscroll={props.onscroll.clone()}
+            onmousedown={props.onmousedown.clone()} onmousemove={props.onmousemove.clone()} onmouseout={props.onmouseout.clone()} onmouseover={props.onmouseover.clone()} onmouseup={props.onmouseup.clone()}
+            ondrag={props.ondrag.clone()} ondragend={props.ondragend.clone()} ondragenter={props.ondragenter.clone()} ondragleave={props.ondragleave.clone()} ondragover={props.ondragover.clone()} ondragstart={props.ondragstart.clone()} ondrop={props.ondrop.clone()}
+            oncopy={props.oncopy.clone()} oncut={props.oncut.clone()} onpaste={props.onpaste.clone()}
+            onkeydown={props.onkeydown.clone()} onkeypress={props.onkeypress.clone()} onkeyup={props.onkeyup.clone()}
+            onblur={props.onblur.clone()} onchange={props.onchange.clone()} oncontextmenu={props.oncontextmenu.clone()} onfocus={props.onfocus.clone()} oninput={props.oninput.clone()} oninvalid={props.oninvalid.clone()} onreset={props.onreset.clone()} onselect={props.onselect.clone()} onsubmit={props.onsubmit.clone()}
+            onabort={props.onabort.clone()} oncanplay={props.oncanplay.clone()} oncanplaythrough={props.oncanplaythrough.clone()} oncuechange={props.oncuechange.clone()}
+            ondurationchange={props.ondurationchange.clone()} onemptied={props.onemptied.clone()} onended={props.onended.clone()} onerror={props.onerror.clone()}
+            onloadeddata={props.onloadeddata.clone()} onloadedmetadata={props.onloadedmetadata.clone()} onloadstart={props.onloadstart.clone()} onpause={props.onpause.clone()}
+            onplay={props.onplay.clone()} onplaying={props.onplaying.clone()} onprogress={props.onprogress.clone()} onratechange={props.onratechange.clone()}
+            onseeked={props.onseeked.clone()} onseeking={props.onseeking.clone()} onstalled={props.onstalled.clone()} onsuspend={props.onsuspend.clone()}
+            ontimeupdate={props.ontimeupdate.clone()} onvolumechange={props.onvolumechange.clone()} onwaiting={props.onwaiting.clone()}>
             if let Some(abbr) = &abbr {
                 <abbr {abbr}>{ for props.children.iter() }</abbr>
             } else {
@@ -767,24 +774,9 @@ pub fn table_footer(props: &TableHeaderProperties) -> Html {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/elements/table/
+#[base_component_properties]
 #[derive(Properties, PartialEq)]
 pub struct TableRowProperties {
-    /// Sets the [HTML id attribute][id] of the element.
-    ///
-    /// Sets the [HTML id attrbiute][id] of the element which will receive
-    /// these properties.
-    ///
-    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
-    #[prop_or_default]
-    pub id: Option<AttrValue>,
-    /// Sets the classes to be appended to the [HTML class attribute][class].
-    ///
-    /// Sets the classes to be appended to [HTML class attrbiute][class] of the
-    /// element which will receive these properties.
-    ///
-    /// [class]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
-    #[prop_or_default]
-    pub class: Option<Classes>,
     /// Whether or not the [Bulma table row element][bd] should be selected.
     ///
     /// Whether or not the [Bulma table row element][bd], which will receive these
@@ -892,7 +884,19 @@ pub fn table_row(props: &TableRowProperties) -> Html {
         .build();
 
     html! {
-        <tr id={props.id.clone()} {class}>
+        <tr id={props.id.clone()} {class}
+            onclick={props.onclick.clone()} onwheel={props.onwheel.clone()} onscroll={props.onscroll.clone()}
+            onmousedown={props.onmousedown.clone()} onmousemove={props.onmousemove.clone()} onmouseout={props.onmouseout.clone()} onmouseover={props.onmouseover.clone()} onmouseup={props.onmouseup.clone()}
+            ondrag={props.ondrag.clone()} ondragend={props.ondragend.clone()} ondragenter={props.ondragenter.clone()} ondragleave={props.ondragleave.clone()} ondragover={props.ondragover.clone()} ondragstart={props.ondragstart.clone()} ondrop={props.ondrop.clone()}
+            oncopy={props.oncopy.clone()} oncut={props.oncut.clone()} onpaste={props.onpaste.clone()}
+            onkeydown={props.onkeydown.clone()} onkeypress={props.onkeypress.clone()} onkeyup={props.onkeyup.clone()}
+            onblur={props.onblur.clone()} onchange={props.onchange.clone()} oncontextmenu={props.oncontextmenu.clone()} onfocus={props.onfocus.clone()} oninput={props.oninput.clone()} oninvalid={props.oninvalid.clone()} onreset={props.onreset.clone()} onselect={props.onselect.clone()} onsubmit={props.onsubmit.clone()}
+            onabort={props.onabort.clone()} oncanplay={props.oncanplay.clone()} oncanplaythrough={props.oncanplaythrough.clone()} oncuechange={props.oncuechange.clone()}
+            ondurationchange={props.ondurationchange.clone()} onemptied={props.onemptied.clone()} onended={props.onended.clone()} onerror={props.onerror.clone()}
+            onloadeddata={props.onloadeddata.clone()} onloadedmetadata={props.onloadedmetadata.clone()} onloadstart={props.onloadstart.clone()} onpause={props.onpause.clone()}
+            onplay={props.onplay.clone()} onplaying={props.onplaying.clone()} onprogress={props.onprogress.clone()} onratechange={props.onratechange.clone()}
+            onseeked={props.onseeked.clone()} onseeking={props.onseeking.clone()} onstalled={props.onstalled.clone()} onsuspend={props.onsuspend.clone()}
+            ontimeupdate={props.ontimeupdate.clone()} onvolumechange={props.onvolumechange.clone()} onwaiting={props.onwaiting.clone()}>
             { for props.children.iter() }
         </tr>
     }
@@ -934,24 +938,9 @@ pub fn table_row(props: &TableRowProperties) -> Html {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/elements/table/
+#[base_component_properties]
 #[derive(Properties, PartialEq)]
 pub struct TableDataProperties {
-    /// Sets the [HTML id attribute][id] of the element.
-    ///
-    /// Sets the [HTML id attrbiute][id] of the element which will receive
-    /// these properties.
-    ///
-    /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
-    #[prop_or_default]
-    pub id: Option<AttrValue>,
-    /// Sets the classes to be appended to the [HTML class attribute][class].
-    ///
-    /// Sets the classes to be appended to [HTML class attrbiute][class] of the
-    /// element which will receive these properties.
-    ///
-    /// [class]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
-    #[prop_or_default]
-    pub class: Option<Classes>,
     /// The list of elements found inside the [table data element][bd].
     ///
     /// Defines the elements that will be found inside the
@@ -1010,7 +999,19 @@ pub fn table_data(props: &TableDataProperties) -> Html {
         .build();
 
     html! {
-        <td id={props.id.clone()} {class}>
+        <td id={props.id.clone()} {class}
+            onclick={props.onclick.clone()} onwheel={props.onwheel.clone()} onscroll={props.onscroll.clone()}
+            onmousedown={props.onmousedown.clone()} onmousemove={props.onmousemove.clone()} onmouseout={props.onmouseout.clone()} onmouseover={props.onmouseover.clone()} onmouseup={props.onmouseup.clone()}
+            ondrag={props.ondrag.clone()} ondragend={props.ondragend.clone()} ondragenter={props.ondragenter.clone()} ondragleave={props.ondragleave.clone()} ondragover={props.ondragover.clone()} ondragstart={props.ondragstart.clone()} ondrop={props.ondrop.clone()}
+            oncopy={props.oncopy.clone()} oncut={props.oncut.clone()} onpaste={props.onpaste.clone()}
+            onkeydown={props.onkeydown.clone()} onkeypress={props.onkeypress.clone()} onkeyup={props.onkeyup.clone()}
+            onblur={props.onblur.clone()} onchange={props.onchange.clone()} oncontextmenu={props.oncontextmenu.clone()} onfocus={props.onfocus.clone()} oninput={props.oninput.clone()} oninvalid={props.oninvalid.clone()} onreset={props.onreset.clone()} onselect={props.onselect.clone()} onsubmit={props.onsubmit.clone()}
+            onabort={props.onabort.clone()} oncanplay={props.oncanplay.clone()} oncanplaythrough={props.oncanplaythrough.clone()} oncuechange={props.oncuechange.clone()}
+            ondurationchange={props.ondurationchange.clone()} onemptied={props.onemptied.clone()} onended={props.onended.clone()} onerror={props.onerror.clone()}
+            onloadeddata={props.onloadeddata.clone()} onloadedmetadata={props.onloadedmetadata.clone()} onloadstart={props.onloadstart.clone()} onpause={props.onpause.clone()}
+            onplay={props.onplay.clone()} onplaying={props.onplaying.clone()} onprogress={props.onprogress.clone()} onratechange={props.onratechange.clone()}
+            onseeked={props.onseeked.clone()} onseeking={props.onseeking.clone()} onstalled={props.onstalled.clone()} onsuspend={props.onsuspend.clone()}
+            ontimeupdate={props.ontimeupdate.clone()} onvolumechange={props.onvolumechange.clone()} onwaiting={props.onwaiting.clone()}>
             { for props.children.iter() }
         </td>
     }

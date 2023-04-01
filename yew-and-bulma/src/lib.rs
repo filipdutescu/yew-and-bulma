@@ -23,6 +23,9 @@
 //! [bulma]: https://bulma.io
 //! [yew]: https://yew.rs
 
+#![cfg_attr(nightly_error_messages, feature(rustc_attrs))]
+#![forbid(unsafe_code)]
+
 /// Holds the [Bulma column elements][bd] implemented as [Yew components][yew].
 ///
 /// Contains all of the [Bulma column elements][bd] implemented as

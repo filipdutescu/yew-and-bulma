@@ -1,0 +1,22 @@
+[package]
+name = "yew-and-bulma"
+version = "0.2.1"
+edition = "2021"
+authors = ["Filip Dutescu <filip@hucksy.dev>"]
+repository = "https://github.com/filipdutescu/yew-and-bulma"
+homepage = "https://github.com/filipdutescu/yew-and-bulma"
+license = "MIT OR Apache-2.0"
+keywords = ["web", "webasm", "css", "yew", "bulma"]
+categories = ["gui", "wasm", "web-programming"]
+description = "Bulma CSS components for Yew"
+readme = "../README.md"
+rust-version = "1.60"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+yew = { version = "0.20.0", features = ["csr"] }
+yew-and-bulma-macros = { version = "0.1.0", path = "../yew-and-bulma-macros" }
+
+[dev-dependencies]
+test-case = "3.0.0"

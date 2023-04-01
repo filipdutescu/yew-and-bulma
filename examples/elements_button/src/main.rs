@@ -1,3 +1,4 @@
+use web_sys::Window;
 use yew::prelude::*;
 use yew_and_bulma::{
     elements::{
@@ -11,10 +12,13 @@ use yew_and_bulma::{
 
 #[function_component(App)]
 fn app() -> Html {
+    let onclick = yew::Callback::from(move |_| {
+        web_sys::window().unwrap().alert_with_message("hello");
+    });
     html! {
         <>
         <Block>
-            <Button>{"Button"}</Button>
+            <Button {onclick}>{"Button"}</Button>
         </Block>
 
         <Block>
