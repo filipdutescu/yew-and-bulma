@@ -2,7 +2,7 @@
 //!
 //! This crate provides various [procedural macros][proc-macro] for the
 //! [Yew and Bulma][yew-and-bulma] crate. Most importantly, the
-//! [`crate::base_component_properties`] macro, which adds various HTML
+//! [`macro@crate::base_component_properties`] macro, which adds various HTML
 //! attributes, such as `id`, `class` or event attributes like `onclick`.
 //!
 //! ### Supported Targets (for Yew Client-Side Rendering only)
