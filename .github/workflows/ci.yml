@@ -72,10 +72,10 @@ jobs:
       - name: cargo doc
         env:
           RUSTDOCFLAGS: "-D rustdoc::broken-intra-doc-links"
-        run: cargo doc --all-features --no-deps
+        run: cargo doc --all --all-features --no-deps --document-private-items
 
       - name: Test documentation examples
-        run: cargo test --doc
+        run: cargo test --doc --all --available
 
   test:
     strategy:
@@ -103,4 +103,4 @@ jobs:
         uses: taiki-e/install-action@nextest
 
       - name: Test
-        run: cargo nextest run --all-features
+        run: cargo nextest run --all --all-targets --all-features

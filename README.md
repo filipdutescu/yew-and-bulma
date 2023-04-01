@@ -3,17 +3,17 @@
 
 [![Crate](https://img.shields.io/crates/v/yew-and-bulma.svg?style=flat-square)](https://crates.io/crates/yew-and-bulma)
 [![Build status](https://img.shields.io/github/actions/workflow/status/filipdutescu/yew-and-bulma/ci.yml?branch=main&style=flat-square)](https://github.com/filipdutescu/yew-and-bulma/actions)
-[![Docs](https://img.shields.io/badge/docs.rs-yew--and--bulma-green?style=flat-square)](https://docs.rs/yew-and-bulma/)
+[![Docs](https://docs.rs/yew-and-bulma/badge.svg)](https://docs.rs/yew-and-bulma/)
 ![Licenses](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue?style=flat-square)
 
-  <h3> Bulma CSS components for Yew</h3>
+  <h3>Bulma CSS components for Yew</h3>
 
   <h4>
     <a href="https://docs.rs/yew-and-bulma/">Documentation</a>
     <span> | </span>
     <a href="https://github.com/filipdutescu/yew-and-bulma/tree/master/examples">Examples</a>
     <span> | </span>
-    <a href="https://github.com/filipdutescu/yew-and-bulma/blob/master/CHANGELOG.md">Changelog</a>
+    <a href="https://github.com/filipdutescu/yew-and-bulma/blob/master/yew-and-bulma/CHANGELOG.md">Changelog</a>
   </h4>
 </div>
 
@@ -44,6 +44,8 @@ with JavaScript, but wherever it is, this crate will try and implement them._
 * Ready to use utilities for custom component creation
 * Flexible components that can be combined together. Whatever is shown in the
   [Bulma][bulma] documentation can be achieved with this crate.
+* This crate uses `#![forbid(unsafe_code)]` to ensure everything is implemented
+  in 100% safe Rust.
 
 # Usage
 
