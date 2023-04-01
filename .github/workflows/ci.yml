@@ -75,7 +75,7 @@ jobs:
         run: cargo doc --all --all-features --no-deps --document-private-items
 
       - name: Test documentation examples
-        run: cargo test --doc --all --available
+        run: cargo test --doc --all --all-features
 
   test:
     strategy:

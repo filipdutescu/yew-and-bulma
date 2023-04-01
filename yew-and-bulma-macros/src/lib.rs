@@ -11,22 +11,12 @@
 //! # Examples
 //!
 //! ```rust
-//! use yew::prelude::*;
 //! use yew_and_bulma_macros::base_component_properties;
 //!
 //! // This will add the `id`, `class` and all standard event HTML attributes.
 //! #[base_component_properties]
-//! #[derive(Properties, PartialEq)]
+//! // #[derive(Properties, PartialEq)] // From yew
 //! struct MyProperties;
-//!
-//! #[function_component(MyComponent)]
-//! fn my_component(props: &MyProperties) -> Html {
-//!     html! {
-//!         <button id={props.id.clone()} class={props.class.clone()} onclick={props.onclick.clone()}>
-//!             {"Click me!"}
-//!         </button>
-//!     }
-//! }
 //! ```
 //!
 //! [yew-and-bulma]: https://crates.io/crates/yew-and-bulma
@@ -56,22 +46,12 @@ use crate::attributes::BaseAttributes;
 /// # Examples
 ///
 /// ```rust
-/// use yew::prelude::*;
 /// use yew_and_bulma_macros::base_component_properties;
 ///
 /// // This will add the `id`, `class` and all standard event HTML attributes.
 /// #[base_component_properties]
-/// #[derive(Properties, PartialEq)]
+/// // #[derive(Properties, PartialEq)] // From yew
 /// struct MyProperties;
-///
-/// #[function_component(MyComponent)]
-/// fn my_component(props: &MyProperties) -> Html {
-///     html! {
-///         <button id={props.id.clone()} class={props.class.clone()} onclick={props.onclick.clone()}>
-///             {"Click me!"}
-///         </button>
-///     }
-/// }
 /// ```
 ///
 /// [events]: https://developer.mozilla.org/en-US/docs/Web/API/Element#events
