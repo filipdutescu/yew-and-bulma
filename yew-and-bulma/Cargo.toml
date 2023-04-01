@@ -16,7 +16,7 @@ rust-version = "1.60"
 
 [dependencies]
 yew = { version = "0.20.0", features = ["csr"] }
-yew-and-bulma-macros = { version = "0.1.0", path = "../yew-and-bulma-macros" }
+yew-and-bulma-macros = { version = "0.1.1", path = "../yew-and-bulma-macros" }
 
 [dev-dependencies]
 test-case = "3.0.0"
