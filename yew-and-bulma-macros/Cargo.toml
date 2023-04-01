@@ -1,0 +1,22 @@
+[package]
+name = "yew-and-bulma-macros"
+version = "0.1.0"
+edition = "2021"
+authors = ["Filip Dutescu <filip@hucksy.dev>"]
+repository = "https://github.com/filipdutescu/yew-and-bulma"
+homepage = "https://github.com/filipdutescu/yew-and-bulma"
+license = "MIT OR Apache-2.0"
+keywords = ["web", "webasm", "css", "yew", "bulma"]
+categories = ["gui", "wasm", "web-programming"]
+description = "Procedural macros used by Yew and Bulma"
+readme = "README.md"
+rust-version = "1.60"
+
+[lib]
+proc-macro = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+quote = "1.0.26"
+syn = { version = "2.0.11", features = ["derive", "full", "parsing", "printing", "clone-impls", "extra-traits", "proc-macro"] }
