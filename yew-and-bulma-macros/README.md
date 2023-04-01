@@ -1,9 +1,9 @@
 <div align="center">
   <h1>yew-and-bulma-macros</h1>
 
-[![Build status](https://github.com/filipdutescu/yew-and-bulma/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/filipdutescu/yew-and-bulma-macros/actions/workflows/ci.yaml)
-[![Crates.io](https://img.shields.io/crates/v/yew-and-bulma-macros)](https://crates.io/crates/yew-and-bulma-macros)
-[![Documentation](https://docs.rs/yew-and-bulma-macros/badge.svg)](https://docs.rs/yew-and-bulma-macros)
+[![Build status](https://github.com/filipdutescu/yew-and-bulma/actions/workflows/ci.yml/badge.svg?branch=main&style=flat-square)](https://github.com/filipdutescu/yew-and-bulma-macros/actions/workflows/ci.yaml)
+[![Crates.io](https://img.shields.io/crates/v/yew-and-bulma-macros?style=flat-square)](https://crates.io/crates/yew-and-bulma-macros)
+[![Documentation](https://docs.rs/yew-and-bulma-macros/badge.svg?style=flat-square)](https://docs.rs/yew-and-bulma-macros)
 ![Licenses](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue?style=flat-square)
 
   <h3>Procedural macros for [Yew and Bulma][`yew-and-bulma`]</h3>
