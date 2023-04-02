@@ -43,9 +43,12 @@ with JavaScript, but wherever it is, this crate will try and implement them._
   with [Yew][yew]
 * Ready to use utilities for custom component creation
 * Flexible components that can be combined together. Whatever is shown in the
-  [Bulma][bulma] documentation can be achieved with this crate.
+  [Bulma][bulma] documentation can be achieved with this crate. *
 * This crate uses `#![forbid(unsafe_code)]` to ensure everything is implemented
   in 100% safe Rust.
+
+> _* It might not be possible to expose everything in the same manner as
+with JavaScript, but wherever it is, this crate will try and implement them._
 
 # Usage
 
