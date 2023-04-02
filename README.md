@@ -3,7 +3,7 @@
 
 [![Crate](https://img.shields.io/crates/v/yew-and-bulma.svg?style=flat-square)](https://crates.io/crates/yew-and-bulma)
 [![Build status](https://img.shields.io/github/actions/workflow/status/filipdutescu/yew-and-bulma/ci.yml?branch=main&style=flat-square)](https://github.com/filipdutescu/yew-and-bulma/actions)
-[![Docs](https://docs.rs/yew-and-bulma/badge.svg?style=flat-square)](https://docs.rs/yew-and-bulma/)
+[![Docs](https://img.shields.io/docsrs/yew-and-bulma/latest?style=flat-square)](https://docs.rs/yew-and-bulma/)
 ![Licenses](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue?style=flat-square)
 
   <h3>Bulma CSS components for Yew</h3>
