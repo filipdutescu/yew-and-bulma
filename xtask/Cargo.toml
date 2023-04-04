@@ -1,0 +1,17 @@
+[package]
+name = "xtask"
+version = "0.1.0"
+edition = "2021"
+authors = ["Filip Dutescu <filip@hucksy.dev>"]
+repository = "https://github.com/filipdutescu/yew-and-bulma"
+homepage = "https://github.com/filipdutescu/yew-and-bulma"
+license = "MIT OR Apache-2.0"
+keywords = ["code", "coverage", "xtask"]
+categories = ["Command line utilities", "Development tools"]
+description = "Generate code coverage reports"
+rust-version = "1.60"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+open = "3.2.0"
