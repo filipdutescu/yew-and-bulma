@@ -2,6 +2,7 @@
 members = [
   "yew-and-bulma",
   "yew-and-bulma-macros",
+  "xtask",
   "examples/*",
 ]
 default-members = [

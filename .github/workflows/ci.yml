@@ -104,3 +104,38 @@ jobs:
 
       - name: Test
         run: cargo nextest run --all --all-targets --all-features
+
+  coverage:
+    runs-on: ubuntu-latest
+    env:
+      RUST_BACKTRACE: 1
+    steps:
+      - uses: actions/checkout@main
+
+      - name: Install Rust stable toolchain (with coverage instrumentation)
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+          targets: wasm32-unknown-unknown
+          components: llvm-tools-preview
+
+      - name: Restore cached toolchain
+        id: rust-cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install nextest
+        uses: taiki-e/install-action@nextest
+
+      - name: Install grcov
+        if: steps.rust-cache.output.cache-hit != 'true'
+        run: |
+          cargo install grcov
+
+      - name: Generate coverage
+        run: cargo xtask
+
+      - name: Upload coverage to CodeCov
+        uses: codecov/codecov-action@v3
+        with:
+          files: coverage/cov.lcov
+          fail_ci_if_error: true
