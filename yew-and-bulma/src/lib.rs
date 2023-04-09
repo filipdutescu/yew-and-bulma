@@ -138,6 +138,28 @@ pub mod elements;
 /// [bd]: https://bulma.io/documentation/helpers/
 /// [other]: https://bulma.io/documentation/helpers/other-helpers/
 pub mod helpers;
+/// Holds the [Bulma layout elements][bd] implemented as [Yew components][yew].
+///
+/// Contains all of the [Bulma layout elements][bd] implemented as
+/// [Yew components][yew].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::layout::container::Container;
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Container>{"This is some text in a container."}</Container>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/layout/
+/// [yew]: https://yew.rs
+pub mod layout;
 /// Various utilities to make usage of Bulma components and heplers easier in
 /// Rust.
 pub mod utils;
