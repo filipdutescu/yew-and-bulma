@@ -5,154 +5,155 @@ use yew_and_bulma::{
         icon::{Icon, IconText},
     },
     helpers::color::TextColor,
+    layout::container::Container,
     utils::size::Size,
 };
 
 #[function_component(App)]
 fn app() -> Html {
     html! {
-        <>
-        <Block>
-            <Icon
-                icon={html! {
-                    <span class="material-symbols-outlined">{"home"}</span>
-                }} />
-        </Block>
-
-        <Block>
-            <IconText>
+        <Container>
+            <Block>
                 <Icon
                     icon={html! {
                         <span class="material-symbols-outlined">{"home"}</span>
-                    }}
-                    text="Home" />
-            </IconText>
-        </Block>
-
-        <Block>
-            <IconText>
-                <Icon
-                    icon={html! {
-                        <span class="material-symbols-outlined">{"home"}</span>
-                    }}
-                    text="Home" />
-                <Icon
-                    icon={html! {
-                        <span class="material-symbols-outlined">{"arrow_forward"}</span>
                     }} />
-                <Icon
-                    icon={html! {
-                        <span class="material-symbols-outlined">{"book"}</span>
-                    }}
-                    text="Blog" />
-                <Icon
-                    icon={html! {
-                        <span class="material-symbols-outlined">{"arrow_forward"}</span>
-                    }} />
-                <Icon
-                    icon={html! {
-                        <span class="material-symbols-outlined">{"subject"}</span>
-                    }}
-                    text="Article" />
-            </IconText>
-        </Block>
+            </Block>
 
-        <Block>
-            <p>{"You call "}
+            <Block>
                 <IconText>
                     <Icon
                         icon={html! {
                             <span class="material-symbols-outlined">{"home"}</span>
                         }}
-                        text="home" />
+                        text="Home" />
                 </IconText>
-            {" the place where the "}
+            </Block>
+
+            <Block>
                 <IconText>
                     <Icon
                         icon={html! {
-                            <span class="material-symbols-outlined">{"favorite"}</span>
+                            <span class="material-symbols-outlined">{"home"}</span>
                         }}
-                        text="heart"/>
+                        text="Home" />
+                    <Icon
+                        icon={html! {
+                            <span class="material-symbols-outlined">{"arrow_forward"}</span>
+                        }} />
+                    <Icon
+                        icon={html! {
+                            <span class="material-symbols-outlined">{"book"}</span>
+                        }}
+                        text="Blog" />
+                    <Icon
+                        icon={html! {
+                            <span class="material-symbols-outlined">{"arrow_forward"}</span>
+                        }} />
+                    <Icon
+                        icon={html! {
+                            <span class="material-symbols-outlined">{"subject"}</span>
+                        }}
+                        text="Article" />
                 </IconText>
-            {" is."}
-            </p>
-        </Block>
+            </Block>
 
-        <Block>
-            <IconText flex=true>
+            <Block>
+                <p>{"You call "}
+                    <IconText>
+                        <Icon
+                            icon={html! {
+                                <span class="material-symbols-outlined">{"home"}</span>
+                            }}
+                            text="home" />
+                    </IconText>
+                {" the place where the "}
+                    <IconText>
+                        <Icon
+                            icon={html! {
+                                <span class="material-symbols-outlined">{"favorite"}</span>
+                            }}
+                            text="heart"/>
+                    </IconText>
+                {" is."}
+                </p>
+            </Block>
+
+            <Block>
+                <IconText flex=true>
+                    <Icon
+                        color={TextColor::Info}
+                        icon={html! {
+                            <span class="material-symbols-outlined">{"info"}</span>
+                        }}
+                        text="Information" />
+                </IconText>
+                {"Some very informative text underneath."}
+
+                <IconText flex=true>
+                    <Icon
+                        color={TextColor::Primary}
+                        icon={html! {
+                            <span class="material-symbols-outlined">{"check"}</span>
+                        }}
+                        text="Primary"/>
+                </IconText>
+                {"Some very informative text underneath."}
+            </Block>
+
+            <Block>
+                <IconText color={TextColor::Info}>
+                    <Icon
+                        color={TextColor::Info}
+                        icon={html! {
+                            <span class="material-symbols-outlined">{"info"}</span>
+                        }}
+                        text="Information" />
+                </IconText>
+                <Block>{"Some very informative text underneath."}</Block>
+
+                <IconText color={TextColor::Primary}>
+                    <Icon
+                        color={TextColor::Primary}
+                        icon={html! {
+                            <span class="material-symbols-outlined">{"check"}</span>
+                        }}
+                        text="Primary"/>
+                </IconText>
+                <Block>{"Some very informative text underneath."}</Block>
+            </Block>
+
+            <Block>
                 <Icon
                     color={TextColor::Info}
+                    size={Size::Small}
                     icon={html! {
                         <span class="material-symbols-outlined">{"info"}</span>
                     }}
-                    text="Information" />
-            </IconText>
-            {"Some very informative text underneath."}
-
-            <IconText flex=true>
+                    text="Small" />
                 <Icon
                     color={TextColor::Primary}
+                    size={Size::Small}
                     icon={html! {
                         <span class="material-symbols-outlined">{"check"}</span>
                     }}
-                    text="Primary"/>
-            </IconText>
-            {"Some very informative text underneath."}
-        </Block>
-
-        <Block>
-            <IconText color={TextColor::Info}>
+                    text="Small"/>
                 <Icon
                     color={TextColor::Info}
+                    size={Size::Large}
                     icon={html! {
                         <span class="material-symbols-outlined">{"info"}</span>
                     }}
-                    text="Information" />
-            </IconText>
-            <Block>{"Some very informative text underneath."}</Block>
-
-            <IconText color={TextColor::Primary}>
+                    text="Large" />
                 <Icon
                     color={TextColor::Primary}
+                    size={Size::Large}
                     icon={html! {
                         <span class="material-symbols-outlined">{"check"}</span>
                     }}
-                    text="Primary"/>
-            </IconText>
-            <Block>{"Some very informative text underneath."}</Block>
-        </Block>
-
-        <Block>
-            <Icon
-                color={TextColor::Info}
-                size={Size::Small}
-                icon={html! {
-                    <span class="material-symbols-outlined">{"info"}</span>
-                }}
-                text="Small" />
-            <Icon
-                color={TextColor::Primary}
-                size={Size::Small}
-                icon={html! {
-                    <span class="material-symbols-outlined">{"check"}</span>
-                }}
-                text="Small"/>
-            <Icon
-                color={TextColor::Info}
-                size={Size::Large}
-                icon={html! {
-                    <span class="material-symbols-outlined">{"info"}</span>
-                }}
-                text="Large" />
-            <Icon
-                color={TextColor::Primary}
-                size={Size::Large}
-                icon={html! {
-                    <span class="material-symbols-outlined">{"check"}</span>
-                }}
-                text="Large"/>
-        </Block>
-        </>
+                    text="Large"/>
+            </Block>
+        </Container>
     }
 }
 

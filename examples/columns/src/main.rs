@@ -8,6 +8,7 @@ use yew_and_bulma::{
         typography::{TextAlignment, TextSize, TextWeight},
         visibility::Viewport,
     },
+    layout::container::Container,
     utils::class::ClassBuilder,
 };
 
@@ -22,87 +23,87 @@ fn app() -> Html {
         .build();
 
     html! {
-        <>
-        <Block>
-            <Columns>
-                <Column>
-                    <Box class={class.clone()}>{"First column"}</Box>
-                </Column>
+        <Container>
+            <Block>
+                <Columns>
+                    <Column>
+                        <Box class={class.clone()}>{"First column"}</Box>
+                    </Column>
 
-                <Column>
-                    <Box class={class.clone()}>{"Second column"}</Box>
-                </Column>
+                    <Column>
+                        <Box class={class.clone()}>{"Second column"}</Box>
+                    </Column>
 
-                <Column>
-                    <Box class={class.clone()}>{"Third column"}</Box>
-                </Column>
+                    <Column>
+                        <Box class={class.clone()}>{"Third column"}</Box>
+                    </Column>
 
-                <Column>
-                    <Box class={class.clone()}>{"Fourth column"}</Box>
-                </Column>
-            </Columns>
-        </Block>
+                    <Column>
+                        <Box class={class.clone()}>{"Fourth column"}</Box>
+                    </Column>
+                </Columns>
+            </Block>
 
-        <Block>
-            <Columns multiline=true gapless=true viewport={Viewport::Mobile}>
-                <Column size={Size::OneThird}>
-                    <Box class={class.clone()}>{"First column"}</Box>
-                </Column>
+            <Block>
+                <Columns multiline=true gapless=true viewport={Viewport::Mobile}>
+                    <Column size={Size::OneThird}>
+                        <Box class={class.clone()}>{"First column"}</Box>
+                    </Column>
 
-                <Column size={Size::OneThird}>
-                    <Box class={class.clone()}>{"Second column"}</Box>
-                </Column>
+                    <Column size={Size::OneThird}>
+                        <Box class={class.clone()}>{"Second column"}</Box>
+                    </Column>
 
-                <Column size={Size::OneThird}>
-                    <Box class={class.clone()}>{"Third column"}</Box>
-                </Column>
+                    <Column size={Size::OneThird}>
+                        <Box class={class.clone()}>{"Third column"}</Box>
+                    </Column>
 
-                <Column size={Size::OneThird}>
-                    <Box class={class.clone()}>{"Fourth column"}</Box>
-                </Column>
+                    <Column size={Size::OneThird}>
+                        <Box class={class.clone()}>{"Fourth column"}</Box>
+                    </Column>
 
-                <Column size={Size::OneThird}>
-                    <Box class={class.clone()}>{"Fifth column"}</Box>
-                </Column>
+                    <Column size={Size::OneThird}>
+                        <Box class={class.clone()}>{"Fifth column"}</Box>
+                    </Column>
 
-                <Column size={Size::OneThird}>
-                    <Box class={class.clone()}>{"Sixth column"}</Box>
-                </Column>
+                    <Column size={Size::OneThird}>
+                        <Box class={class.clone()}>{"Sixth column"}</Box>
+                    </Column>
 
-                <Column size={Size::OneThird}>
-                    <Box class={class.clone()}>{"Seventh column"}</Box>
-                </Column>
+                    <Column size={Size::OneThird}>
+                        <Box class={class.clone()}>{"Seventh column"}</Box>
+                    </Column>
 
-                <Column size={Size::OneThird}>
-                    <Box class={class.clone()}>{"Eighth column"}</Box>
-                </Column>
+                    <Column size={Size::OneThird}>
+                        <Box class={class.clone()}>{"Eighth column"}</Box>
+                    </Column>
 
-                <Column size={Size::OneThird}>
-                    <Box class={class.clone()}>{"Ninth column"}</Box>
-                </Column>
-            </Columns>
-        </Block>
+                    <Column size={Size::OneThird}>
+                        <Box class={class.clone()}>{"Ninth column"}</Box>
+                    </Column>
+                </Columns>
+            </Block>
 
-        <Block>
-            <Columns centered=true multiline=true center_vertically=true>
-                <Column size={Size::Half}>
-                    <Box class={class.clone()}>{"Short column"}</Box>
-                </Column>
+            <Block>
+                <Columns centered=true multiline=true center_vertically=true>
+                    <Column size={Size::Half}>
+                        <Box class={class.clone()}>{"Short column"}</Box>
+                    </Column>
 
-                <Column size={Size::Half}>
-                    <Box class={class.clone()}>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}</Box>
-                </Column>
+                    <Column size={Size::Half}>
+                        <Box class={class.clone()}>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}</Box>
+                    </Column>
 
-                <Column size={Size::TwoFifths}>
-                    <Box class={class.clone()}>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}</Box>
-                </Column>
+                    <Column size={Size::TwoFifths}>
+                        <Box class={class.clone()}>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}</Box>
+                    </Column>
 
-                <Column size={Size::TwoFifths}>
-                    <Box class={class.clone()}>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}</Box>
-                </Column>
-            </Columns>
-        </Block>
-        </>
+                    <Column size={Size::TwoFifths}>
+                        <Box {class}>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}</Box>
+                    </Column>
+                </Columns>
+            </Block>
+        </Container>
     }
 }
 
