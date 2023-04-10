@@ -40,6 +40,29 @@ pub mod container;
 ///
 /// [bd]: https://bulma.io/documentation/layout/footer/
 pub mod footer;
+/// Provides utilities for creating [level elements][bd] in Yew.
+///
+/// Defines the necessary components to build, style and modify
+/// [Bulma level elements][bd] in Yew.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::layout::level::{Level, LevelItem};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Level>
+///             <LevelItem>{"This is some text in a level."}</LevelItem>
+///         </Level>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/layout/level/
+pub mod level;
 /// Provides utilities for creating [section elements][bd] in Yew.
 ///
 /// Defines the necessary components to build, style and modify
