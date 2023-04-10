@@ -63,6 +63,33 @@ pub mod footer;
 ///
 /// [bd]: https://bulma.io/documentation/layout/level/
 pub mod level;
+/// Provides utilities for creating [media elements][bd] in Yew.
+///
+/// Defines the necessary components to build, style and modify
+/// [Bulma media elements][bd] in Yew.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::layout::media::{Media, MediaContent, MediaLeft, MediaRight};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Media>
+///             <MediaLeft>{"Avatar goes here."}</MediaLeft>
+///
+///             <MediaContent>{"Content goes here."}</MediaContent>
+///
+///             <MediaRight>{"Dismiss goes here for example."}</MediaRight>
+///         </Media>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/layout/media-object/
+pub mod media;
 /// Provides utilities for creating [section elements][bd] in Yew.
 ///
 /// Defines the necessary components to build, style and modify
