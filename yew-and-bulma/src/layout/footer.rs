@@ -14,7 +14,7 @@ use crate::utils::class::ClassBuilder;
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::footer::footer;
+/// use yew_and_bulma::layout::footer::Footer;
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {

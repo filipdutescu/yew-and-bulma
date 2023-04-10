@@ -111,3 +111,24 @@ pub mod media;
 ///
 /// [bd]: https://bulma.io/documentation/layout/section/
 pub mod section;
+/// Provides utilities for creating [tile elements][bd] in Yew.
+///
+/// Defines the necessary components to build, style and modify
+/// [Bulma tile elements][bd] in Yew.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::layout::tile::Tile;
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Tile>{"This is some text in a tile."}</Tile>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/layout/tiles/
+pub mod tile;
