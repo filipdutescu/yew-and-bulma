@@ -142,7 +142,7 @@ pub fn level(props: &LevelProperties) -> Html {
 ///
 ///             <LevelRight>
 ///                 <LevelItem>{ "Right aligned text in the level" }</LevelItem>
-///             </levelRight>
+///             </LevelRight>
 ///         </Level>
 ///     }
 /// }
