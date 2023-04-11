@@ -1,6 +1,6 @@
 [package]
 name = "yew-and-bulma"
-version = "0.3.0"
+version = "0.4.0"
 edition = "2021"
 authors = ["Filip Dutescu <filip@hucksy.dev>"]
 repository = "https://github.com/filipdutescu/yew-and-bulma"

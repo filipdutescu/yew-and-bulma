@@ -1,3 +1,31 @@
+# 0.4.0 (2023-04-11)
+
+The major point of this release is to add all of the
+[Bulma layout elements](https://bulma.io/documentation/layout/). To go alongside
+those, various examples were also added, to provide a nice starting point and
+reference.
+
+Here is a more detailed list of changes:
+
+## Features
+
+* Implement Yew components for all [Bulma layout elements](https://bulma.io/documentation/layout/):
+  * Add the [container element](https://bulma.io/documentation/layout/container/)
+  * Add the [level element](https://bulma.io/documentation/layout/level/)
+  * Add the [media elements](https://bulma.io/documentation/layout/media-object/)
+  * Add the [hero element](https://bulma.io/documentation/layout/hero/)
+  * Add the [section element](https://bulma.io/documentation/layout/section/)
+  * Add the [footer element](https://bulma.io/documentation/layout/footer/)
+  * Add the [tile element](https://bulma.io/documentation/layout/tiles/)
+
+## Other
+
+* Fix the example page titles to name the actual showcased element
+* Update all examples to use the container element where needed, to look a bit
+  prettier
+* Add an [`xtask`][xtask] crate for generating and showing code coverage. Code
+  coverage will be added to each PR and can be checked at-glance in the README
+
 # 0.3.0 (2023-04-02)
 
 The main change brought by this release is the addition of
