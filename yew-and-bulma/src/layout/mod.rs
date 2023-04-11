@@ -40,6 +40,29 @@ pub mod container;
 ///
 /// [bd]: https://bulma.io/documentation/layout/footer/
 pub mod footer;
+/// Provides utilities for creating [hero elements][bd] in Yew.
+///
+/// Defines the necessary components to build, style and modify
+/// [Bulma hero elements][bd] in Yew.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::layout::hero::{Hero, HeroBody};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Hero>
+///             <HeroBody>{"This is the hero body."}</HeroBody>
+///         </Hero>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/layout/hero/
+pub mod hero;
 /// Provides utilities for creating [level elements][bd] in Yew.
 ///
 /// Defines the necessary components to build, style and modify
