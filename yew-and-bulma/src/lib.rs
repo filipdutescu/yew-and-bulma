@@ -52,6 +52,34 @@
 /// [bd]: https://bulma.io/documentation/columns/
 /// [yew]: https://yew.rs
 pub mod columns;
+/// Holds the [Bulma compoment elements][bd] implemented as [Yew components][yew].
+///
+/// Contains all of the [Bulma compoment elements][bd] implemented as
+/// [Yew components][yew].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::components::breadcrumb::{Breadcrumb, Crumb};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     let crumbs = vec![
+///         Crumb(AttrValue::from("#"), html!{ {"Trail"} }),
+///         Crumb(AttrValue::from("#"), html!{ {"of"} }),
+///         Crumb(AttrValue::from("#"), html!{ {"breadcrumbs"} }),
+///     ];
+///
+///     html! {
+///         <Breadcrumb {crumbs} />
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/components/
+/// [yew]: https://yew.rs
+pub mod components;
 /// Holds the [Bulma elements][bd] implemented as [Yew components][yew].
 ///
 /// Contains all of the [Bulma elements][bd] implemented as

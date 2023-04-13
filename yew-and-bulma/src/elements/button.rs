@@ -42,6 +42,16 @@ pub enum Align {
     Right,
 }
 
+impl From<&Align> for String {
+    fn from(value: &Align) -> Self {
+        match value {
+            Align::Left => "".to_owned(),
+            Align::Center => format!("{IS_PREFIX}-centered"),
+            Align::Right => format!("{IS_PREFIX}-right"),
+        }
+    }
+}
+
 /// Defines the properties of the [Bulma buttons element][bd].
 ///
 /// Defines the properties of the buttons element, based on the specification
@@ -158,16 +168,6 @@ pub struct ButtonsProperties {
     ///
     /// [bd]: https://bulma.io/documentation/elements/button/#list-of-buttons
     pub children: Children,
-}
-
-impl From<&Align> for String {
-    fn from(value: &Align) -> Self {
-        match value {
-            Align::Left => "".to_owned(),
-            Align::Center => format!("{IS_PREFIX}-centered"),
-            Align::Right => format!("{IS_PREFIX}-right"),
-        }
-    }
 }
 
 /// Yew implementation of the [Bulma buttons element][bd].

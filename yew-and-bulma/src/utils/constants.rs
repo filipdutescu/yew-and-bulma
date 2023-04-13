@@ -838,3 +838,30 @@ pub const IS_OFFSET_PREFIX: &str = "is-offset";
 ///
 /// [bd]: https://bulma.io/documentation/customize/variables/
 pub const IS_NARROW: &str = "is-narrow";
+/// Used to create classes using the `has-*` prefix.
+///
+/// Used to create classes using the `has-*` prefix, such as those from the
+/// [breadcrumb Bulma component separators][bd].
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::{
+///     components::breadcrumb::Separator,
+///     utils::constants::HAS_PREFIX,
+/// };
+///
+/// // Create a `<div>` HTML element that has the dot separator breadcrumb class set.
+/// #[function_component(DotSeparatorDiv)]
+/// fn dot_separator_div() -> Html {
+///     let dot_separator = Separator::Dot;
+///     let class = classes![format!("{HAS_PREFIX}-{dot_separator}")];
+///     html!{
+///         <div class={class}>{ "Lorem ispum..." }</div>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/components/breadcrumb/#alternative-separators
+pub const HAS_PREFIX: &str = "has";
