@@ -52,6 +52,35 @@ pub mod breadcrumb;
 ///
 /// [bd]: https://bulma.io/documentation/components/message/
 pub mod message;
+/// Provides utilities for creating [modal components][bd] in Yew.
+///
+/// Defines the necessary components to build, style and modify
+/// [Bulma modal components][bd] in Yew.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::layout::modal::{Modal, ModalBackground, ModalClose, ModalContent};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Modal>
+///             <ModalBackground />
+///
+///             <ModalContent>
+///                 {"Lorem ipsum dolor sit amet, consectetur adipiscing elit..."}
+///             </ModalContent>
+///
+///             <ModalClose />
+///         </Modal>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/components/modal/
+pub mod modal;
 /// Provides utilities for creating [pagination components][bd] in Yew.
 ///
 /// Defines the necessary components to build, style and modify
