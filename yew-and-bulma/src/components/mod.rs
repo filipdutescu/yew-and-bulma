@@ -25,6 +25,33 @@
 ///
 /// [bd]: https://bulma.io/documentation/components/breadcrumb/
 pub mod breadcrumb;
+/// Provides utilities for creating [message components][bd] in Yew.
+///
+/// Defines the necessary components to build, style and modify
+/// [Bulma message components][bd] in Yew.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::layout::message::{Message, MessageBody, MessageHeader};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Message>
+///             <MessageHeader>{"Hello!"}</MessageHeader>
+///
+///             <MessageBody>
+///                 {"Lorem ipsum dolor sit amet, consectetur adipiscing elit..."}
+///             </MessageBody>
+///         </Message>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/components/message/
+pub mod message;
 /// Provides utilities for creating [pagination components][bd] in Yew.
 ///
 /// Defines the necessary components to build, style and modify
