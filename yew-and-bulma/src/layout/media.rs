@@ -2,7 +2,7 @@ use yew::html;
 use yew::{
     function_component, html::ChildrenRenderer, virtual_dom::VChild, Children, Html, Properties,
 };
-use yew_and_bulma_macros::base_component_properties;
+use yew_and_bulma_macros::{base_component_properties, TypedChildren};
 
 use crate::utils::class::ClassBuilder;
 
@@ -128,40 +128,11 @@ pub fn media(props: &MediaProperties) -> Html {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/layout/media-object/
-#[derive(Clone, PartialEq)]
+#[derive(Clone, PartialEq, TypedChildren)]
 pub enum MediaItem {
     MediaLeft(VChild<MediaLeft>),
     MediaContent(VChild<MediaContent>),
     MediaRight(VChild<MediaRight>),
-}
-
-impl From<VChild<MediaLeft>> for MediaItem {
-    fn from(value: VChild<MediaLeft>) -> Self {
-        MediaItem::MediaLeft(value)
-    }
-}
-
-impl From<VChild<MediaContent>> for MediaItem {
-    fn from(value: VChild<MediaContent>) -> Self {
-        MediaItem::MediaContent(value)
-    }
-}
-
-impl From<VChild<MediaRight>> for MediaItem {
-    fn from(value: VChild<MediaRight>) -> Self {
-        MediaItem::MediaRight(value)
-    }
-}
-
-#[allow(clippy::from_over_into)]
-impl Into<Html> for MediaItem {
-    fn into(self) -> Html {
-        match self {
-            MediaItem::MediaLeft(ml) => ml.into(),
-            MediaItem::MediaContent(mc) => mc.into(),
-            MediaItem::MediaRight(mr) => mr.into(),
-        }
-    }
 }
 
 /// Defines the properties of the [Bulma media left element][bd].

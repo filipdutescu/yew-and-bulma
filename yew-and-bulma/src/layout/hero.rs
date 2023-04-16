@@ -4,7 +4,7 @@ use yew::html;
 use yew::{
     function_component, html::ChildrenRenderer, virtual_dom::VChild, Children, Html, Properties,
 };
-use yew_and_bulma_macros::base_component_properties;
+use yew_and_bulma_macros::{base_component_properties, TypedChildren};
 
 use crate::{
     helpers::color::Color,
@@ -227,40 +227,11 @@ pub fn hero(props: &HeroProperties) -> Html {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/layout/hero/
-#[derive(Clone, PartialEq)]
+#[derive(Clone, PartialEq, TypedChildren)]
 pub enum HeroItem {
     HeroHead(VChild<HeroHead>),
     HeroBody(VChild<HeroBody>),
     HeroFoot(VChild<HeroFoot>),
-}
-
-impl From<VChild<HeroHead>> for HeroItem {
-    fn from(value: VChild<HeroHead>) -> Self {
-        HeroItem::HeroHead(value)
-    }
-}
-
-impl From<VChild<HeroBody>> for HeroItem {
-    fn from(value: VChild<HeroBody>) -> Self {
-        HeroItem::HeroBody(value)
-    }
-}
-
-impl From<VChild<HeroFoot>> for HeroItem {
-    fn from(value: VChild<HeroFoot>) -> Self {
-        HeroItem::HeroFoot(value)
-    }
-}
-
-#[allow(clippy::from_over_into)]
-impl Into<Html> for HeroItem {
-    fn into(self) -> Html {
-        match self {
-            HeroItem::HeroHead(hh) => hh.into(),
-            HeroItem::HeroBody(hb) => hb.into(),
-            HeroItem::HeroFoot(hf) => hf.into(),
-        }
-    }
 }
 
 /// Defines the properties of the [Bulma hero head element][bd].

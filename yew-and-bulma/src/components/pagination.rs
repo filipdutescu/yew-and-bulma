@@ -1,8 +1,8 @@
+use yew::html;
 use yew::{
     function_component, html::ChildrenRenderer, virtual_dom::VChild, Children, Html, Properties,
 };
-use yew::{html, AttrValue};
-use yew_and_bulma_macros::base_component_properties;
+use yew_and_bulma_macros::{base_component_properties, TypedChildren};
 
 use crate::utils::size::Size;
 use crate::utils::{class::ClassBuilder, constants::IS_PREFIX};
@@ -375,40 +375,11 @@ pub fn pagination(props: &PaginationProperties) -> Html {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/components/pagination/
-#[derive(Clone, PartialEq)]
+#[derive(Clone, PartialEq, TypedChildren)]
 pub enum PaginationItem {
     PaginationList(VChild<PaginationList>),
     PaginationNext(VChild<PaginationNext>),
     PaginationPrevious(VChild<PaginationPrevious>),
-}
-
-impl From<VChild<PaginationList>> for PaginationItem {
-    fn from(value: VChild<PaginationList>) -> Self {
-        PaginationItem::PaginationList(value)
-    }
-}
-
-impl From<VChild<PaginationNext>> for PaginationItem {
-    fn from(value: VChild<PaginationNext>) -> Self {
-        PaginationItem::PaginationNext(value)
-    }
-}
-
-impl From<VChild<PaginationPrevious>> for PaginationItem {
-    fn from(value: VChild<PaginationPrevious>) -> Self {
-        PaginationItem::PaginationPrevious(value)
-    }
-}
-
-#[allow(clippy::from_over_into)]
-impl Into<Html> for PaginationItem {
-    fn into(self) -> Html {
-        match self {
-            PaginationItem::PaginationList(pl) => pl.into(),
-            PaginationItem::PaginationNext(pn) => pn.into(),
-            PaginationItem::PaginationPrevious(pp) => pp.into(),
-        }
-    }
 }
 
 /// Defines the properties of the [Bulma pagination next element][bd].
@@ -916,32 +887,10 @@ pub fn pagination_list(props: &PaginationListProperties) -> Html {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/components/pagination/
-#[derive(Clone, PartialEq)]
+#[derive(Clone, PartialEq, TypedChildren)]
 pub enum PaginationListItem {
     PaginationEllipsis(VChild<PaginationEllipsis>),
     PaginationLink(VChild<PaginationLink>),
-}
-
-impl From<VChild<PaginationEllipsis>> for PaginationListItem {
-    fn from(value: VChild<PaginationEllipsis>) -> Self {
-        PaginationListItem::PaginationEllipsis(value)
-    }
-}
-
-impl From<VChild<PaginationLink>> for PaginationListItem {
-    fn from(value: VChild<PaginationLink>) -> Self {
-        PaginationListItem::PaginationLink(value)
-    }
-}
-
-#[allow(clippy::from_over_into)]
-impl Into<Html> for PaginationListItem {
-    fn into(self) -> Html {
-        match self {
-            PaginationListItem::PaginationEllipsis(pe) => pe.into(),
-            PaginationListItem::PaginationLink(pl) => pl.into(),
-        }
-    }
 }
 
 /// Defines the properties of the [Bulma pagination ellipsis element][bd].
@@ -1118,10 +1067,6 @@ pub fn pagination_ellipsis(props: &PaginationEllipsisProperties) -> Html {
 pub struct PaginationLinkProperties {
     #[prop_or_default]
     pub current: bool,
-    #[prop_or_default]
-    pub aria_label: Option<AttrValue>,
-    #[prop_or_default]
-    pub aria_current: Option<AttrValue>,
     pub page: usize,
 }
 

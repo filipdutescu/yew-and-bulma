@@ -5,7 +5,7 @@ use yew::html;
 use yew::{
     function_component, html::ChildrenRenderer, virtual_dom::VChild, Children, Html, Properties,
 };
-use yew_and_bulma_macros::base_component_properties;
+use yew_and_bulma_macros::{base_component_properties, TypedChildren};
 
 use crate::helpers::visibility::Viewport;
 use crate::utils::constants::IS_NARROW;
@@ -358,32 +358,10 @@ impl Display for GapSize {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/columns/basics
-#[derive(Clone, PartialEq)]
+#[derive(Clone, PartialEq, TypedChildren)]
 pub enum ColumnsItem {
     Columns(VChild<Columns>),
     Column(VChild<Column>),
-}
-
-impl From<VChild<Columns>> for ColumnsItem {
-    fn from(value: VChild<Columns>) -> Self {
-        ColumnsItem::Columns(value)
-    }
-}
-
-impl From<VChild<Column>> for ColumnsItem {
-    fn from(value: VChild<Column>) -> Self {
-        ColumnsItem::Column(value)
-    }
-}
-
-#[allow(clippy::from_over_into)]
-impl Into<Html> for ColumnsItem {
-    fn into(self) -> Html {
-        match self {
-            ColumnsItem::Columns(columns) => columns.into(),
-            ColumnsItem::Column(column) => column.into(),
-        }
-    }
 }
 
 /// Yew implementation of the [Bulma columns element][bd].

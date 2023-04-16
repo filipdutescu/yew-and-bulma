@@ -2,7 +2,7 @@ use yew::html;
 use yew::{
     function_component, html::ChildrenRenderer, virtual_dom::VChild, Children, Html, Properties,
 };
-use yew_and_bulma_macros::base_component_properties;
+use yew_and_bulma_macros::{base_component_properties, TypedChildren};
 
 use crate::{
     elements::delete::Delete,
@@ -207,32 +207,10 @@ pub fn message(props: &MessageProperties) -> Html {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/components/message/
-#[derive(Clone, PartialEq)]
+#[derive(Clone, PartialEq, TypedChildren)]
 pub enum MessageItem {
     MessageBody(VChild<MessageBody>),
     MessageHeader(VChild<MessageHeader>),
-}
-
-impl From<VChild<MessageBody>> for MessageItem {
-    fn from(value: VChild<MessageBody>) -> Self {
-        MessageItem::MessageBody(value)
-    }
-}
-
-impl From<VChild<MessageHeader>> for MessageItem {
-    fn from(value: VChild<MessageHeader>) -> Self {
-        MessageItem::MessageHeader(value)
-    }
-}
-
-#[allow(clippy::from_over_into)]
-impl Into<Html> for MessageItem {
-    fn into(self) -> Html {
-        match self {
-            MessageItem::MessageBody(mb) => mb.into(),
-            MessageItem::MessageHeader(mh) => mh.into(),
-        }
-    }
 }
 
 /// Defines the properties of the [Bulma message header element][bd].

@@ -1,6 +1,6 @@
 use yew::{function_component, html};
 use yew::{html::ChildrenRenderer, virtual_dom::VChild, AttrValue, Children, Html, Properties};
-use yew_and_bulma_macros::base_component_properties;
+use yew_and_bulma_macros::{base_component_properties, TypedChildren};
 
 use crate::utils::class::ClassBuilder;
 use crate::utils::constants::IS_NARROW;
@@ -342,7 +342,7 @@ impl From<&TableProperties> for String {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/elements/table/
-#[derive(Clone, PartialEq)]
+#[derive(Clone, PartialEq, TypedChildren)]
 pub enum TableItem {
     TableHeader(VChild<TableHeader>),
     TableFooter(VChild<TableFooter>),
@@ -369,42 +369,6 @@ impl TableItem {
     /// Determines if the table item is a [`crate::elements::table::TableData`].
     pub fn is_data(&self) -> bool {
         matches!(self, TableItem::TableData(_))
-    }
-}
-
-impl From<VChild<TableHeader>> for TableItem {
-    fn from(value: VChild<TableHeader>) -> Self {
-        TableItem::TableHeader(value)
-    }
-}
-
-impl From<VChild<TableFooter>> for TableItem {
-    fn from(value: VChild<TableFooter>) -> Self {
-        TableItem::TableFooter(value)
-    }
-}
-
-impl From<VChild<TableRow>> for TableItem {
-    fn from(value: VChild<TableRow>) -> Self {
-        TableItem::TableRow(value)
-    }
-}
-
-impl From<VChild<TableData>> for TableItem {
-    fn from(value: VChild<TableData>) -> Self {
-        TableItem::TableData(value)
-    }
-}
-
-#[allow(clippy::from_over_into)]
-impl Into<Html> for TableItem {
-    fn into(self) -> Html {
-        match self {
-            TableItem::TableHeader(th) => th.into(),
-            TableItem::TableFooter(tf) => tf.into(),
-            TableItem::TableRow(tr) => tr.into(),
-            TableItem::TableData(td) => td.into(),
-        }
     }
 }
 

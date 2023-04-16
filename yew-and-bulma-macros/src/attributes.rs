@@ -570,6 +570,46 @@ impl Default for BaseAttributes {
                 #[prop_or_default]
                 pub onwaiting: Option<yew::Callback<yew::html::onwaiting::Event>>
             },
+            quote! {
+                /// Sets the [HTML title attribute][title] of the element.
+                ///
+                /// Sets the [HTML title attrbiute][title] of the element which will receive
+                /// these properties.
+                ///
+                /// [alable]:https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title
+                #[prop_or_default]
+                pub title: Option<yew::AttrValue>
+            },
+            quote! {
+                /// Sets the [HTML role attribute][role] of the element.
+                ///
+                /// Sets the [HTML role attrbiute][role] of the element which will receive
+                /// these properties.
+                ///
+                /// [role]: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles
+                #[prop_or_default]
+                pub role: Option<yew::AttrValue>
+            },
+            quote! {
+                /// Sets the [HTML aria-label attribute][alabel] of the element.
+                ///
+                /// Sets the [HTML aria-label attrbiute][alabel] of the element which will receive
+                /// these properties.
+                ///
+                /// [alabel]: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+                #[prop_or_default]
+                pub aria_label: Option<yew::AttrValue>
+            },
+            quote! {
+                /// Sets the [HTML aria-label attribute][acurr] of the element.
+                ///
+                /// Sets the [HTML aria-label attrbiute][acurr] of the element which will receive
+                /// these properties.
+                ///
+                /// [acurr]: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+                #[prop_or_default]
+                pub aria_current: Option<yew::AttrValue>
+            },
         ]
         .into_iter()
         .map(|q| Field::parse_named.parse2(q).unwrap())

@@ -3,7 +3,7 @@ use yew::{
     function_component, html::ChildrenRenderer, virtual_dom::VChild, Children, ChildrenWithProps,
     Html, Properties,
 };
-use yew_and_bulma_macros::base_component_properties;
+use yew_and_bulma_macros::{base_component_properties, TypedChildren};
 
 use crate::utils::class::ClassBuilder;
 
@@ -149,40 +149,11 @@ pub fn level(props: &LevelProperties) -> Html {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/layout/level/
-#[derive(Clone, PartialEq)]
+#[derive(Clone, PartialEq, TypedChildren)]
 pub enum LevelElement {
     LevelItem(VChild<LevelItem>),
     LevelLeft(VChild<LevelLeft>),
     LevelRight(VChild<LevelRight>),
-}
-
-impl From<VChild<LevelItem>> for LevelElement {
-    fn from(value: VChild<LevelItem>) -> Self {
-        LevelElement::LevelItem(value)
-    }
-}
-
-impl From<VChild<LevelLeft>> for LevelElement {
-    fn from(value: VChild<LevelLeft>) -> Self {
-        LevelElement::LevelLeft(value)
-    }
-}
-
-impl From<VChild<LevelRight>> for LevelElement {
-    fn from(value: VChild<LevelRight>) -> Self {
-        LevelElement::LevelRight(value)
-    }
-}
-
-#[allow(clippy::from_over_into)]
-impl Into<Html> for LevelElement {
-    fn into(self) -> Html {
-        match self {
-            LevelElement::LevelItem(li) => li.into(),
-            LevelElement::LevelLeft(ll) => ll.into(),
-            LevelElement::LevelRight(lr) => lr.into(),
-        }
-    }
 }
 
 /// Defines the properties of the [Bulma level item element][bd].
