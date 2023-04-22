@@ -41,6 +41,14 @@ impl Default for BaseAttributes {
                 pub class: Option<yew::Classes>
             },
             quote! {
+                /// Sets the extra attributes that the component should have set.
+                ///
+                /// Sets the extra attributes that the component which will receive these
+                /// properties should have set.
+                #[prop_or_default]
+                pub attrs: std::collections::HashMap<&'static str, yew::AttrValue>
+            },
+            quote! {
                 /// Sets the callback to be used for the [HTML onclick attribute][ev].
                 ///
                 /// Sets the callback to be used for the [HTML onclick attribute][ev] of the

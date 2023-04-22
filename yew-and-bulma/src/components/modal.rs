@@ -1,11 +1,13 @@
+use yew::html;
 use yew::{
     function_component, html::ChildrenRenderer, virtual_dom::VChild, Children, Html, Properties,
 };
 use yew_and_bulma_macros::{base_component_properties, TypedChildren};
 
+use crate::utils::BaseComponent;
 use crate::{
     elements::delete::Delete,
-    utils::{class::ClassBuilder, constants::IS_PREFIX, html, size::Size},
+    utils::{class::ClassBuilder, constants::IS_PREFIX, size::Size},
 };
 
 /// Defines the properties of the [Bulma modal component][bd].
@@ -121,7 +123,11 @@ pub fn modal(props: &ModalProperties) -> Html {
         )
         .build();
 
-    html! { div, class, props, yew::html! { <>{ for props.children.iter() }</> } }
+    html! {
+        <BaseComponent tag="div" {class} ..props.into()>
+            { for props.children.iter() }
+        </BaseComponent>
+    }
 }
 
 /// Defines the possible types of children from a [Bulma modal component][bd].
@@ -233,7 +239,9 @@ pub fn modal_background(props: &ModalBackgroundProperties) -> Html {
         )
         .build();
 
-    html! { div, class, props }
+    html! {
+        <BaseComponent tag="div" {class} ..props.into() />
+    }
 }
 
 /// Defines the properties of the [Bulma modal close element][bd].
@@ -355,7 +363,9 @@ pub fn modal_close(props: &ModalCloseProperties) -> Html {
         )
         .build();
 
-    html! { button, class, props }
+    html! {
+        <BaseComponent tag="button" {class} ..props.into() />
+    }
 }
 
 /// Defines the properties of the [Bulma modal content element][bd].
@@ -439,7 +449,11 @@ pub fn modal_content(props: &ModalContentProperties) -> Html {
         )
         .build();
 
-    html! { div, class, props, yew::html! { <>{ for props.children.iter() }</> } }
+    html! {
+        <BaseComponent tag="div" {class} ..props.into()>
+            { for props.children.iter() }
+        </BaseComponent>
+    }
 }
 
 /// Defines the properties of the [Bulma modal card element][bd].
@@ -551,7 +565,11 @@ pub fn modal_card(props: &ModalCardProperties) -> Html {
         )
         .build();
 
-    html! { div, class, props, yew::html! { <>{ for props.children.iter() }</> } }
+    html! {
+        <BaseComponent tag="div" {class} ..props.into()>
+            { for props.children.iter() }
+        </BaseComponent>
+    }
 }
 
 /// Defines the possible types of children from a [Bulma modal card element][bd].
@@ -713,7 +731,11 @@ pub fn modal_card_body(props: &ModalCardBodyProperties) -> Html {
         )
         .build();
 
-    html! { section, class, props, yew::html! { <>{ for props.children.iter() }</> } }
+    html! {
+        <BaseComponent tag="section" {class} ..props.into()>
+            { for props.children.iter() }
+        </BaseComponent>
+    }
 }
 
 /// Defines the properties of the [Bulma modal card foot element][bd].
@@ -825,7 +847,11 @@ pub fn modal_card_foot(props: &ModalCardFootProperties) -> Html {
         )
         .build();
 
-    html! { footer, class, props, yew::html! { <>{ for props.children.iter() }</> } }
+    html! {
+        <BaseComponent tag="footer" {class} ..props.into()>
+            { for props.children.iter() }
+        </BaseComponent>
+    }
 }
 
 /// Defines the properties of the [Bulma modal card head element][bd].
@@ -937,7 +963,11 @@ pub fn modal_card_head(props: &ModalCardHeadProperties) -> Html {
         )
         .build();
 
-    html! { header, class, props, yew::html! { <>{ for props.children.iter() }</> } }
+    html! {
+        <BaseComponent tag="header" {class} ..props.into()>
+            { for props.children.iter() }
+        </BaseComponent>
+    }
 }
 
 /// Defines the possible types of children from a [Bulma modal card element][bd].
@@ -1097,5 +1127,9 @@ pub fn modal_card_title(props: &ModalCardTitleProperties) -> Html {
         )
         .build();
 
-    html! { p, class, props, yew::html! { <>{ for props.children.iter() }</> } }
+    html! {
+        <BaseComponent tag="p" {class} ..props.into()>
+            { for props.children.iter() }
+        </BaseComponent>
+    }
 }

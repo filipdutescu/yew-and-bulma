@@ -57,6 +57,12 @@ use crate::attributes::BaseAttributes;
 pub fn base_component_properties(_args: TokenStream, input: TokenStream) -> TokenStream {
     let input = parse_macro_input!(input as DeriveInput);
 
+    let ident = input.ident.clone();
+    let mut generics = syn::Generics::default();
+    generics.lt_token = input.generics.lt_token;
+    generics.params = input.generics.params.clone();
+    generics.gt_token = input.generics.gt_token;
+    let where_clause = input.generics.params.clone();
     let mut struct_data = match input.data.clone() {
         syn::Data::Struct(struct_data) => struct_data,
         _ => {
@@ -66,9 +72,14 @@ pub fn base_component_properties(_args: TokenStream, input: TokenStream) -> Toke
         }
     };
 
+    let base_attribs = BaseAttributes::default().attributes();
+    let base_attrib_idents: Vec<_> = base_attribs
+        .iter()
+        .filter_map(|f| f.ident.clone())
+        .collect();
     let expanded = match &mut struct_data.fields {
         syn::Fields::Named(fields) => {
-            for attr in BaseAttributes::default().attributes() {
+            for attr in base_attribs {
                 fields.named.push(attr);
             }
 
@@ -82,6 +93,34 @@ pub fn base_component_properties(_args: TokenStream, input: TokenStream) -> Toke
             }
         }
         _ => quote! { #input },
+    };
+
+    let expanded = if ident == "BaseComponentProperties" {
+        expanded
+    } else {
+        quote! {
+            #expanded
+
+            impl #generics From<#ident #generics> for crate::utils::BaseComponentProperties #where_clause {
+                fn from(value: #ident #generics) -> Self {
+                    crate::utils::BaseComponentProperties {
+                        tag: yew::AttrValue::default(),
+                        children: yew::Children::default(),
+                        #(#base_attrib_idents: value.#base_attrib_idents),*
+                    }
+                }
+            }
+
+            impl #generics From<&#ident #generics> for crate::utils::BaseComponentProperties #where_clause {
+                fn from(value: &#ident #generics) -> Self {
+                    crate::utils::BaseComponentProperties {
+                        tag: yew::AttrValue::default(),
+                        children: yew::Children::default(),
+                        #(#base_attrib_idents: value.#base_attrib_idents.clone()),*
+                    }
+                }
+            }
+        }
     };
 
     expanded.into()
