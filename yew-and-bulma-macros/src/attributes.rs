@@ -28,7 +28,7 @@ impl Default for BaseAttributes {
                 ///
                 /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
                 #[prop_or_default]
-                pub id: Option<yew::AttrValue>
+                pub id: yew::AttrValue
             },
             quote! {
                 /// Sets the classes to be appended to the [HTML class attribute][class].
@@ -38,7 +38,7 @@ impl Default for BaseAttributes {
                 ///
                 /// [class]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
                 #[prop_or_default]
-                pub class: Option<yew::Classes>
+                pub class: yew::Classes
             },
             quote! {
                 /// Sets the extra attributes that the component should have set.

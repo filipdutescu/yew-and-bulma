@@ -161,13 +161,7 @@ pub fn progress_bar(props: &ProgressBarProperties) -> Html {
         .with_custom_class("progress")
         .with_color(props.color)
         .with_custom_class(&size)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
     let mut attrs = props.attrs.clone();
     if let Some(value) = props.value {

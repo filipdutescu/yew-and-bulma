@@ -416,13 +416,7 @@ impl TableItem {
 pub fn table(props: &TableProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class(&String::from(props))
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
     let headers: Vec<_> = props.children.iter().filter(|ti| ti.is_header()).collect();
     let footers: Vec<_> = props.children.iter().filter(|ti| ti.is_footer()).collect();
@@ -588,13 +582,7 @@ pub struct TableHeaderProperties {
 #[function_component(TableHeader)]
 pub fn table_header(props: &TableHeaderProperties) -> Html {
     let class = ClassBuilder::default()
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
     let abbr = &props.abbreviation;
 
@@ -649,13 +637,7 @@ pub fn table_header(props: &TableHeaderProperties) -> Html {
 #[function_component(TableFooter)]
 pub fn table_footer(props: &TableHeaderProperties) -> Html {
     let class = ClassBuilder::default()
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
     let abbr = &props.abbreviation;
 
@@ -806,13 +788,7 @@ impl From<&TableRowProperties> for String {
 pub fn table_row(props: &TableRowProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class(&String::from(props))
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -909,13 +885,7 @@ pub struct TableDataProperties {
 #[function_component(TableData)]
 pub fn table_data(props: &TableDataProperties) -> Html {
     let class = ClassBuilder::default()
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {

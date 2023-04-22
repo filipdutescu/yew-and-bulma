@@ -176,13 +176,7 @@ pub fn hero(props: &HeroProperties) -> Html {
         .with_custom_class("hero")
         .with_color(props.color)
         .with_custom_class(&size)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -285,13 +279,7 @@ pub struct HeroHeadProperties {
 pub fn hero_head(props: &HeroHeadProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("hero-head")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -361,13 +349,7 @@ pub struct HeroBodyProperties {
 pub fn hero_body(props: &HeroBodyProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("hero-body")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -439,13 +421,7 @@ pub struct HeroFootProperties {
 pub fn hero_foot(props: &HeroFootProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("hero-foot")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {

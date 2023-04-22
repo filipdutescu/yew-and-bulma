@@ -136,13 +136,7 @@ pub fn icon_text(props: &IconTextProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("icon-text")
         .with_text_color(props.color)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -330,13 +324,7 @@ pub fn icon(props: &IconProperties) -> Html {
         .with_custom_class("icon")
         .with_text_color(props.color)
         .with_custom_class(&size)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     let icon_html = html! {

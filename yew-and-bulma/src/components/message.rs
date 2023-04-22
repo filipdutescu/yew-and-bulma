@@ -154,13 +154,7 @@ pub fn message(props: &MessageProperties) -> Html {
         .with_custom_class("message")
         .with_custom_class(&size)
         .with_color(props.color)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -298,13 +292,7 @@ pub struct MessageHeaderProperties {
 pub fn message_header(props: &MessageHeaderProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("message-header")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -386,13 +374,7 @@ pub struct MessageBodyProperties {
 pub fn message_body(props: &MessageBodyProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("message-body")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {

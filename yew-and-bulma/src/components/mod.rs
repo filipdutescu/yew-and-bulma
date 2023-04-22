@@ -156,6 +156,44 @@ pub mod modal;
 ///
 /// [bd]: https://bulma.io/documentation/components/pagination/
 pub mod pagination;
+/// Provides utilities for creating [panel components][bd] in Yew.
+///
+/// Defines the necessary components to build, style and modify
+/// [Bulma panel components][bd] in Yew.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::{
+///     component::{
+///         panel::{Panel, PanelBlock, PanelHeading, PanelTabs},
+///         tabs::Tab,
+///     },
+///     elements::button::Button,
+/// };
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Panel>
+///             <PanelHeading>{"Repositories"}</PanelHeading>
+///
+///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]}>
+///
+///             <PanelBlock active=true>{"yew-and-bulma"}</PanelBlock>
+///             <PanelBlock>{"bulma"}</PanelBlock>
+///             <PanelBlock>{"yew"}</PanelBlock>
+///             <PanelBlock>
+///                 <Button fullwidth=true>{"Reset filters"}</Button>
+///             </PanelBlock>
+///         </Panel>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/components/panel/
+pub mod panel;
 /// Provides utilities for creating [tabs components][bd] in Yew.
 ///
 /// Defines the necessary components to build, style and modify

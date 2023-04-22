@@ -104,13 +104,7 @@ pub fn content(props: &ContentProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("content")
         .with_custom_class(&size)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {

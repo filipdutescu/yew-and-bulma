@@ -75,13 +75,7 @@ pub struct MediaProperties {
 pub fn media(props: &MediaProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("media")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -184,13 +178,7 @@ pub struct MediaLeftProperties {
 pub fn media_left(props: &MediaLeftProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("media-left")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -260,13 +248,7 @@ pub struct MediaContentProperties {
 pub fn media_content(props: &MediaContentProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("media-content")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -336,13 +318,7 @@ pub struct MediaRightProperties {
 pub fn media_right(props: &MediaRightProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("media-right")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {

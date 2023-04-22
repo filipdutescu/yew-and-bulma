@@ -94,13 +94,7 @@ pub fn level(props: &LevelProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("level")
         .with_custom_class(mobile)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -205,13 +199,7 @@ pub struct LevelItemProperties {
 pub fn level_item(props: &LevelItemProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("level-item")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -285,13 +273,7 @@ pub struct LevelLeftProperties {
 pub fn level_right(props: &LevelLeftProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("level-left")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -365,13 +347,7 @@ pub struct LevelRightProperties {
 pub fn level_right(props: &LevelRightProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("level-right")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {

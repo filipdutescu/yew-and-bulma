@@ -166,13 +166,7 @@ pub fn container(props: &ContainerProperties) -> Html {
         .with_custom_class("container")
         .with_custom_class(&width)
         .with_custom_class(fluid)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {

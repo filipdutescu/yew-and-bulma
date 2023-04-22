@@ -132,13 +132,7 @@ pub fn image(props: &ImageProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class(fullwidth)
         .with_custom_class(rounded)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
     let mut attrs = props.attrs.clone();
     attrs.insert("src", props.src.clone());
@@ -320,13 +314,7 @@ pub fn figure(props: &FigureProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("image")
         .with_custom_class(&size)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {

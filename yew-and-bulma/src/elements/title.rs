@@ -165,13 +165,7 @@ impl From<&TitleProperties> for String {
 pub fn title(props: &TitleProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class(&String::from(props))
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -297,13 +291,7 @@ impl From<&SubtitleProperties> for String {
 pub fn subtitle(props: &SubtitleProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class(&String::from(props))
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {

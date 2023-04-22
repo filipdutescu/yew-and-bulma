@@ -307,13 +307,7 @@ pub fn pagination(props: &PaginationProperties) -> Html {
         .with_custom_class(&size)
         .with_custom_class(&String::from(&props.align))
         .with_custom_class(rounded)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -510,13 +504,7 @@ pub fn pagination_next(props: &PaginationNextProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("pagination-next")
         .with_custom_class(disabled)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -666,13 +654,7 @@ pub fn pagination_previous(props: &PaginationPreviousProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("pagination-previous")
         .with_custom_class(disabled)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -778,13 +760,7 @@ pub struct PaginationListProperties {
 pub fn pagination_list(props: &PaginationListProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("pagination-list")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -938,13 +914,7 @@ pub struct PaginationEllipsisProperties {
 pub fn pagination_ellipsis(props: &PaginationEllipsisProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("pagination-ellipsis")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -1052,13 +1022,7 @@ pub fn pagination_link(props: &PaginationLinkProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("pagination-link")
         .with_custom_class(current)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {

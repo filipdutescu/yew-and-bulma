@@ -114,13 +114,7 @@ pub fn modal(props: &ModalProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("modal")
         .with_custom_class(active)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -230,13 +224,7 @@ pub struct ModalBackgroundProperties {}
 pub fn modal_background(props: &ModalBackgroundProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("modal-background")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -354,13 +342,7 @@ pub fn modal_close(props: &ModalCloseProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("modal-close")
         .with_custom_class(&size)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -440,13 +422,7 @@ pub struct ModalContentProperties {
 pub fn modal_content(props: &ModalContentProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("modal-content")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -556,13 +532,7 @@ pub struct ModalCardProperties {
 pub fn modal_card(props: &ModalCardProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("modal-card")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -722,13 +692,7 @@ pub struct ModalCardBodyProperties {
 pub fn modal_card_body(props: &ModalCardBodyProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("modal-card-body")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -838,13 +802,7 @@ pub struct ModalCardFootProperties {
 pub fn modal_card_foot(props: &ModalCardFootProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("modal-card-foot")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -954,13 +912,7 @@ pub struct ModalCardHeadProperties {
 pub fn modal_card_head(props: &ModalCardHeadProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("modal-card-head")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -1118,13 +1070,7 @@ pub struct ModalCardTitleProperties {
 pub fn modal_card_title(props: &ModalCardTitleProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("modal-card-title")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {

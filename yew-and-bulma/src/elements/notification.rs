@@ -129,13 +129,7 @@ pub fn notification(props: &NotificationProperties) -> Html {
         .with_custom_class("notification")
         .with_color(props.color)
         .is_light(props.light)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {

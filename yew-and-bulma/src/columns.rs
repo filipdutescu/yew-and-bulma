@@ -422,13 +422,7 @@ pub fn columns(props: &ColumnsProperties) -> Html {
     let centered = if props.centered { "is-centered" } else { "" };
     let class = ClassBuilder::default()
         .with_custom_class("columns")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .with_custom_class(&viewport)
         .with_custom_class(multiline)
         .with_custom_class(gapless)
@@ -778,13 +772,7 @@ pub fn column(props: &ColumnProperties) -> Html {
         .for_each(|viewport| narrow_viewports.push_str(&format!("{IS_NARROW}-{viewport}")));
     let class = ClassBuilder::default()
         .with_custom_class("column")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .with_custom_class(&size)
         .with_custom_class(&offset)
         .with_custom_class(narrow)

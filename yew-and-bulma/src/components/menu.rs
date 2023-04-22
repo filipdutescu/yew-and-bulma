@@ -88,13 +88,7 @@ pub struct MenuProperties {
 pub fn menu(props: &MenuProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("menu")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -225,13 +219,7 @@ pub struct MenuLabelProperties {
 pub fn menu_label(props: &MenuLabelProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("menu-label")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -323,13 +311,7 @@ pub struct MenuListProperties {
 pub fn menu_list(props: &MenuListProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("menu-list")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {

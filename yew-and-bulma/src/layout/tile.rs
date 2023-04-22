@@ -279,13 +279,7 @@ pub fn tile(props: &TileProperties) -> Html {
         .with_custom_class(&relation)
         .with_custom_class(vertical)
         .with_custom_class(&size)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {

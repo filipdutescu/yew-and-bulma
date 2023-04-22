@@ -67,13 +67,7 @@ pub struct FooterProperties {
 pub fn footer(props: &FooterProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("footer")
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {

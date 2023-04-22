@@ -212,13 +212,7 @@ pub fn buttons(props: &ButtonsProperties) -> Html {
         .with_custom_class(&size)
         .with_custom_class(&addons)
         .with_custom_class(&String::from(&props.align))
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -576,13 +570,7 @@ impl From<&ButtonProperties> for Classes {
             .with_custom_class(&fullwidth)
             .with_custom_class(&style)
             .with_custom_class(&state)
-            .with_custom_class(
-                &value
-                    .class
-                    .as_ref()
-                    .map(|c| c.to_string())
-                    .unwrap_or("".to_owned()),
-            )
+            .with_custom_class(&value.class.to_string())
             .build()
     }
 }

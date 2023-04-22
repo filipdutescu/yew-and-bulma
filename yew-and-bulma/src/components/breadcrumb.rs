@@ -307,13 +307,7 @@ pub fn breadcrumb(props: &BreadcrumbProperties) -> Html {
         .with_custom_class(&size)
         .with_custom_class(&String::from(&props.align))
         .with_custom_class(&String::from(&props.separator))
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     let no_children = props.crumbs.len();

@@ -145,13 +145,7 @@ pub fn tags(props: &TagsProperties) -> Html {
         .with_custom_class("tags")
         .with_custom_class(&size)
         .with_custom_class(addons)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
 
     html! {
@@ -355,13 +349,7 @@ pub fn tag(props: &TagProperties) -> Html {
         .with_custom_class(&size)
         .with_custom_class(rounded)
         .with_custom_class(delete)
-        .with_custom_class(
-            &props
-                .class
-                .as_ref()
-                .map(|c| c.to_string())
-                .unwrap_or("".to_owned()),
-        )
+        .with_custom_class(&props.class.to_string())
         .build();
     let tag = (if props.delete { "a" } else { "span" }).to_string();
 
