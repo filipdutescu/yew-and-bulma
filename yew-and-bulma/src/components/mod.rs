@@ -25,6 +25,40 @@
 ///
 /// [bd]: https://bulma.io/documentation/components/breadcrumb/
 pub mod breadcrumb;
+/// Provides utilities for creating [menu components][bd] in Yew.
+///
+/// Defines the necessary components to build, style and modify
+/// [Bulma menu components][bd] in Yew.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::component::menu::{Menu, MenuLabel, MenuList};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Menu>
+///             <MenuLabel>{"General"}</MenuLabel>
+///             <MenuList>
+///                 <a class="is-active">{"Dashboard"}</a>
+///                 <a>{"About"}</a>
+///             </MenuList>
+///
+///             <MenuLabel>{"Project"}</MenuLabel>
+///             <MenuList>
+///                 <a>{"Team"}</a>
+///                 <a>{"Technologies"}</a>
+///                 <a>{"Blog"}</a>
+///             </MenuList>
+///         </Menu>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/components/menu/
+pub mod menu;
 /// Provides utilities for creating [message components][bd] in Yew.
 ///
 /// Defines the necessary components to build, style and modify
