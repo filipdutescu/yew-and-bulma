@@ -34,7 +34,7 @@ pub mod breadcrumb;
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::component::menu::{Menu, MenuLabel, MenuList};
+/// use yew_and_bulma::components::menu::{Menu, MenuLabel, MenuList};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -68,7 +68,7 @@ pub mod menu;
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::message::{Message, MessageBody, MessageHeader};
+/// use yew_and_bulma::components::message::{Message, MessageBody, MessageHeader};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -95,7 +95,7 @@ pub mod message;
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::modal::{Modal, ModalBackground, ModalClose, ModalContent};
+/// use yew_and_bulma::components::modal::{Modal, ModalBackground, ModalClose, ModalContent};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -124,7 +124,7 @@ pub mod modal;
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::pagination::{
+/// use yew_and_bulma::components::pagination::{
 ///     Pagination,
 ///     PaginationEllipsis,
 ///     PaginationLink,
@@ -166,7 +166,7 @@ pub mod pagination;
 /// ```rust
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
-///     component::{
+///     components::{
 ///         panel::{Panel, PanelBlock, PanelHeading, PanelTabs},
 ///         tabs::Tab,
 ///     },
@@ -179,7 +179,7 @@ pub mod pagination;
 ///         <Panel>
 ///             <PanelHeading>{"Repositories"}</PanelHeading>
 ///
-///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]}>
+///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]} />
 ///
 ///             <PanelBlock active=true>{"yew-and-bulma"}</PanelBlock>
 ///             <PanelBlock>{"bulma"}</PanelBlock>
@@ -203,18 +203,18 @@ pub mod panel;
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::components::tabs::{tabs, Crumb};
+/// use yew_and_bulma::components::tabs::{Tab, Tabs};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
-///     let crumbs = vec![
-///         Crumb(AttrValue::from("#"), html!{ {"Trail"} }),
-///         Crumb(AttrValue::from("#"), html!{ {"of"} }),
-///         Crumb(AttrValue::from("#"), html!{ {"tabss"} }),
+///     let tabs = vec![
+///         Tab(html!{ {"Tab 1"} }, true),
+///         Tab(html!{ {"Tab 2"} }, false),
+///         Tab(html!{ {"Tab 3"} }, false),
 ///     ];
 ///
 ///     html! {
-///         <tabs {crumbs} />
+///         <Tabs {tabs} />
 ///     }
 /// }
 /// ```

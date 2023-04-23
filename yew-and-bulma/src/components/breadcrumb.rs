@@ -34,7 +34,7 @@ use crate::utils::{
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/components/breadcrumb/#alignment
-#[derive(PartialEq)]
+#[derive(PartialEq, Clone, Copy)]
 pub enum Align {
     // TODO: use #[default] when updating the MSRV
     Left,
@@ -42,8 +42,8 @@ pub enum Align {
     Right,
 }
 
-impl From<&Align> for String {
-    fn from(value: &Align) -> Self {
+impl From<Align> for String {
+    fn from(value: Align) -> Self {
         match value {
             Align::Left => "".to_owned(),
             Align::Center => format!("{IS_PREFIX}-centered"),
@@ -78,7 +78,7 @@ impl From<&Align> for String {
 /// ```
 ///
 /// [bd]: https://bulma.io/documentation/components/breadcrumb/#alternative-separators
-#[derive(PartialEq)]
+#[derive(PartialEq, Clone, Copy)]
 pub enum Separator {
     // TODO: use #[default] when updating the MSRV
     Div,
@@ -88,8 +88,8 @@ pub enum Separator {
     Succeeds,
 }
 
-impl From<&Separator> for String {
-    fn from(value: &Separator) -> Self {
+impl From<Separator> for String {
+    fn from(value: Separator) -> Self {
         match value {
             Separator::Div => "".to_owned(),
             Separator::Arrow => format!("{HAS_PREFIX}-arrow-separator"),
@@ -305,8 +305,8 @@ pub fn breadcrumb(props: &BreadcrumbProperties) -> Html {
     let class = ClassBuilder::default()
         .with_custom_class("breadcrumb")
         .with_custom_class(&size)
-        .with_custom_class(&String::from(&props.align))
-        .with_custom_class(&String::from(&props.separator))
+        .with_custom_class(&String::from(props.align))
+        .with_custom_class(&String::from(props.separator))
         .with_custom_class(&props.class.to_string())
         .build();
 

@@ -19,7 +19,7 @@ use super::tabs::Tab;
 /// ```rust
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
-///     component::{
+///     components::{
 ///         panel::{Panel, PanelBlock, PanelHeading, PanelTabs},
 ///         tabs::Tab,
 ///     },
@@ -32,7 +32,7 @@ use super::tabs::Tab;
 ///         <Panel>
 ///             <PanelHeading>{"Repositories"}</PanelHeading>
 ///
-///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]}>
+///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]} />
 ///
 ///             <PanelBlock active=true>{"yew-and-bulma"}</PanelBlock>
 ///             <PanelBlock>{"bulma"}</PanelBlock>
@@ -59,7 +59,7 @@ pub struct PanelProperties {
     /// ```rust
     /// use yew::prelude::*;
     /// use yew_and_bulma::{
-    ///     component::{
+    ///     components::{
     ///         panel::{Panel, PanelBlock, PanelHeading, PanelTabs},
     ///         tabs::Tab,
     ///     },
@@ -73,7 +73,7 @@ pub struct PanelProperties {
     ///         <Panel color={Color::Danger}>
     ///             <PanelHeading>{"Repositories"}</PanelHeading>
     ///
-    ///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]}>
+    ///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]} />
     ///
     ///             <PanelBlock active=true>{"yew-and-bulma"}</PanelBlock>
     ///             <PanelBlock>{"bulma"}</PanelBlock>
@@ -108,7 +108,7 @@ pub struct PanelProperties {
 /// ```rust
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
-///     component::{
+///     components::{
 ///         panel::{Panel, PanelBlock, PanelHeading, PanelTabs},
 ///         tabs::Tab,
 ///     },
@@ -121,7 +121,7 @@ pub struct PanelProperties {
 ///         <Panel>
 ///             <PanelHeading>{"Repositories"}</PanelHeading>
 ///
-///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]}>
+///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]} />
 ///
 ///             <PanelBlock active=true>{"yew-and-bulma"}</PanelBlock>
 ///             <PanelBlock>{"bulma"}</PanelBlock>
@@ -160,7 +160,7 @@ pub fn panel(props: &PanelProperties) -> Html {
 /// ```rust
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
-///     component::{
+///     components::{
 ///         panel::{Panel, PanelBlock, PanelHeading, PanelTabs},
 ///         tabs::Tab,
 ///     },
@@ -173,7 +173,7 @@ pub fn panel(props: &PanelProperties) -> Html {
 ///         <Panel>
 ///             <PanelHeading>{"Repositories"}</PanelHeading>
 ///
-///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]}>
+///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]} />
 ///
 ///             <PanelBlock active=true>{"yew-and-bulma"}</PanelBlock>
 ///             <PanelBlock>{"bulma"}</PanelBlock>
@@ -204,7 +204,7 @@ pub enum PanelItem {
 /// ```rust
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
-///     component::{
+///     components::{
 ///         panel::{Panel, PanelBlock, PanelHeading, PanelTabs},
 ///         tabs::Tab,
 ///     },
@@ -217,7 +217,7 @@ pub enum PanelItem {
 ///         <Panel>
 ///             <PanelHeading>{"Repositories"}</PanelHeading>
 ///
-///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]}>
+///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]} />
 ///
 ///             <PanelBlock active=true>{"yew-and-bulma"}</PanelBlock>
 ///             <PanelBlock>{"bulma"}</PanelBlock>
@@ -244,7 +244,7 @@ pub struct PanelBlockProperties {
     /// ```rust
     /// use yew::prelude::*;
     /// use yew_and_bulma::{
-    ///     component::{
+    ///     components::{
     ///         panel::{Panel, PanelBlock, PanelHeading, PanelTabs},
     ///         tabs::Tab,
     ///     },
@@ -257,7 +257,7 @@ pub struct PanelBlockProperties {
     ///         <Panel>
     ///             <PanelHeading>{"Repositories"}</PanelHeading>
     ///
-    ///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]}>
+    ///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]} />
     ///
     ///             <PanelBlock active=true>{"yew-and-bulma"}</PanelBlock>
     ///             <PanelBlock>{"bulma"}</PanelBlock>
@@ -292,7 +292,7 @@ pub struct PanelBlockProperties {
 /// ```rust
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
-///     component::{
+///     components::{
 ///         panel::{Panel, PanelBlock, PanelHeading, PanelTabs},
 ///         tabs::Tab,
 ///     },
@@ -305,7 +305,7 @@ pub struct PanelBlockProperties {
 ///         <Panel>
 ///             <PanelHeading>{"Repositories"}</PanelHeading>
 ///
-///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]}>
+///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]} />
 ///
 ///             <PanelBlock active=true>{"yew-and-bulma"}</PanelBlock>
 ///             <PanelBlock>{"bulma"}</PanelBlock>
@@ -345,7 +345,7 @@ pub fn panel_block(props: &PanelBlockProperties) -> Html {
 /// ```rust
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
-///     component::{
+///     components::{
 ///         panel::{Panel, PanelBlock, PanelHeading, PanelTabs},
 ///         tabs::Tab,
 ///     },
@@ -358,7 +358,7 @@ pub fn panel_block(props: &PanelBlockProperties) -> Html {
 ///         <Panel>
 ///             <PanelHeading>{"Repositories"}</PanelHeading>
 ///
-///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]}>
+///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]} />
 ///
 ///             <PanelBlock active=true>{"yew-and-bulma"}</PanelBlock>
 ///             <PanelBlock>{"bulma"}</PanelBlock>
@@ -394,7 +394,7 @@ pub struct PanelHeadingProperties {
 /// ```rust
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
-///     component::{
+///     components::{
 ///         panel::{Panel, PanelBlock, PanelHeading, PanelTabs},
 ///         tabs::Tab,
 ///     },
@@ -407,7 +407,7 @@ pub struct PanelHeadingProperties {
 ///         <Panel>
 ///             <PanelHeading>{"Repositories"}</PanelHeading>
 ///
-///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]}>
+///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]} />
 ///
 ///             <PanelBlock active=true>{"yew-and-bulma"}</PanelBlock>
 ///             <PanelBlock>{"bulma"}</PanelBlock>
@@ -445,7 +445,7 @@ pub fn panel_heading(props: &PanelHeadingProperties) -> Html {
 /// ```rust
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
-///     component::{
+///     components::{
 ///         panel::{Panel, PanelBlock, PanelHeading, PanelTabs},
 ///         tabs::Tab,
 ///     },
@@ -458,7 +458,7 @@ pub fn panel_heading(props: &PanelHeadingProperties) -> Html {
 ///         <Panel>
 ///             <PanelHeading>{"Repositories"}</PanelHeading>
 ///
-///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]}>
+///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]} />
 ///
 ///             <PanelBlock active=true>{"yew-and-bulma"}</PanelBlock>
 ///             <PanelBlock>{"bulma"}</PanelBlock>
@@ -494,7 +494,7 @@ pub struct PanelTabsProperties {
 /// ```rust
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
-///     component::{
+///     components::{
 ///         panel::{Panel, PanelBlock, PanelHeading, PanelTabs},
 ///         tabs::Tab,
 ///     },
@@ -507,7 +507,7 @@ pub struct PanelTabsProperties {
 ///         <Panel>
 ///             <PanelHeading>{"Repositories"}</PanelHeading>
 ///
-///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]}>
+///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]} />
 ///
 ///             <PanelBlock active=true>{"yew-and-bulma"}</PanelBlock>
 ///             <PanelBlock>{"bulma"}</PanelBlock>
@@ -554,7 +554,7 @@ pub fn panel_tabs(props: &PanelTabsProperties) -> Html {
 /// ```rust
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
-///     component::{
+///     components::{
 ///         panel::{Panel, PanelBlock, PanelHeading, PanelTabs},
 ///         tabs::Tab,
 ///     },
@@ -567,7 +567,7 @@ pub fn panel_tabs(props: &PanelTabsProperties) -> Html {
 ///         <Panel>
 ///             <PanelHeading>{"Repositories"}</PanelHeading>
 ///
-///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]}>
+///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]} />
 ///
 ///             <PanelBlock active=true>{"yew-and-bulma"}</PanelBlock>
 ///             <PanelBlock>{"bulma"}</PanelBlock>
@@ -603,7 +603,7 @@ pub struct PanelIconProperties {
 /// ```rust
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
-///     component::{
+///     components::{
 ///         panel::{Panel, PanelBlock, PanelHeading, PanelIcon, PanelTabs},
 ///         tabs::Tab,
 ///     },
@@ -616,7 +616,7 @@ pub struct PanelIconProperties {
 ///         <Panel>
 ///             <PanelHeading>{"Repositories"}</PanelHeading>
 ///
-///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]}>
+///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]} />
 ///
 ///             <PanelBlock active=true>
 ///                 <PanelIcon>

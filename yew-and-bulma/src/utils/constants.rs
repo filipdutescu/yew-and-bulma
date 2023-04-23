@@ -856,7 +856,7 @@ pub const IS_NARROW: &str = "is-narrow";
 /// #[function_component(DotSeparatorDiv)]
 /// fn dot_separator_div() -> Html {
 ///     let dot_separator = Separator::Dot;
-///     let class = classes![format!("{HAS_PREFIX}-{dot_separator}")];
+///     let class = classes![String::from(dot_separator)];
 ///     html!{
 ///         <div class={class}>{ "Lorem ispum..." }</div>
 ///     }

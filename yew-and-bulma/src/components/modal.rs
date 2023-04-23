@@ -19,7 +19,7 @@ use crate::{
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::modal::{Modal, ModalBackground, ModalClose, ModalContent};
+/// use yew_and_bulma::components::modal::{Modal, ModalBackground, ModalClose, ModalContent};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -50,7 +50,7 @@ pub struct ModalProperties {
     ///
     /// ```rust
     /// use yew::prelude::*;
-    /// use yew_and_bulma::layout::modal::{Modal, ModalBackground, ModalClose, ModalContent};
+    /// use yew_and_bulma::components::modal::{Modal, ModalBackground, ModalClose, ModalContent};
     ///
     /// #[function_component(App)]
     /// fn app() -> Html {
@@ -89,7 +89,7 @@ pub struct ModalProperties {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::modal::{Modal, ModalBackground, ModalClose, ModalContent};
+/// use yew_and_bulma::components::modal::{Modal, ModalBackground, ModalClose, ModalContent};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -133,7 +133,7 @@ pub fn modal(props: &ModalProperties) -> Html {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::modal::{Modal, ModalBackground, ModalClose, ModalContent};
+/// use yew_and_bulma::components::modal::{Modal, ModalBackground, ModalClose, ModalContent};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -169,7 +169,7 @@ pub enum ModalItem {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::modal::{Modal, ModalBackground, ModalClose, ModalContent};
+/// use yew_and_bulma::components::modal::{Modal, ModalBackground, ModalClose, ModalContent};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -201,7 +201,7 @@ pub struct ModalBackgroundProperties {}
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::modal::{Modal, ModalBackground, ModalClose, ModalContent};
+/// use yew_and_bulma::components::modal::{Modal, ModalBackground, ModalClose, ModalContent};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -241,7 +241,7 @@ pub fn modal_background(props: &ModalBackgroundProperties) -> Html {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::modal::{Modal, ModalBackground, ModalClose, ModalContent};
+/// use yew_and_bulma::components::modal::{Modal, ModalBackground, ModalClose, ModalContent};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -273,7 +273,7 @@ pub struct ModalCloseProperties {
     /// ```rust
     /// use yew::prelude::*;
     /// use yew_and_bulma::{
-    ///     layout::modal::{Modal, ModalBackground, ModalClose, ModalContent},
+    ///     components::modal::{Modal, ModalBackground, ModalClose, ModalContent},
     ///     utils::size::Size,
     /// };
     ///
@@ -307,7 +307,7 @@ pub struct ModalCloseProperties {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::modal::{Modal, ModalBackground, ModalClose, ModalContent};
+/// use yew_and_bulma::components::modal::{Modal, ModalBackground, ModalClose, ModalContent};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -359,7 +359,7 @@ pub fn modal_close(props: &ModalCloseProperties) -> Html {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::modal::{Modal, ModalBackground, ModalClose, ModalContent};
+/// use yew_and_bulma::components::modal::{Modal, ModalBackground, ModalClose, ModalContent};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -399,7 +399,7 @@ pub struct ModalContentProperties {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::modal::{Modal, ModalBackground, ModalClose, ModalContent};
+/// use yew_and_bulma::components::modal::{Modal, ModalBackground, ModalClose, ModalContent};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -443,7 +443,7 @@ pub fn modal_content(props: &ModalContentProperties) -> Html {
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
 ///     elements::{button::Button, delete::Delete},
-///     layout::modal::{
+///     components::modal::{
 ///         Modal, ModalBackground, ModalCard, ModalCardBody, ModalCardFoot, ModalCardHead,
 ///         ModalCardTitle,
 ///     },
@@ -497,7 +497,7 @@ pub struct ModalCardProperties {
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
 ///     elements::{button::Button, delete::Delete},
-///     layout::modal::{
+///     components::modal::{
 ///         Modal, ModalBackground, ModalCard, ModalCardBody, ModalCardFoot, ModalCardHead,
 ///         ModalCardTitle,
 ///     },
@@ -553,7 +553,7 @@ pub fn modal_card(props: &ModalCardProperties) -> Html {
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
 ///     elements::{button::Button, delete::Delete},
-///     layout::modal::{
+///     components::modal::{
 ///         Modal, ModalBackground, ModalCard, ModalCardBody, ModalCardFoot, ModalCardHead,
 ///         ModalCardTitle,
 ///     },
@@ -603,7 +603,7 @@ pub enum ModalCardItem {
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
 ///     elements::{button::Button, delete::Delete},
-///     layout::modal::{
+///     components::modal::{
 ///         Modal, ModalBackground, ModalCard, ModalCardBody, ModalCardFoot, ModalCardHead,
 ///         ModalCardTitle,
 ///     },
@@ -657,7 +657,7 @@ pub struct ModalCardBodyProperties {
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
 ///     elements::{button::Button, delete::Delete},
-///     layout::modal::{
+///     components::modal::{
 ///         Modal, ModalBackground, ModalCard, ModalCardBody, ModalCardFoot, ModalCardHead,
 ///         ModalCardTitle,
 ///     },
@@ -713,7 +713,7 @@ pub fn modal_card_body(props: &ModalCardBodyProperties) -> Html {
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
 ///     elements::{button::Button, delete::Delete},
-///     layout::modal::{
+///     components::modal::{
 ///         Modal, ModalBackground, ModalCard, ModalCardBody, ModalCardFoot, ModalCardHead,
 ///         ModalCardTitle,
 ///     },
@@ -767,7 +767,7 @@ pub struct ModalCardFootProperties {
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
 ///     elements::{button::Button, delete::Delete},
-///     layout::modal::{
+///     components::modal::{
 ///         Modal, ModalBackground, ModalCard, ModalCardBody, ModalCardFoot, ModalCardHead,
 ///         ModalCardTitle,
 ///     },
@@ -823,7 +823,7 @@ pub fn modal_card_foot(props: &ModalCardFootProperties) -> Html {
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
 ///     elements::{button::Button, delete::Delete},
-///     layout::modal::{
+///     components::modal::{
 ///         Modal, ModalBackground, ModalCard, ModalCardBody, ModalCardFoot, ModalCardHead,
 ///         ModalCardTitle,
 ///     },
@@ -877,7 +877,7 @@ pub struct ModalCardHeadProperties {
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
 ///     elements::{button::Button, delete::Delete},
-///     layout::modal::{
+///     components::modal::{
 ///         Modal, ModalBackground, ModalCard, ModalCardBody, ModalCardFoot, ModalCardHead,
 ///         ModalCardTitle,
 ///     },
@@ -933,7 +933,7 @@ pub fn modal_card_head(props: &ModalCardHeadProperties) -> Html {
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
 ///     elements::{button::Button, delete::Delete},
-///     layout::modal::{
+///     components::modal::{
 ///         Modal, ModalBackground, ModalCard, ModalCardBody, ModalCardFoot, ModalCardHead,
 ///         ModalCardTitle,
 ///     },
@@ -981,7 +981,7 @@ pub enum ModalCardHeadItem {
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
 ///     elements::{button::Button, delete::Delete},
-///     layout::modal::{
+///     components::modal::{
 ///         Modal, ModalBackground, ModalCard, ModalCardBody, ModalCardFoot, ModalCardHead,
 ///         ModalCardTitle,
 ///     },
@@ -1035,7 +1035,7 @@ pub struct ModalCardTitleProperties {
 /// use yew::prelude::*;
 /// use yew_and_bulma::{
 ///     elements::{button::Button, delete::Delete},
-///     layout::modal::{
+///     components::modal::{
 ///         Modal, ModalBackground, ModalCard, ModalCardBody, ModalCardFoot, ModalCardHead,
 ///         ModalCardTitle,
 ///     },

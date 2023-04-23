@@ -57,7 +57,7 @@ impl From<&Align> for String {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::elements::tabs::{Tab, Tabs, Style};
+/// use yew_and_bulma::components::tabs::{Tab, Tabs, Style};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -223,7 +223,7 @@ pub struct TabsProperties {
     ///
     /// ```rust
     /// use yew::prelude::*;
-    /// use yew_and_bulma::elements::tabs::{Tab, Tabs};
+    /// use yew_and_bulma::components::tabs::{Tab, Tabs};
     ///
     /// #[function_component(App)]
     /// fn app() -> Html {
@@ -251,7 +251,7 @@ pub struct TabsProperties {
     ///
     /// ```rust
     /// use yew::prelude::*;
-    /// use yew_and_bulma::elements::tabs::{Tab, Tabs, Style};
+    /// use yew_and_bulma::components::tabs::{Tab, Tabs, Style};
     ///
     /// #[function_component(App)]
     /// fn app() -> Html {

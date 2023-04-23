@@ -20,7 +20,7 @@ use crate::{
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::message::{Message, MessageBody, MessageHeader};
+/// use yew_and_bulma::components::message::{Message, MessageBody, MessageHeader};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -50,7 +50,7 @@ pub struct MessageProperties {
     /// ```rust
     /// use yew::prelude::*;
     /// use yew_and_bulma::{
-    ///     layout::message::{Message, MessageBody, MessageHeader};
+    ///     components::message::{Message, MessageBody, MessageHeader},
     ///     utils::size::Size,
     ///};
     ///
@@ -120,7 +120,7 @@ pub struct MessageProperties {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::message::{Message, MessageBody, MessageHeader};
+/// use yew_and_bulma::components::message::{Message, MessageBody, MessageHeader};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -173,7 +173,7 @@ pub fn message(props: &MessageProperties) -> Html {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::message::{Message, MessageBody, MessageHeader};
+/// use yew_and_bulma::components::message::{Message, MessageBody, MessageHeader};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -205,7 +205,7 @@ pub enum MessageItem {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::message::{Message, MessageBody, MessageHeader};
+/// use yew_and_bulma::components::message::{Message, MessageBody, MessageHeader};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -234,7 +234,7 @@ pub struct MessageHeaderProperties {
     ///
     /// ```rust
     /// use yew::prelude::*;
-    /// use yew_and_bulma::layout::message::{Message, MessageBody, MessageHeader};
+    /// use yew_and_bulma::components::message::{Message, MessageBody, MessageHeader};
     ///
     /// #[function_component(App)]
     /// fn app() -> Html {
@@ -271,7 +271,7 @@ pub struct MessageHeaderProperties {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::message::{Message, MessageBody, MessageHeader};
+/// use yew_and_bulma::components::message::{Message, MessageBody, MessageHeader};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -315,7 +315,7 @@ pub fn message_header(props: &MessageHeaderProperties) -> Html {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::message::{Message, MessageBody, MessageHeader};
+/// use yew_and_bulma::components::message::{Message, MessageBody, MessageHeader};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -353,7 +353,7 @@ pub struct MessageBodyProperties {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::message::{Message, MessageBody, MessageHeader};
+/// use yew_and_bulma::components::message::{Message, MessageBody, MessageHeader};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {

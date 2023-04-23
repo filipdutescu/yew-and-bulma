@@ -15,7 +15,7 @@ use crate::utils::{class::ClassBuilder, BaseComponent};
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::component::menu::{Menu, MenuLabel, MenuList};
+/// use yew_and_bulma::components::menu::{Menu, MenuLabel, MenuList};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -60,7 +60,7 @@ pub struct MenuProperties {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::component::menu::{Menu, MenuLabel, MenuList};
+/// use yew_and_bulma::components::menu::{Menu, MenuLabel, MenuList};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -107,7 +107,7 @@ pub fn menu(props: &MenuProperties) -> Html {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::component::menu::{Menu, MenuLabel, MenuList};
+/// use yew_and_bulma::components::menu::{Menu, MenuLabel, MenuList};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -146,7 +146,7 @@ pub enum MenuItem {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::component::menu::{Menu, MenuLabel, MenuList};
+/// use yew_and_bulma::components::menu::{Menu, MenuLabel, MenuList};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -191,7 +191,7 @@ pub struct MenuLabelProperties {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::component::menu::{Menu, MenuLabel, MenuList};
+/// use yew_and_bulma::components::menu::{Menu, MenuLabel, MenuList};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -238,7 +238,7 @@ pub fn menu_label(props: &MenuLabelProperties) -> Html {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::component::menu::{Menu, MenuLabel, MenuList};
+/// use yew_and_bulma::components::menu::{Menu, MenuLabel, MenuList};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {
@@ -283,7 +283,7 @@ pub struct MenuListProperties {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::component::menu::{Menu, MenuLabel, MenuList};
+/// use yew_and_bulma::components::menu::{Menu, MenuLabel, MenuList};
 ///
 /// #[function_component(App)]
 /// fn app() -> Html {

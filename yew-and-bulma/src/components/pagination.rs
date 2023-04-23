@@ -16,7 +16,7 @@ use crate::utils::{class::ClassBuilder, constants::IS_PREFIX, size::Size};
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::pagination::{
+/// use yew_and_bulma::components::pagination::{
 ///     Align,
 ///     Pagination,
 ///     PaginationEllipsis,
@@ -75,7 +75,7 @@ impl From<&Align> for String {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::pagination::{
+/// use yew_and_bulma::components::pagination::{
 ///     Pagination,
 ///     PaginationEllipsis,
 ///     PaginationLink,
@@ -119,7 +119,7 @@ pub struct PaginationProperties {
     /// ```rust
     /// use yew::prelude::*;
     /// use yew_and_bulma::{
-    ///     layout::pagination::{
+    ///     components::pagination::{
     ///         Pagination,
     ///         PaginationEllipsis,
     ///         PaginationLink,
@@ -163,7 +163,7 @@ pub struct PaginationProperties {
     ///
     /// ```rust
     /// use yew::prelude::*;
-    /// use yew_and_bulma::layout::pagination::{
+    /// use yew_and_bulma::components::pagination::{
     ///     Align,
     ///     Pagination,
     ///     PaginationEllipsis,
@@ -206,7 +206,7 @@ pub struct PaginationProperties {
     ///
     /// ```rust
     /// use yew::prelude::*;
-    /// use yew_and_bulma::layout::pagination::{
+    /// use yew_and_bulma::components::pagination::{
     ///     Pagination,
     ///     PaginationEllipsis,
     ///     PaginationLink,
@@ -257,7 +257,7 @@ pub struct PaginationProperties {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::pagination::{
+/// use yew_and_bulma::components::pagination::{
 ///     Pagination,
 ///     PaginationEllipsis,
 ///     PaginationLink,
@@ -326,7 +326,7 @@ pub fn pagination(props: &PaginationProperties) -> Html {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::pagination::{
+/// use yew_and_bulma::components::pagination::{
 ///     Pagination,
 ///     PaginationEllipsis,
 ///     PaginationLink,
@@ -373,7 +373,7 @@ pub enum PaginationItem {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::pagination::{
+/// use yew_and_bulma::components::pagination::{
 ///     Pagination,
 ///     PaginationEllipsis,
 ///     PaginationLink,
@@ -416,7 +416,7 @@ pub struct PaginationNextProperties {
     ///
     /// ```rust
     /// use yew::prelude::*;
-    /// use yew_and_bulma::layout::pagination::{
+    /// use yew_and_bulma::components::pagination::{
     ///     Pagination,
     ///     PaginationEllipsis,
     ///     PaginationLink,
@@ -467,7 +467,7 @@ pub struct PaginationNextProperties {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::pagination::{
+/// use yew_and_bulma::components::pagination::{
 ///     Pagination,
 ///     PaginationEllipsis,
 ///     PaginationLink,
@@ -523,7 +523,7 @@ pub fn pagination_next(props: &PaginationNextProperties) -> Html {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::pagination::{
+/// use yew_and_bulma::components::pagination::{
 ///     Pagination,
 ///     PaginationEllipsis,
 ///     PaginationLink,
@@ -566,7 +566,7 @@ pub struct PaginationPreviousProperties {
     ///
     /// ```rust
     /// use yew::prelude::*;
-    /// use yew_and_bulma::layout::pagination::{
+    /// use yew_and_bulma::components::pagination::{
     ///     Pagination,
     ///     PaginationEllipsis,
     ///     PaginationLink,
@@ -589,7 +589,7 @@ pub struct PaginationPreviousProperties {
     ///                 <PaginationLink page={50} />
     ///             </PaginationList>
     ///
-    ///             <Paginationprevious>{"Next"}</PaginationNext>
+    ///             <PaginationNext>{"Next"}</PaginationNext>
     ///             <PaginationPrevious disabled=true>{"Previous"}</PaginationPrevious>
     ///         </Pagination>
     ///     }
@@ -617,7 +617,7 @@ pub struct PaginationPreviousProperties {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::pagination::{
+/// use yew_and_bulma::components::pagination::{
 ///     Pagination,
 ///     PaginationEllipsis,
 ///     PaginationLink,
@@ -673,7 +673,7 @@ pub fn pagination_previous(props: &PaginationPreviousProperties) -> Html {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::pagination::{
+/// use yew_and_bulma::components::pagination::{
 ///     Pagination,
 ///     PaginationEllipsis,
 ///     PaginationLink,
@@ -725,7 +725,7 @@ pub struct PaginationListProperties {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::pagination::{
+/// use yew_and_bulma::components::pagination::{
 ///     Pagination,
 ///     PaginationEllipsis,
 ///     PaginationLink,
@@ -780,7 +780,7 @@ pub fn pagination_list(props: &PaginationListProperties) -> Html {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::pagination::{
+/// use yew_and_bulma::components::pagination::{
 ///     Pagination,
 ///     PaginationEllipsis,
 ///     PaginationLink,
@@ -826,7 +826,7 @@ pub enum PaginationListItem {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::pagination::{
+/// use yew_and_bulma::components::pagination::{
 ///     Pagination,
 ///     PaginationEllipsis,
 ///     PaginationLink,
@@ -879,7 +879,7 @@ pub struct PaginationEllipsisProperties {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::pagination::{
+/// use yew_and_bulma::components::pagination::{
 ///     Pagination,
 ///     PaginationEllipsis,
 ///     PaginationLink,
@@ -937,7 +937,7 @@ pub fn pagination_ellipsis(props: &PaginationEllipsisProperties) -> Html {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::pagination::{
+/// use yew_and_bulma::components::pagination::{
 ///     Pagination,
 ///     PaginationEllipsis,
 ///     PaginationLink,
@@ -985,7 +985,7 @@ pub struct PaginationLinkProperties {
 ///
 /// ```rust
 /// use yew::prelude::*;
-/// use yew_and_bulma::layout::pagination::{
+/// use yew_and_bulma::components::pagination::{
 ///     Pagination,
 ///     PaginationEllipsis,
 ///     PaginationLink,
