@@ -532,7 +532,7 @@ pub fn panel_tabs(props: &PanelTabsProperties) -> Html {
     let mut tabs = Vec::with_capacity(no_children);
     for t in props.tabs.iter() {
         let (elem, is_active) = (t.0.clone(), t.1);
-        let class = is_active.then_some("is-active");
+        let class = is_active.then(|| "is-active");
 
         tabs.push(html! { <a {class}>{elem}</a> });
     }
