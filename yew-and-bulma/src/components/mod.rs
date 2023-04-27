@@ -25,6 +25,47 @@
 ///
 /// [bd]: https://bulma.io/documentation/components/breadcrumb/
 pub mod breadcrumb;
+/// Provides utilities for creating [dropdown components][bd] in Yew.
+///
+/// Defines the necessary components to build, style and modify
+/// [Bulma dropdown components][bd] in Yew.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::components::dropdown::{
+///     Dropdown, DropdownContent, DropdownDivider, DropdownItem, DropdownMenu, DropdownTrigger,
+/// };
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Dropdown>
+///             <DropdownTrigger>
+///                 <Button>
+///                     <span>{"Dropdown toggle"}</span>
+///                 </Button>
+///             </DropdownTrigger>
+///
+///             <DropdownMenu>
+///                 <DropdownContent>
+///                     <DropdownItem>{"One dropdown item"}</DropdownItem>
+///                     <DropdownItem active=true>{"A different dropdown item"}</DropdownItem>
+///                     <DropdownItem>{"Another dropdown item"}</DropdownItem>
+///
+///                     <DropdownDivider />
+///
+///                     <DropdownItem>{"A separate item"}</DropdownItem>
+///                 </DropdownContent>
+///             </DropdownMenu>
+///         </Dropdown>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/components/dropdown/
+pub mod dropdown;
 /// Provides utilities for creating [menu components][bd] in Yew.
 ///
 /// Defines the necessary components to build, style and modify
