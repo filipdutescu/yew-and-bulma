@@ -28,7 +28,7 @@ impl Default for BaseAttributes {
                 ///
                 /// [id]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
                 #[prop_or_default]
-                pub id: Option<yew::AttrValue>
+                pub id: yew::AttrValue
             },
             quote! {
                 /// Sets the classes to be appended to the [HTML class attribute][class].
@@ -38,7 +38,15 @@ impl Default for BaseAttributes {
                 ///
                 /// [class]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
                 #[prop_or_default]
-                pub class: Option<yew::Classes>
+                pub class: yew::Classes
+            },
+            quote! {
+                /// Sets the extra attributes that the component should have set.
+                ///
+                /// Sets the extra attributes that the component which will receive these
+                /// properties should have set.
+                #[prop_or_default]
+                pub attrs: std::collections::HashMap<&'static str, yew::AttrValue>
             },
             quote! {
                 /// Sets the callback to be used for the [HTML onclick attribute][ev].
@@ -569,6 +577,46 @@ impl Default for BaseAttributes {
                 /// [ev]: https://developer.mozilla.org/en-US/docs/Web/API/Element/waiting_event
                 #[prop_or_default]
                 pub onwaiting: Option<yew::Callback<yew::html::onwaiting::Event>>
+            },
+            quote! {
+                /// Sets the [HTML title attribute][title] of the element.
+                ///
+                /// Sets the [HTML title attrbiute][title] of the element which will receive
+                /// these properties.
+                ///
+                /// [alable]:https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title
+                #[prop_or_default]
+                pub title: Option<yew::AttrValue>
+            },
+            quote! {
+                /// Sets the [HTML role attribute][role] of the element.
+                ///
+                /// Sets the [HTML role attrbiute][role] of the element which will receive
+                /// these properties.
+                ///
+                /// [role]: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles
+                #[prop_or_default]
+                pub role: Option<yew::AttrValue>
+            },
+            quote! {
+                /// Sets the [HTML aria-label attribute][alabel] of the element.
+                ///
+                /// Sets the [HTML aria-label attrbiute][alabel] of the element which will receive
+                /// these properties.
+                ///
+                /// [alabel]: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+                #[prop_or_default]
+                pub aria_label: Option<yew::AttrValue>
+            },
+            quote! {
+                /// Sets the [HTML aria-label attribute][acurr] of the element.
+                ///
+                /// Sets the [HTML aria-label attrbiute][acurr] of the element which will receive
+                /// these properties.
+                ///
+                /// [acurr]: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+                #[prop_or_default]
+                pub aria_current: Option<yew::AttrValue>
             },
         ]
         .into_iter()

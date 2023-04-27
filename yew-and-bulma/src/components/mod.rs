@@ -1,0 +1,264 @@
+/// Provides utilities for creating [breadcrumb components][bd] in Yew.
+///
+/// Defines the necessary components to build, style and modify
+/// [Bulma breadcrumb components][bd] in Yew.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::components::breadcrumb::{Breadcrumb, Crumb};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     let crumbs = vec![
+///         Crumb(AttrValue::from("#"), html!{ {"Trail"} }),
+///         Crumb(AttrValue::from("#"), html!{ {"of"} }),
+///         Crumb(AttrValue::from("#"), html!{ {"breadcrumbs"} }),
+///     ];
+///
+///     html! {
+///         <Breadcrumb {crumbs} />
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/components/breadcrumb/
+pub mod breadcrumb;
+/// Provides utilities for creating [dropdown components][bd] in Yew.
+///
+/// Defines the necessary components to build, style and modify
+/// [Bulma dropdown components][bd] in Yew.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::components::dropdown::{
+///     Dropdown, DropdownContent, DropdownDivider, DropdownItem, DropdownMenu, DropdownTrigger,
+/// };
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Dropdown>
+///             <DropdownTrigger>
+///                 <Button>
+///                     <span>{"Dropdown toggle"}</span>
+///                 </Button>
+///             </DropdownTrigger>
+///
+///             <DropdownMenu>
+///                 <DropdownContent>
+///                     <DropdownItem>{"One dropdown item"}</DropdownItem>
+///                     <DropdownItem active=true>{"A different dropdown item"}</DropdownItem>
+///                     <DropdownItem>{"Another dropdown item"}</DropdownItem>
+///
+///                     <DropdownDivider />
+///
+///                     <DropdownItem>{"A separate item"}</DropdownItem>
+///                 </DropdownContent>
+///             </DropdownMenu>
+///         </Dropdown>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/components/dropdown/
+pub mod dropdown;
+/// Provides utilities for creating [menu components][bd] in Yew.
+///
+/// Defines the necessary components to build, style and modify
+/// [Bulma menu components][bd] in Yew.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::components::menu::{Menu, MenuLabel, MenuList};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Menu>
+///             <MenuLabel>{"General"}</MenuLabel>
+///             <MenuList>
+///                 <a class="is-active">{"Dashboard"}</a>
+///                 <a>{"About"}</a>
+///             </MenuList>
+///
+///             <MenuLabel>{"Project"}</MenuLabel>
+///             <MenuList>
+///                 <a>{"Team"}</a>
+///                 <a>{"Technologies"}</a>
+///                 <a>{"Blog"}</a>
+///             </MenuList>
+///         </Menu>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/components/menu/
+pub mod menu;
+/// Provides utilities for creating [message components][bd] in Yew.
+///
+/// Defines the necessary components to build, style and modify
+/// [Bulma message components][bd] in Yew.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::components::message::{Message, MessageBody, MessageHeader};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Message>
+///             <MessageHeader>{"Hello!"}</MessageHeader>
+///
+///             <MessageBody>
+///                 {"Lorem ipsum dolor sit amet, consectetur adipiscing elit..."}
+///             </MessageBody>
+///         </Message>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/components/message/
+pub mod message;
+/// Provides utilities for creating [modal components][bd] in Yew.
+///
+/// Defines the necessary components to build, style and modify
+/// [Bulma modal components][bd] in Yew.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::components::modal::{Modal, ModalBackground, ModalClose, ModalContent};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Modal>
+///             <ModalBackground />
+///
+///             <ModalContent>
+///                 {"Lorem ipsum dolor sit amet, consectetur adipiscing elit..."}
+///             </ModalContent>
+///
+///             <ModalClose />
+///         </Modal>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/components/modal/
+pub mod modal;
+/// Provides utilities for creating [pagination components][bd] in Yew.
+///
+/// Defines the necessary components to build, style and modify
+/// [Bulma pagination components][bd] in Yew.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::components::pagination::{
+///     Pagination,
+///     PaginationEllipsis,
+///     PaginationLink,
+///     PaginationList,
+///     PaginationNext,
+///     PaginationPrevious,
+///};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Pagination>
+///             <PaginationList>
+///                 <PaginationLink page={1} />
+///                 <PaginationEllipsis />
+///                 <PaginationLink page={24} />
+///                 <PaginationLink page={25} />
+///                 <PaginationLink page={26} />
+///                 <PaginationEllipsis />
+///                 <PaginationLink page={50} />
+///             </PaginationList>
+///
+///             <PaginationNext>{"Next"}</PaginationNext>
+///             <PaginationPrevious>{"Previous"}</PaginationPrevious>
+///         </Pagination>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/components/pagination/
+pub mod pagination;
+/// Provides utilities for creating [panel components][bd] in Yew.
+///
+/// Defines the necessary components to build, style and modify
+/// [Bulma panel components][bd] in Yew.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::{
+///     components::{
+///         panel::{Panel, PanelBlock, PanelHeading, PanelTabs},
+///         tabs::Tab,
+///     },
+///     elements::button::Button,
+/// };
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     html! {
+///         <Panel>
+///             <PanelHeading>{"Repositories"}</PanelHeading>
+///
+///             <PanelTabs tabs={vec![Tab("All".into(), true), Tab("Public".into(), false), Tab("Private".into(), false)]} />
+///
+///             <PanelBlock active=true>{"yew-and-bulma"}</PanelBlock>
+///             <PanelBlock>{"bulma"}</PanelBlock>
+///             <PanelBlock>{"yew"}</PanelBlock>
+///             <PanelBlock>
+///                 <Button fullwidth=true>{"Reset filters"}</Button>
+///             </PanelBlock>
+///         </Panel>
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/components/panel/
+pub mod panel;
+/// Provides utilities for creating [tabs components][bd] in Yew.
+///
+/// Defines the necessary components to build, style and modify
+/// [Bulma tabs components][bd] in Yew.
+///
+/// # Examples
+///
+/// ```rust
+/// use yew::prelude::*;
+/// use yew_and_bulma::components::tabs::{Tab, Tabs};
+///
+/// #[function_component(App)]
+/// fn app() -> Html {
+///     let tabs = vec![
+///         Tab(html!{ {"Tab 1"} }, true),
+///         Tab(html!{ {"Tab 2"} }, false),
+///         Tab(html!{ {"Tab 3"} }, false),
+///     ];
+///
+///     html! {
+///         <Tabs {tabs} />
+///     }
+/// }
+/// ```
+///
+/// [bd]: https://bulma.io/documentation/components/tabs/
+pub mod tabs;
